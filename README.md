@@ -1,1 +1,3 @@
-# potunny.github.io
+---
+permalink: /index.html
+---
