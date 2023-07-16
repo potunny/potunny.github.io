@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--example of what can be used to change bg on head instead of body:
+  <style>
+    html {
+      font-size: 40px;
+    }
+    body {
+      background-color: blue;
+      color:cadetblue
+    }
+    p{
+      color: white;
+    }
+  </style>
+-->
+  
+  <meta name="description" content="cute personal test github page">
+  <meta name="keywords" content="personal, github, potunny, page, test, cute, learning">
+  <meta name="author" content="Beatriz Cintra, Potunny">
+  <meta charset="UTF-8"> <!--UTF-8 is Unicode-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--this adjusts the page for mobile devices-->
+  <meta http-equiv="refresh" content=""> <!--number of seconds for refreshing page automatically-->
   <title>Cute Page Title</title>
+  <link rel="icon" href="littlecake.png" type="image/x-icon">
+  <!--to add reference to css file below-->
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+  
 </head>
 <body style="background-color:#bda28e;"> <!--changes background color-->
-  I like pizza normal
+  &nbsp;&nbsp;&nbsp;<!--&nbsp makes space-->I like pizza normal
   <h1 style="color:royalblue">I like pizza h1</h1>
   <hr> <!--horizontal line-->
   <br> <!--break line-->
   <h5 style="color:#0a1f0f">I like pizza h5</h5>
   <h6 style="color:rgb(61, 33, 19)">I like pizza h6</h6>
+  <h5>
+    <li></section>
+      <a href="bingpart">go to the Bing part</a>
+
+    </li>
+  </h5>
   <p>paragraph example <span style="background-color:chartreuse">with span</span></p>
+
+<div style="background-color: rgb(89, 131, 158);">
 
   <a href="https://potunny.tumblr.com/" target=_blank> <!--target blank makes the link open in a new tab-->
   Bia's Tumblr
@@ -23,6 +54,8 @@
   </a>
   <a href="mailto:eisoptrofobica@gmail.com"> <br>
 mail me <br>
+</div>
+
   </a>
   <a href="https://www.instagram.com/potunny/" target=_blank>
     <img src="bunnybum.png" alt="this is a cute bunny" height="200">
@@ -88,6 +121,127 @@ mail me <br>
   </tr>
     
 </table>
+
+<section id="bingpart">
+<hr>
+<h1 style="color:rgb(36, 44, 68)">Bing:</h1>
+<iframe width="700" height="600"
+src="https://www.bing.com/">
+</iframe>
+<hr>
+<br>
+<iframe style="border:0" src="ad.html" width="200" height="200"></iframe>
+</section>
+<!--removed border-->
+
+<br>
+
+<!--border radius is for rounded corners on button-->
+<a href="https://google.com/" target="_blank">
+<button style="background-color: rgb(60, 82, 39); color: blue;border-radius: 30px;"><h3>Google</h3></button>
+</a>
+
+<br>
+<br>
+<!--"script" starts-->
+<button onclick="doathing()">goodbye button</button>
+
+<p style="color: rgb(94, 55, 94);" id="test">hello</p>
+
+<script>
+  function doathing(){
+    document.getElementById("test").innerHTML="goodbye";
+  }
+</script>
+
+<h2>Form:</h2>
+
+<form action="action_page.php" method="GET"> <!--get is insecure, used for search bars, POST is secure-->
+<div>
+  <label for="fname">first name:</label>
+  <input type="text" id="fname" placeholder="Beatriz" required>
+</div>
+<br>
+<div>
+  <label for="lname">last name:</label>
+  <input type="text" id="lname" placeholder="Cintra">
+</div>
+<br>
+<div>
+  <label for="pass">password:</label>
+  <input type="password" id="pass" maxlength="12" required>
+</div>
+<br>
+<div>
+  <label for="email">email:</label>
+  <input type="email" id="email" >
+</div>
+<br>
+<div>
+  <label for="phone">phone number:</label>
+  <input type="tel" id="phone" >
+</div>
+<br>
+<div>
+  <label for="bdate">birthdate:</label>
+  <input type="date" id="bdate" >
+</div>
+<br>
+<div>
+  <label for="quant">quantity:</label>
+  <input type="number" id="quant" min="0" max="99" value="1">
+</div>
+<br>
+<div>
+<label for="title">title:</label> <!--label for and putting id below allows for the name to be selectable when choosing radio circle-->
+
+  <label for="Mr.">Mr.</label>
+  <input type="radio" id="Mr." name="title">
+  <label for="Mrs.">Mrs.</label>
+  <input type="radio" id="Mrs." name="title">
+  <label for="PhD.">PhD.</label>
+  <input type="radio" id="PhD." name="title">
+</div>
+
+<br>
+
+<div> <!--selectable menu with options-->
+  <label for="payment">payment:</label>
+  <select id="payment" name="payment">
+    <option value="visa">visa</option>
+    <option value="mastercard">mastercard</option>
+    <option value="giftcard">giftcard</option>
+  </select>
+</div>
+
+<br>
+
+<div>
+  <label for="agree">I agree</label>
+  <input type="checkbox">
+</div>
+
+<br>
+
+<div>
+<input type="reset">
+</div>
+
+<div>
+  <input type="submit">
+  </div>
+</form>
+
+<h3>character entities: &reg;&copy;&euro;&yen;&pound;&cent;&apos;&quot;&amp;&gt;&lt;</h3>
+
+<br>
+
+<abbr title="Voluntary Human Extinction Movement">VHEMT</abbr> this is how you abbreviate something with a description
+
+<br><br>
+
+<address>R. Dr. José de Queirós Aranha, 358A<br>Vila Mariana, São Paulo - SP, 04106-062</address> 
+this is how you tell the browser it's an adress
 
 
 </body>
