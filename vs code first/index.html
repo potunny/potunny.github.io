@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--example of what can be used to change bg on head instead of body:
+  <style>
+    html {
+      font-size: 40px;
+    }
+    body {
+      background-color: blue;
+      color:cadetblue
+    }
+    p{
+      color: white;
+    }
+  </style>
+-->
+  
+  <meta name="description" content="cute personal test github page">
+  <meta name="keywords" content="personal, github, potunny, page, test, cute, learning">
+  <meta name="author" content="Beatriz Cintra, Potunny">
+  <meta charset="UTF-8"> <!--UTF-8 is Unicode-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--this adjusts the page for mobile devices-->
+  <meta http-equiv="refresh" content=""> <!--number of seconds for refreshing page automatically-->
+  <title>Cute Page</title>
+  <link rel="icon" href="littlecake.png" type="image/x-icon">
+  <!--to add reference to css file below-->
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <!--now we add Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+  <!--added Google Fonts, we mention it on css now-->
+  <div id="position2"></div> <!--fixed position in css, wouldn't work inside body-->
+
+  
+</head>
+<body> <!--inside body would change bg color: style="background-color:#bda28e;"-->
+  &nbsp;&nbsp;&nbsp;<!--&nbsp makes space-->I like pizza normal
+  <h1 style="color:royalblue">I like pizza h1</h1>
+  <hr> <!--horizontal line-->
+  <br> <!--break line-->
+  <h5 style="color:#0a1f0f">I like pizza h5</h5>
+  <h6 style="color:rgb(61, 33, 19)">I like pizza h6</h6>
+  <h5>
+    <li>
+      <a href="#bingpart2">go to the Bing part</a>
+
+    </li>
+  </h5>
+  <p>paragraph example <span style="background-color:chartreuse">with span</span></p>
+
+<div style="background-color: rgb(89, 131, 158);">
+
+  <a href="https://potunny.tumblr.com/" target=_blank> <!--target blank makes the link open in a new tab-->
+  Bia's Tumblr
+  </a>
+<br>
+  <a href="page2.html" target=_self title ="click here to go to page 2!"> <!--target self is for opening link in the same page and title is for text while hovering on link-->
+    click here to go to the second page
+  </a>
+  <a href="mailto:eisoptrofobica@gmail.com"> <br>
+mail me <br>
+</div>
+
+  </a>
+  <a href="https://www.instagram.com/potunny/" target=_blank>
+    <img src="bunnybum.png" alt="this is a cute bunny" height="200">
+  </a>
+
+<p style="background-color:lightblue; color:rgb(31, 26, 39)">click on the image to go to Potunny's Instagram</p>
+
+<audio controls src="duckquack.mp3"></audio> <!--write autoplay after the word controls if you want the audio to autoplay, write mute if you want to start muted, if you want to loop, just type loop-->
+<sup>listen to duck</sup>
+<br>
+<br>
+<br>
+<h1>Raccoon:</h1>
+<!--mp4, webm and ogg-->
+<video controls muted src="raccoon.mp4" width="500">
+  <!--if you want to insert multiple sources, delete src above and list sources here, and then a message after it saying that this browser doesn't support html5 videos so the message is displayed if none of the formats play-->
+
+</video>
+<br><br>
+<b>bold</b><i>italic</i><big>big</big><small>small</small><sub>subscript</sub><sup>superscript</sup><ins>inserted</ins><del>deleted</del><mark>marked</mark>
+
+<h3>fruit list (urnordered)</h3>
+<ul>
+  <li>Apple</li>
+  <li>Orange</li>
+  <li>Mango</li>
+    <ul> <!--sublist-->
+      <li>Apple</li>
+      <li>Orange</li>
+      <li>Mango</li>
+    </ul>
+</ul>
+
+<h3>fruit list buy first (ordered)</h3>
+<ol type="A"> <!--can change to number type order etc-->
+  <li>Apple</li>
+  <li>Orange</li>
+  <li>Mango</li>
+</ol>
+
+<h3>description list</h3>
+<dl>
+  <dt>HTML</dt>
+  <dd>Hyper-Text Markup Language</dd>
+  <dt>CSS</dt>
+  <dd>Cascading StyleSheets</dd>
+  <dt>JS</dt>
+  <dd>Javascript</dd>
+</dl>
+
+<table bgcolor="#02051E" width="400">
+  <tr bgcolor="lightpink"> <!--table row goes this way >>> --> 
+    <th width="100">monday</th>
+    <th width="100">tuesday</th>
+    <th width="100">wednesday</th>
+    <th width="100">thursday</th>
+  </tr>
+  <tr bgcolor="#FED8B1" align="center">
+    <td>cake day</td>
+    <td>croissant day</td>
+    <td>bread day</td>
+    <td>chocolate day</td>
+  </tr>
+    
+</table>
+
+<a id=" art2">start</a>
+<div id="bingdiv">
+<hr>
+<h1 style="color:rgb(36, 44, 68)">Bing:</h1>
+<iframe width="700" height="600"
+src="https://www.bing.com/">
+</iframe>
+<hr>
+<br>
+<iframe style="border:0" src="ad.html" width="200" height="200"></iframe>
+</div>
+<!--removed border-->
+
+<br>
+
+<!--border radius is for rounded corners on button-->
+<a href="https://google.com/" target="_blank">
+<button style="background-color: rgb(60, 82, 39); color: blue;border-radius: 30px;"><h3>Google</h3></button>
+</a>
+
+<br>
+<br>
+<!--"script" starts-->
+<button onclick="doathing()">goodbye button</button>
+
+<p style="color: rgb(94, 55, 94);" id="test">hello</p>
+
+<script>
+  function doathing(){
+    document.getElementById("test").innerHTML="goodbye";
+  }
+</script>
+
+<h2>Form:</h2>
+
+<form action="action_page.php" method="GET"> <!--get is insecure, used for search bars, POST is secure-->
+<div>
+  <label for="fname">first name:</label>
+  <input type="text" id="fname" placeholder="Beatriz" required>
+</div>
+<br>
+<div>
+  <label for="lname">last name:</label>
+  <input type="text" id="lname" placeholder="Cintra">
+</div>
+<br>
+<div>
+  <label for="pass">password:</label>
+  <input type="password" id="pass" maxlength="12" required>
+</div>
+<br>
+<div>
+  <label for="email">email:</label>
+  <input type="email" id="email" >
+</div>
+<br>
+<div>
+  <label for="phone">phone number:</label>
+  <input type="tel" id="phone" >
+</div>
+<br>
+<div>
+  <label for="bdate">birthdate:</label>
+  <input type="date" id="bdate" >
+</div>
+<br>
+<div>
+  <label for="quant">quantity:</label>
+  <input type="number" id="quant" min="0" max="99" value="1">
+</div>
+<br>
+<div>
+<label for="title">title:</label> <!--label for and putting id below allows for the name to be selectable when choosing radio circle-->
+
+  <label for="Mr.">Mr.</label>
+  <input type="radio" id="Mr." name="title">
+  <label for="Mrs.">Mrs.</label>
+  <input type="radio" id="Mrs." name="title">
+  <label for="PhD.">PhD.</label>
+  <input type="radio" id="PhD." name="title">
+</div>
+
+<br>
+
+<div> <!--selectable menu with options-->
+  <label for="payment">payment:</label>
+  <select id="payment" name="payment">
+    <option value="visa">visa</option>
+    <option value="mastercard">mastercard</option>
+    <option value="giftcard">giftcard</option>
+  </select>
+</div>
+
+<br>
+
+<div>
+  <label for="agree">I agree</label>
+  <input type="checkbox">
+</div>
+
+<br>
+
+<div>
+<input type="reset">
+</div>
+
+<div>
+  <input type="submit">
+  </div>
+</form>
+
+<h3>character entities: &reg;&copy;&euro;&yen;&pound;&cent;&apos;&quot;&amp;&gt;&lt;</h3>
+
+<br>
+
+<abbr title="Voluntary Human Extinction Movement">VHEMT</abbr> this is how you abbreviate something with a description
+
+<br><br>
+
+<address>R. Dr. José de Queirós Aranha, 358A<br>Vila Mariana, São Paulo - SP, 04106-062</address> 
+this is how you tell the browser it's an adress
+
+<p id="secondp" class="bottomparagraphs">I'm another paragraph</p>
+<p id="thirdp" class="bottomparagraphs">I'm the third paragraph around here</p>
+<p id="color1">color example paragraph one</p>
+<p id="color2">color example paragraph two</p>
+<p id="color3">color example paragraph three</p>
+<p id="color4">color example paragraph four</p>
+
+<p id="blood">Bloody Font</p>
+<h2 id="mjj">box part</h2>
+<h2 id="mjj2">box part 2</h2>
+<p id="mjj3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor autem error delectus, placeat ratione voluptates illum, eaque odio ipsum facilis neque atque aliquam quia repudiandae vero vitae ex iste. Animi?</p>
+<h1 id="mjj4">&nbsp;&nbsp;&nbsp;text shadow</h1>
+
+<div id="boxone">
+</div>
+
+<h4 id="textexample">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis quidem minus, dicta voluptatum ut consequuntur facilis hic alias fuga perferendis, atque odio sint odit nulla corrupti velit quas incidunt. Expedita!</h4>
+
+<div class="ba" id="ba1">box1</div>
+<div class="ba" id="ba2">box2</div>
+
+<img src="littlecake.png" id="cakinho" height="200px">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptates maiores dolor cupiditate incidunt deleniti sint dignissimos, consectetur eum asperiores est maxime provident alias delectus beatae mollitia eius perspiciatis nobis.</p>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, perferendis dolorum nisi ducimus ipsam corporis quasi, illo aliquid laudantium, porro placeat fugiat distinctio voluptate dignissimos deserunt itaque praesentium molestiae ratione.</p>
+
+<br><br><br><br><br><br><br><br>
+
+<div id="overbunny">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?orem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?orem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?orem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?</p>
+</div>
+
+<br><br><br><br><br><br><br><br>
+
+<div id="overbunny2">
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?orem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?orem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?orem ipsum dolor sit amet consectetur adipisicing elit. Quia quis cum, dolore illum soluta corporis nisi ut! Laudantium quibusdam dolor modi, ad itaque quisquam voluptate accusantium voluptatem labore debitis? Quam?</p>
+</div>
+
+<span id="spandisplay1">controled span</span>
+<br>
+
+<div class="container">
+  <div id="boxy" class="boxyes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis vel molestias vero dolorum omnis hic iure, porro id consequatur, vitae illum necessitatibus voluptatibus dicta nostrum mollitia voluptate, non dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam suscipit alias reiciendis. Minima, ducimus dolorem odio corporis id incidunt officia, nisi sit facilis assumenda architecto nihil illum vero, unde maxime.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis vel molestias vero dolorum omnis hic iure, porro id consequatur, vitae illum necessitatibus voluptatibus dicta nostrum mollitia voluptate, non dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam suscipit alias reiciendis. Minima, ducimus dolorem odio corporis id incidunt officia, nisi sit facilis assumenda architecto nihil illum vero, unde maximeLorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis vel molestias vero dolorum omnis hic iure, porro id consequatur, vitae illum necessitatibus voluptatibus dicta nostrum mollitia voluptate, non dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam suscipit alias reiciendis. Minima, ducimus dolorem odio corporis id incidunt officia, nisi sit facilis assumenda architecto nihil illum vero, unde maxime</div>
+
+  <div id="boxy2" class="boxyes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis vel molestias vero dolorum omnis hic iure, porro id consequatur, vitae illum necessitatibus voluptatibus dicta nostrum mollitia voluptate, non dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam suscipit alias reiciendis. Minima, ducimus dolorem odio corporis id incidunt officia, nisi sit facilis assumenda architecto nihil illum vero, unde maxime.Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis vel molestias vero dolorum omnis hic iure, porro id consequatur, vitae illum necessitatibus voluptatibus dicta nostrum mollitia voluptate, non dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam suscipit alias reiciendis. Minima, ducimus dolorem odio corporis id incidunt officia, nisi sit facilis assumenda architecto nihil illum vero, unde maximeLorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis vel molestias vero dolorum omnis hic iure, porro id consequatur, vitae illum necessitatibus voluptatibus dicta nostrum mollitia voluptate, non dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam suscipit alias reiciendis. Minima, ducimus dolorem odio corporis id incidunt officia, nisi sit facilis assumenda architecto nihil illum vero, unde maxime</div>
+</div>
+
+<!--position of elements (relative, fixed, absolute, sticky, static)-->
+
+<div id="position1">
+  <div id="position3"></div> <!--absolute parent-->
+</div>
+<div id="position4"></div>
+<div id="position5"></div>
+
+<br><br><br><br><br><br>
+
+<div id="extrasquare"></div>
+<hr>
+
+<!--combinators = (space descendant), >(child), ~(general sibling), +(adjacent sibling)-->
+<div id="caixote">
+  <p>I'm inside div 1  >(child) (space descendant)</p>
+  <div>
+    <p>I'm inside div2 (space descendant)</p>
+  </div>
+</div>
+
+<p>I'm outside div +(adjacent sibling) ~(general sibling)</p>
+<p>I'm outside but down ~(general sibling)</p>
+
+<a href="https://google.com/" target="_blank"><h2>Google</h2></a>
+
+<div class="listsecond">
+  <ul>
+    <li>this is 1</li>
+    <li>this is 2</li>
+    <li>this is 3</li>
+    <li>this is 4</li>
+    <li>this is 5</li>
+    <li>this is 6</li>
+    <li>this is 7</li>
+    <li>this is 8</li>
+    <li>this is 9</li>
+  </ul>
+</div>
+
+<div id="greeting">
+hover here
+  <div id="messagehi">hello</div>
+</div>
+
+<!--pseudo-elements-->
+<h1 id="h1part">Pseudo-elements</h1>
+<p id="ppart">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, vitae, dicta rerum natus quam modi totam atque, cum officiis necessitatibus dolor omnis soluta. Illo neque incidunt at itaque reprehenderit commodi!</p>
+<ul id="listfruit">
+  <li id="orangelist">orange</li>
+  <li id="mangolist">mango</li>
+  <li id="bananalist">banana</li>
+</ul>
+
+
+<!--pagination also known as PAGES CLICK CLICK-->
+<div class="pagesclass">
+  <a href=""><</a>
+  <a href="index.html" class="active">1</a>
+  <a href="page2.html">2</a>
+  <a href="page3.html">3</a>
+  <a href="page4.html">4</a>
+  <a href="page5.html">5</a>
+  <a href="page2.html">></a> <!--needs javascript to work without manually changing this on every page setting the current page to active etc-->
+</div>
+</body>
+</html>

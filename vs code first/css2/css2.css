@@ -1,0 +1,254 @@
+body{
+        font-family: Roboto, Arial, sans-serif;
+        margin: 0px;
+        height: 4000px;
+        padding-top: 140px;
+        padding-left: 250px;
+        padding-right: 25px;
+}
+
+.thumbnailclass{
+        width: 100%;
+        /*object-fit: contain;
+        object position: bottom;
+        makes a box and fit the thing*/
+        border-radius: 10px;
+        margin-bottom: 10px;
+}
+.gridofvideos{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 80px;
+        
+}
+.profilepicdiv{
+        margin-right: 10px;
+}
+
+.infovideodiv{
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        
+}
+.imgprofilediv{
+        width: 100%;
+        border-radius: 10000px;
+}
+.videotitle{
+        margin-top: 0;
+        font-weight: 500;
+        color: #0f0f0f;
+        line-height: 23px;
+        margin-bottom: 6px;
+}
+.videoauthor{
+        margin-bottom: 5px;
+        color: #606060;
+        font-size: 14px;
+        margin-top: 0;
+}
+.videostats{
+        color: #606060;
+        font-size: 14px;
+        margin-top: 0;
+        margin-bottom: 0;
+}
+.writinginfo{
+        display: grid;
+        grid-template-columns: 100;
+}
+
+
+
+/*header css*/
+
+.ytheader{
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        background-color: white;
+
+        height: 55px;
+        display: flex;
+        flex-direction: row; /*it becomes horizontal instead of vertical list divs*/
+        justify-content: space-between; /*elements evenly spread space, use flex-shrink:0; to keep space  between elemts without flexing when resizing browser*/
+}
+
+.section1head{
+        align-items: center;
+        display: flex;
+        margin-right: 130px;
+}
+
+.hambutton{
+        width: 40px;
+        height: 40px;
+        border-radius: 10000px;
+        border: none;
+        margin-left: 15px;
+        background-color: white;
+}
+
+.hambutton:hover{
+        background-color: #e2e2e2;
+}
+
+.hamburger{
+        height: 28px;
+        display: flex;
+        align-items: center;
+}
+.ytheaderlogo{
+        height: 53px;
+}
+.section2head{
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-right: 35px;
+        max-width: 690px; /*that's how you limit width from growing when browser gets bigger*/
+}
+
+.searchbutton{
+        width: 63px;
+        height: 40px;
+        border-radius: 0px 10000px 10000px 0px;
+        outline: 0;
+        border-right: 1px solid gray;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        border-left: none; /*could also have solved this problem by doing -1 margin left, to push it inside and crop*/
+
+}
+
+.magni{
+        height: 30px;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        filter: invert(26%) sepia(20%) saturate(14%) hue-rotate(105deg) brightness(99%) contrast(96%);
+}
+
+.micbutton{
+        height: 40px;
+        width: 40px;
+        border-radius: 10000px;
+        outline: none;
+        border: none;
+        background-color: rgb(230, 230, 230);
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+}
+
+.mic{
+        height: 20px;
+        margin-left: 4px;
+        filter: invert(26%) sepia(20%) saturate(14%) hue-rotate(105deg) brightness(99%) contrast(86%); /*trick change svg color*/
+}
+
+.searchbox{
+        max-width: 550px;
+        display: flex;
+        flex: 1;
+        height: 36px;
+        font-size: 17px;
+        padding-left: 15px;
+        font-family: Roboto, Arial;
+        border-radius: 10000px 0px 0px 10000px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #979797;
+        outline: 0; /*fixes weird outline when clicked on*/             
+        width: 0px; /*shrink all the way ignoring min width search bar default*/   
+}
+
+.searchbox::placeholder{
+        font-size: 17px;
+}
+
+.section3head{
+        width: 175px;
+        display: flex;
+        align-items: center;
+}
+
+.videobutton{
+        height: 40px;
+        width: 40px;
+        border-radius: 10000px;
+        border: none;
+        background-color: white;
+}
+
+.bellbutton{
+        height: 40px;
+        width: 40px;
+        border-radius: 10000px;
+        border: none;
+        background-color: white;
+        margin-left: 10px;
+}
+
+.videoicon{
+        height: 23px;
+        display: flex;
+        align-items: center;
+        margin-left: 3px;
+}
+
+.bellicon{
+        height: 23px;
+        display: flex;
+        align-items: center;
+        margin-left: 3px;
+}
+
+.channelpic{
+        height: 32px;
+        border-radius: 10000px;
+        display: flex;
+        align-items: center;
+        margin-left: 22px;
+}
+
+/*left bar css*/
+
+.leftbaryt{
+        position: fixed;
+        display:flex;
+        left: 0px;
+        width: 200px;
+        height:3000px;
+        background-color: rgb(143, 143, 143);
+        top: 55px;
+}
+
+/*scroll bar*/
+
+::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        border-radius: ;
+        padding-left: 3px;
+        margin-right: 3px;
+      }
+      
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: rgb(99, 99, 99);
+        border-radius: 10px;
+        width: 10px;
+
+/*position absolute stays on the page, different of position fixed, which stays on the browser and doesn't move when you scroll*/
+
+/*elements that are written later will generally overlap the first ones, like if you put a position absolute after a position fixed in the same place, can manually change this even in the "wrong" order using z-index for priority*/
+
+/*can put a div inside a div for orienting a position absolute inside a fixed*/
+
+/*position absolute inside position relative for timestamps videos example*/
