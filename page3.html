@@ -3,63 +3,49 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cute Page 3</title>
+        <title>JavaScript</title>
         <link rel="icon" href="littlecake.png" type="image/x-icon">
-        <link rel="stylesheet" href="css/style.css" type="text/css">
-        <script src="https://kit.fontawesome.com/3375ae0cd1.js" crossorigin="anonymous"></script> <!--fontawesome icons-->
+        <link rel="stylesheet" href="css/css3.css" type="text/css">
+        
 </head>
 <body>
 
+<button title="a button to be clicked" class="firstbutton">click</button> <!--button title creates a tooltip apparently-->
 
-<!--icons-->
-<div class="iconsclass">
-<a href="index.html">
-<i class="fa fa-duotone fa-house fa-3x"></i>
-</a>
-</div>
-<!--had to include the first "fa" manually to work, and added fa-2x to change the size like fa-10x-->
+<button onclick="alert('I\'m watching you')">click 2</button>
 
-<h1 id="raccoontitle">Raccoon Gallery</h1>
-<!--image gallery-->
-<div class="galleryraccoon">
-        <a target="_blank" href="raccoon1.jpg">
-        <img src="raccoon1.jpg" alt="first raccon">
-        </a>
-        <div class="description">Questioning Raccoon</div>
-</div>
+<!--this is where you put the JavaScript-->
+<script> 
+//I'm a JS comment
+/*this also works for multiple lines*/
+console.log(2+2); /*displays result on console f12*/
 
-<div class="galleryraccoon">
-        <a target="_blank" href="raccoon2.jpg">
-        <img src="raccoon2.jpg" alt="second raccon">
-        </a>
-        <div class="description">Naughty Raccoon</div>
-</div>
 
-<div class="galleryraccoon">
-        <a target="_blank" href="raccoon3.jpg">
-        <img src="raccoon3.jpg" alt="third raccon">
-        </a>
-        <div class="description">Cute Raccoon</div>
-</div>
 
-                                <!--flex-->
-<div class="contani">
-        <div class="abox" id="abox1">1</div>
-        <div class="abox" id="abox2">2</div>
-        <div class="abox" id="abox3">3</div>
-        <div class="abox" id="abox4">4</div>
-</div>
+                                        /*variables*/
+let variable1 = 3;
+console.log(variable1);
 
-<!--transform-->
-<div id="transhi">
-        Hi
-</div>
+let calcu = 3 + 3;
+console.log(calcu);
+console.log(calcu + 3);
 
-                        <!--animations-->
+let /*cant be 3result as a name, no special char except $ and _*/result = calcu + 3;
+console.log(result);
 
-<div id="animabox">
-boop
-</div>
+/*yes can save strings inside variables (let)*/
+
+variable1 = 5; /*changing a previous variable*/
+console.log(variable1);
+
+variable1 = variable1 + 1;
+console.log(variable1);
+
+</script>
+
+
+
+
 
 
 <!--page clickclick-->

@@ -4,7 +4,7 @@ body{
         height: 4000px;
         padding-top: 140px;
         padding-left: 250px;
-        padding-right: 25px;
+        padding-right: 30px;
 }
 
 .thumbnailclass{
@@ -14,14 +14,52 @@ body{
         makes a box and fit the thing*/
         border-radius: 10px;
         margin-bottom: 10px;
+        cursor: pointer;
 }
 .gridofvideos{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         column-gap: 20px;
         row-gap: 80px;
-        
 }
+
+/*grid adjusts according to screen size*/
+@media (min-width: 100px){
+        .gridofvideos{
+                grid-template-columns: 1fr;
+        }
+}
+
+@media (min-width: 600px){
+        .gridofvideos{
+                grid-template-columns: 1fr 1fr;
+        }
+}
+
+@media (min-width: 1200px){
+        .gridofvideos{
+                grid-template-columns: 1fr 1fr 1fr;
+        }
+}
+
+@media (min-width: 1500px){
+        .gridofvideos{
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+}
+
+@media (min-width: 2000px){
+        .gridofvideos{
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+}
+
+@media (min-width: 2500px){
+        .gridofvideos{
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+}
+
 .profilepicdiv{
         margin-right: 10px;
 }
@@ -29,10 +67,11 @@ body{
 .infovideodiv{
         display: grid;
         grid-template-columns: 50px 1fr;
+        cursor: pointer;
         
 }
 .imgprofilediv{
-        width: 100%;
+        width: 35px;
         border-radius: 10000px;
 }
 .videotitle{
@@ -89,6 +128,7 @@ body{
         border: none;
         margin-left: 15px;
         background-color: white;
+        cursor: pointer;
 }
 
 .hambutton:hover{
@@ -102,6 +142,7 @@ body{
 }
 .ytheaderlogo{
         height: 53px;
+        cursor: pointer;
 }
 .section2head{
         flex: 1;
@@ -121,7 +162,42 @@ body{
         border-top: 1px solid gray;
         border-bottom: 1px solid gray;
         border-left: none; /*could also have solved this problem by doing -1 margin left, to push it inside and crop*/
+        cursor: pointer;
+        position: relative; /*part1ofhovering text*/
+}
 
+.searchbutton:hover{
+        background-color: #e2e2e2;
+}
+
+.searchbutton .searchhover{ /*part2ofhovering text*/
+        position: absolute;
+        background-color: rgb(94, 94, 94);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 7px;
+        padding-right: 7px;
+        border-radius: 5px;
+        color: white;
+        right: 5px;
+        top: 50px;
+
+        white-space: nowrap; /*makes a long line of text instead of a textburger*/
+
+        /*fade*/
+        opacity: 0;
+        transition: 0.3s;
+        visibility: hidden; /*it works without this*/
+
+        pointer-events: none; /*fix the hovering on the tooltip to not count when you hover on it*/
+}
+
+
+
+.searchbutton:hover .searchhover{ /*part3ofhovering text*/
+        /*fade*/
+        visibility: visible; /*it works without this*/
+        opacity: 1;
 }
 
 .magni{
@@ -142,6 +218,41 @@ body{
         display: flex;
         align-items: center;
         margin-left: 15px;
+        cursor: pointer;
+        position: relative;
+}
+
+
+.micbutton .michover{ /*part2ofhovering text*/
+        position: absolute;
+        background-color: rgb(94, 94, 94);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 7px;
+        padding-right: 7px;
+        border-radius: 5px;
+        color: white;
+        right: -53px;
+        top: 50px;
+
+        white-space: nowrap; /*makes a long line of text instead of a textburger*/
+
+        /*fade*/
+        opacity: 0;
+        transition: 0.3s;
+        visibility: hidden; /*it works without this*/
+
+        pointer-events: none; /*fix the hovering on the tooltip to not count when you hover on it*/
+}
+
+.micbutton:hover .michover{ /*part3ofhovering text*/
+        /*fade*/
+        visibility: visible; /*it works without this*/
+        opacity: 1;
+}
+
+.micbutton:hover{
+        background-color: #b6b6b6;
 }
 
 .mic{
@@ -182,6 +293,11 @@ body{
         border-radius: 10000px;
         border: none;
         background-color: white;
+        cursor: pointer;
+}
+
+.videobutton:hover{
+        background-color: #e2e2e2;
 }
 
 .bellbutton{
@@ -191,6 +307,11 @@ body{
         border: none;
         background-color: white;
         margin-left: 10px;
+        cursor: pointer;
+}
+
+.bellbutton:hover{
+        background-color: #e2e2e2;
 }
 
 .videoicon{
@@ -213,6 +334,7 @@ body{
         display: flex;
         align-items: center;
         margin-left: 22px;
+        cursor: pointer;
 }
 
 /*left bar css*/
@@ -225,6 +347,23 @@ body{
         height:3000px;
         background-color: rgb(143, 143, 143);
         top: 55px;
+}
+
+/*timestamp*/
+.thumbc{
+        position: relative;
+}
+
+.timestamp{
+        font-family: Roboto, Arial;
+
+        position: absolute;
+        background-color: #0f0f0f;
+        color: white;
+        right: 10px;
+        bottom: 22px;
+        padding: 4px;
+        border-radius: 5px;
 }
 
 /*scroll bar*/
@@ -252,3 +391,7 @@ body{
 /*can put a div inside a div for orienting a position absolute inside a fixed*/
 
 /*position absolute inside position relative for timestamps videos example*/
+
+/*inheritance works when using text, div containing other divs will pass down every underline for example*/
+
+/*header, main, nav, section work the same as div but different names*/

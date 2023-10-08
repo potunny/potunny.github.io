@@ -537,13 +537,13 @@ a:visited{ /*when already clicked on*/
     border-style: none;
     background-color: #67ff80;
     border-radius: 10px;
-    transition: opacity 1s, background-color 1s;
+    transition: 0.5s;
     cursor: pointer;
 
 }
 .buttonpage4:hover {
     opacity: 0.5;
-    background-color: rgba(27, 27, 255, 0.61) ; /*value number 4 of rgba could be 0.4 for opacity*/
+    background-color: rgba(255, 128, 249, 0.61) ; /*value number 4 of rgba could be 0.4 for opacity*/
 }
 
 
