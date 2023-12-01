@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+</head>
+<body>
+  <button>hello</button>
+  <script>
+    /*DOM can change HTML, puts it inside JavaScript as an object and can do object things*/
+    console.log(document.body); /*document.body.innerHTML gives control of all HTML in body example*/
+    console.log(document.querySelector('button')); /*selects desired element, if wanna change inside text of the button, it's innerHTML after querySelector*/
+    /*to select a second button, create a class up there outside script and use querySelector here to call the class button for example, like .js-button*/
+
+    /*remember objects are variables and we can save them inside a variable*/
+    const elementbuttoninho = document.querySelector('button');
+    console.log(elementbuttoninho);
+  </script>
+</body>
+</html>

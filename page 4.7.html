@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Projects</title>
+</head>
+<body>
+  <p>YouTube Subscribe Button</p>
+<button onclick="
+subfunc();
+" class="js-sub-button">Subscribe</button>
+
+<br><br>
+
+<p>Amazon Shipping Calculator</p>
+<input placeholder="Cost of order" class="inputclass" onkeydown=" /*event listener for pressing enter and doing function calcul*/
+console.log(event.key);
+if (event.key === 'Enter'){
+  calcufunc();
+}
+">
+<button onclick="calcufunc();" class="calcbutton">Calculate</button>
+<h4>- Orders above $50 have free shipping, under 50$, 10$ of shipping is charged.</h4>
+<h3>Total cost:</h3>
+<p class="totalcostc"></p>
+
+<script>
+  function subfunc(){
+    const buttonElement = document.querySelector('.js-sub-button');
+
+    if (buttonElement.innerHTML === 'Subscribe'){ /*or innerText to ignore spaces etc*/
+      buttonElement.innerHTML = 'Subscribed';
+    }
+    else{
+      buttonElement.innerHTML = 'Subscribe';
+    }
+  }
+
+
+  /*Amazon Calc*/
+  function calcufunc(){
+    const buttoncalculi = document.querySelector('.calcbutton');
+    const inputinho = document.querySelector('.inputclass'); /*let because we are changing a variable*/
+    let cost = Number(inputinho.value); /*without number, function think cost is a string*/
+    if (cost <= 49.9999){
+      cost = cost + 10
+    }
+   document.querySelector('.totalcostc').innerHTML = `$${cost}`; /*this line makes the value appear in last p class*/
+  }
+  </script>
+</body>
+</html>

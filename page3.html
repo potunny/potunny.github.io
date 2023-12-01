@@ -14,7 +14,153 @@
 
 <button onclick="alert('I\'m watching you')">click 2</button>
 
-<!--this is where you put the JavaScript-->
+<br><br><br><br><br>
+<!--cart lesson buttons-->
+
+<button onclick="
+console.log(`Cart Quantity: ${cartQ}`);
+">Show Quantity</button>
+
+<button onclick="
+cartQ = cartQ + 1; /*or cartQ++;*/
+console.log(`Cart Quantity: ${cartQ}`);
+">Add to Cart</button>
+
+<button onclick="
+cartQ = cartQ + 2;
+console.log(`Cart Quantity: ${cartQ}`);
+">+2</button>
+
+<button onclick="
+cartQ = cartQ + 3; /*or cartQ += 3;*/
+console.log(`Cart Quantity: ${cartQ}`);
+">+3</button>
+
+<button onclick="
+console.log('Cart was reset.')
+cartQ = 0;
+console.log(`Cart Quantity: ${cartQ}`);
+">Reset Cart</button>
+
+<br><br><br><br><br><br> <!--img-->
+<img style="width: 300px;" src="varimg.png">
+
+<!--img-->
+<img style="width: 250px;" src="comparison.png">
+
+<!--img-->
+<img style="width: 250px;" src="order.png">
+<br><br><br><br>
+
+<!--rock paper scissors simple-->
+<!--curiosity: the reason why we don't use var instead of const and let anymore is because var would conflict names inside a scope with the outside ones-->
+
+<button onclick="
+let randomnu = Math.random(); /*rand generat between 0 and 1, can test by putting button onclick and math inside console*/
+
+let computermove = ''; /*storing*/
+
+if (randomnu >= 0 && randomnu < 1/3) /*checks if both are, true false stuff*/
+{
+        computermove = ('rock')
+}
+else if (randomnu > 1/3 && randomnu < 2/3)
+{
+        computermove = ('paper')
+}
+else if (randomnu >= 2/3)
+{
+        computermove = ('scissors')
+}
+
+console.log(computermove);
+let result = '';
+
+if (computermove === 'rock'){
+        result = 'Tie';
+}
+else if (computermove === 'paper'){
+        result = 'You lose.';
+}
+else if (computermove === 'scissors'){
+        result = 'You win.';
+}
+alert(`You picked rock. Computer picked ${computermove}. ${result}`);
+
+">Rock</button> <!--end rock ..........................................................-->
+
+<button onclick="
+let randomnu = Math.random();
+
+let computermove = ''; 
+
+if (randomnu >= 0 && randomnu < 1/3)
+{
+        computermove = ('rock')
+}
+else if (randomnu > 1/3 && randomnu < 2/3)
+{
+        computermove = ('paper')
+}
+else if (randomnu >= 2/3)
+{
+        computermove = ('scissors')
+}
+
+console.log(computermove);
+let result = '';
+
+if (computermove === 'rock'){
+        result = 'You win';
+}
+else if (computermove === 'paper'){
+        result = 'Tie.';
+}
+else if (computermove === 'scissors'){
+        result = 'You lose.';
+}
+alert(`You picked paper. Computer picked ${computermove}. ${result}`);
+
+">Paper</button> <!--end paper ..........................................................-->
+
+<button onclick="
+let randomnu = Math.random();
+
+let computermove = ''; 
+
+if (randomnu >= 0 && randomnu < 1/3)
+{
+        computermove = ('rock')
+}
+else if (randomnu > 1/3 && randomnu < 2/3)
+{
+        computermove = ('paper')
+}
+else if (randomnu >= 2/3)
+{
+        computermove = ('scissors')
+}
+
+console.log(computermove);
+
+if (computermove === 'rock'){
+        result = 'You lose.';
+}
+else if (computermove === 'paper'){
+        result = 'You win.';
+}
+else if (computermove === 'scissors'){
+        result = 'Tie.';
+}
+alert(`You picked Scissors. Computer picked ${computermove}. ${result}`);
+">Scissors</button>
+<br><br><br><br>
+
+
+
+
+
+
 <script> 
 //I'm a JS comment
 /*this also works for multiple lines*/
@@ -30,8 +176,8 @@ let calcu = 3 + 3;
 console.log(calcu);
 console.log(calcu + 3);
 
-let /*cant be 3result as a name, no special char except $ and _*/result = calcu + 3;
-console.log(result);
+let /*cant be 3result as a name, no special char except $ and _*/numbi = calcu + 3;
+console.log(numbi);
 
 /*yes can save strings inside variables (let)*/
 
@@ -40,6 +186,87 @@ console.log(variable1);
 
 variable1 = variable1 + 1;
 console.log(variable1);
+
+                                        /*console cart lesson*/
+let cartQ = 0;
+
+                                        /*other things*/
+const variablecake = 9; /*const can't be changed like let*/
+console.log(typeof variablecake); /*tells the type of variable*/
+
+
+                                        /*booleans, true or false*/
+                
+console.log(3 < 5);
+console.log(3 < 5 - 5); /*this shows that comparison operators have the lowest priority in order*/
+
+console.log(true && false);
+console.log(true || false); /* || means "or" and if one side is true it will be true*/
+console.log(!true); /* ! "not" operator, means true flips to be false*/
+
+                                        /*falsey or truthy*/
+                        /*false, 0, '', NaN, undefined and null behave like falsy, other values are truthy*/
+const cartquan = 3;
+if (cartquan){ /*here cartquan means true, if it has 0 it will be falsey*/
+        console.log('cart has products')
+}
+ /*NaN means not a number and it will show up if you try to divide a text by a number for example, if you try to do "let" and give it a name but not a value, it will show up as undefined*/
+
+         /*scopes help avoid naming conflicts, naming a variable inside curly brackets make that variable exist only in the realm of the curly brackets, like const = something inside it*/
+
+                                        /*shortcuts for if statements
+ternary operator ?:
+guard operator &&
+default operator ||
+*/
+true ? 'truthy' : 'falsy' /*if true, truthy, else display falsy*/ 
+const resulty = true ? 'truthy' : 'falsy' /*can create variable result example this is a shortcut for if statement basically*/
+
+                                        /*if statements*/
+
+if (true) { /*doesn't need {} if there's only one line of code below*/
+        console.log('hello');
+} 
+else {
+        console.log('else');
+}
+
+/*else if*/
+const age = 16;
+
+if (age >= 18) {
+        console.log('you can enter');
+}
+else if (age >= 16) {
+        console.log('you can almost enter');
+}
+else {
+        console.log('can\'t enter');
+}
+
+                        /*functions*/
+
+function function1(){
+        console.log('heyu')
+        console.log(2 + 2);
+}
+function1(); /*this line make the code above run, function lets us reuse code*/
+
+
+function pickcomputermove(){
+        /*computermove = scissors*/
+        /*example that you can't create computermove here only to work, it has to be let outside the function*/
+}
+
+/*return gets a value out of a function
+parameter puts a value into a function
+return makes it go back, so lines of code after them won't execute*/
+
+function calculateTax(parameter1, parameter2 = 0.1 /*after = a default value gets set for when is not defined when calling this function*/){
+        console.log(parameter1 * parameter2) /*10% of 1000*/
+}
+calculateTax(2000, 0.2);
+calculateTax(5000); /*function only creates code, this part do the function also the numbers here go to parameter 1 or 2 etc*/
 
 </script>
 
