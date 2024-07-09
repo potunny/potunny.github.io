@@ -1,0 +1,388 @@
+/*dark mode first method no localstorage
+:root{
+    --primary-color: #F6F8FF;
+    --secondary-color: #272D2D;
+    --highlightcolor: #23CE6B;
+    --pinkycolor: #A846A0;
+    --browncolor: #50514F;
+}
+
+.darkmode{
+    --primary-color: #272D2D;
+    --secondary-color: #F6F8FF;
+}
+
+body{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+dark mode first method*/
+
+
+/*darkmode 2*/
+.dark-mode{
+    background-color: #272D2D;
+    color: #F6F8FF;
+}
+/*darkmode 2*/
+
+body{
+    background-color: #F6F8FF;
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0px;
+    height: 1000px;
+    padding-top: 140px;
+    padding-left: 250px;
+    padding-right: 30px;
+}
+
+.memagem{
+    margin-right: 20px;
+    margin-left: 20px;
+    display: inline-block;
+    border: none;
+    border-radius: 10px;
+    width: 500px;
+    box-shadow: inset 0 -3em 3em rgba(8, 43, 8, 0.3),
+    0 0 0 0,
+    0.3em 0.3em 1em #0c180e;
+}
+
+.mepic{
+    width: 100px;
+    border-radius: 10000px;
+    display: inline-block;
+}
+
+.presenttextcont{
+  display: inline-block;
+  font-family: 'Rubik', sans-serif;
+  font-size: 60px;
+  padding: 20px;
+}
+
+p{
+  margin-top: 10px;
+}
+
+.presentationhomecontainer{
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 20px;
+  row-gap: 80px;
+}
+
+.container {
+    max-width: 1536px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  @media (min-width: 1600px) {
+    .presentationhomecontainer{
+      overflow: hidden;
+      grid-template-columns: 1fr 1fr;
+    }
+    p {
+      float: left;
+      padding-left: 130px;
+      padding-top: 140px;
+      background-color: #23CE6B;
+    }
+    .divmemagem {
+      float: left;
+      padding-left: 20px;
+      background-color: #23CE6B;
+    }
+
+    .memagem {
+      padding-left: 120px;
+      float: left;
+      box-shadow: none;
+      border: none;
+      border-radius: 10px;
+      width: 500px;
+    }
+
+    .presenttextcont {
+      float: left;
+      background-color: blue;
+    }
+  }
+
+  /* 2xl */
+  @media (max-width: 1536px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+  
+  /* xl */
+  @media (max-width: 1280px) {
+    .container {
+      max-width: 1000px;
+    }
+  }
+  
+  /* lg */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 512px;
+    }
+  }
+  
+  /* md */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 384px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .memagem {
+        display: none;
+    }
+    .presenttext{
+        margin-top: 0px;
+    }
+  }
+
+  @media (min-width: 767px) {
+    .mepic {
+        display: none;
+    }
+  }
+  
+  /* sm */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 320px;
+    }
+  }
+  
+  /* xs */
+  @media (max-width: 476px) {
+    .container {
+      max-width: 238;
+    }
+  }  
+
+/*header css*/
+
+.headerbar{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    background-color: #F6F8FF;
+    height: 55px;
+    display: flex;
+    flex-direction: row; /*it becomes horizontal instead of vertical list divs*/
+    justify-content: space-between; /*elements evenly spread space, use flex-shrink:0; to keep space  between elemts without flexing when resizing browser*/
+}
+
+.dark-mode .headerbar{
+  background-color: #272D2D;
+}
+
+.section1head{
+    align-items: center;
+    display: flex;
+    margin-right: 130px;
+}
+
+.lettering{
+    margin-top: 115px;
+    width: 200px;
+    cursor: pointer;
+}
+.section2head{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 35px;
+    max-width: 690px; /*that's how you limit width from growing when browser gets bigger*/
+}
+
+.section3head{
+    width: 175px;
+    display: flex;
+    align-items: center;
+}
+
+#moon{
+    height: 32px;
+    margin-left: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10000px;
+}
+
+.fa-solid{
+  color: #272D2D;
+  background-color: #F6F8FF;
+}
+
+.dark-mode .fa-solid{
+  color: #272D2D;
+  height: 10px;
+  background-color: #f6fff8;
+}
+
+.leftbar{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    left: 0px;
+    width: 250px;
+    height:3000px;
+    border-radius: 20px;
+    background-color: #23CE6B;
+    top: 55px;
+    flex-direction: column;
+    box-shadow: inset 0 -3em 3em rgba(8, 43, 8, 0.3),
+    0 0 0 0,
+    0.3em 0.3em 1em black;
+}
+
+#buttoni{
+    margin-left: 9px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    padding: 10px 20px 10px 20px;
+    font-family: Arial, Verdana;
+    background: #272D2D url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1200px-Hamburger_icon_white.svg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer; /*managed to put a image inside input type button etc*/
+    align-items: center;
+}
+
+.buttoni:hover{
+    background-color: #639900;
+}
+
+/* CSS */
+.hambuttons {
+    display: inline-block;
+    margin-top: 42px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1;
+    font-family: 'Rubik', sans-serif;
+    color: #0d172a;
+    padding: 15px 25px;
+    width: 190px;
+    height: 50px;
+    text-decoration: none;
+    border: 0 solid #e2e8f0;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+}
+
+.hambuttons:hover {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .hambuttons {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/*grid*/
+
+.section3head{
+    width: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.videobutton{
+    height: 40px;
+    width: 40px;
+    border-radius: 10000px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.videobutton:hover{
+    background-color: #e2e2e2;
+}
+
+.bellbutton{
+    height: 40px;
+    width: 40px;
+    border-radius: 10000px;
+    border: none;
+    background-color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.bellbutton:hover{
+    background-color: #e2e2e2;
+}
+
+.videoicon{
+    height: 23px;
+    display: flex;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.bellicon{
+    height: 23px;
+    display: flex;
+    align-items: center;
+    margin-left: 3px;
+}
+
+.channelpic{
+    height: 32px;
+    border-radius: 10000px;
+    display: flex;
+    align-items: center;
+    margin-left: 22px;
+    cursor: pointer;
+}
+
+.thumbnailclass{
+    width: 100%;
+    /*object-fit: contain;
+    object position: bottom;
+    makes a box and fit the thing*/
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+/*scroll bar*/
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+border-radius: 0px;
+padding-left: 3px;
+margin-right: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: var(--secondary-color);
+border-radius: 10px;
+width: 10px;
+}

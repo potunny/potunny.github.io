@@ -1,0 +1,576 @@
+*{ /*asterisk selects all elements*/
+    box-sizing: border-box; /*takes the calculation of width for example in aside, section and article to ignore the padding*/
+}
+body{
+    /*                                          removed image
+    background-image: url("/graditool5.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    border: 3px solid;
+    display: flow-root; /*fix for image going outside border*/
+
+    margin: 0px; /*removes the annoying border I despised for so long*/
+    background-color: beige;
+    margin-top: 50px;
+}
+
+
+
+
+.divbiatube{
+    display: flex;
+    justify-content: center;
+}
+.biatubelogoclass{
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 20px 20px 40px rgb(255, 156, 28), -20px -10px 80px  #81e492, -20px 20px 50px yellow;
+    border: 3px dashed rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+
+main{
+    margin-left: 30px;
+}
+p{
+    color:brown;
+}
+#secondp{ /*hashtag for ~id~ reference*/
+    font-family: monospace, arial; /*if the browser can't display the first font, it will display the second, it's recommended to use a web-safe font*/
+    font-size: 18px; /*instead of px you can use 0.5em for example*/
+    font-weight: bold;
+    font-style: italic;
+}
+.bottomparagraphs{ /*dot ~.~ for mentioning a class name*/
+    color:blue;
+}
+
+                                /*colors*/
+#color1{
+    color:red;
+}
+#color2{
+    color:rgb(23, 108, 189);
+}
+#color3{
+    color:#17bd8b;
+}
+#color4{
+    color:hsl(273, 63%, 47%);
+}
+                            /*Google Fonts test*/
+#blood{
+    font-family: nosifer;
+    font-size: 20px;
+}
+                            /*box thingy*/
+#mjj{
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(167, 15, 108);
+    border-radius: 5px;/*rounded corner*/
+                                        /*short for the above*/
+}
+#mjj2{
+    border: 3px solid rgb(23, 23, 70);
+    border-radius: 5px;
+}
+                            /*box more complex*/
+#mjj3{
+    border-bottom: 3px solid rgb(121, 8, 8);
+    border-top: 3px double rgb(124, 235, 73);
+    border-left: 3px solid rgb(54, 248, 255);
+    border-right: 3px solid rgb(210, 29, 255);
+    border-radius: 20px;
+}
+                            /*shadowwwwwwssssssss*/
+#mjj4{
+    text-shadow: 4px 4px 2px #ff0000, 
+    -3px -3px 2px blue, /*third value can only be positive*/
+    -5px -9px 4px rgb(178, 255, 53)
+}
+#boxone{
+    width: 90px;
+    height: 90px;
+    background-color: aquamarine;
+    box-shadow: 3px 3px 5px #244e42; /*set to inset to make shadow inside*/
+}
+                                /*margins*/
+#textexample{
+    margin: 0px;
+}
+.ba{
+    border: 3px dotted;
+    font-size: 40px;
+    width: 400px;
+}
+#ba1{
+    margin: auto;
+}
+#ba2{
+    margin-left: auto;
+}
+                                /*float (wrap around instead of occupying the whole thing)*/
+#cakinho{
+    float: left;
+    margin-right: 10px;
+}
+                                /*overflow*/
+#overbunny{
+    border: 2px solid;
+    margin: 2px;
+    height: 30px;
+    overflow: clip /*hidden, visible too*/;
+    overflow-clip-margin: 13px;
+}
+#overbunny2{
+    border: 2px solid;
+    margin: 2px;
+    height: 100px;
+    overflow: scroll /*set overflow to auto then it adds a scroll bar if needed*/
+}
+                                /*display changes so can modify span for example, span height is not modifiable without this*/
+#spandisplay1{
+    background-color: #ff0000;
+    border: 2px solid;
+    display: block; /*can change also block to inline, or inline-block, inline-block allows to set width and height but without taking the whole space like block*. Display none makes the thing disappear, and if you add the visibility property and set it to hidden, you will have a thing occupying space but invisible*/
+}
+#boxy{
+    background-color: rgb(42, 163, 123);
+}
+#boxy2{
+
+    background-color: rgb(74, 42, 163);
+}
+.container{
+    background-color: rgb(218, 145, 199);
+    height: 100vh;
+}
+.boxyes{
+    border: 3px solid;
+    width: 50%;
+    /*min-width: 75%; (it will sobrepor o 50%, e max-width com um valor menor vai shrink*/
+    height: 50%; /*50% of inside the container*/
+    padding: 25px;
+    float: left; /*float puts thing in the same line?*/
+    box-sizing: border-box; /*used for disregarding padding or borders when calculating float for ex*/
+}
+/* this below means you're selecting all elements 
+
+* {
+box-sizing: border-box
+}
+
+*/
+
+/*some people apply box-sizing for all elements*/
+
+
+
+                            /*position of elements (relative, fixed, absolute, sticky, static*/
+#position1{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 255, 21);
+    position: relative; /*relative to where it normally should be*/
+    top: 100px; /*pushes element to bottom by 100, can be hidden from the screen if set to negative value*/
+}
+#position2{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 115, 21);
+    position: fixed; /*always stays in the same place, even when scrolling*/
+    right: 0px;
+}
+#position3{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 82, 107);
+    position: absolute; /*stays within box 1 when box 1 is moved*/
+    right: 0px;
+} 
+#position5{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 54, 54);
+    position: static; /*relative to where it normally should be*/
+    left: 0px; /*pushes element to bottom by 100, can be hidden from the screen if set to negative value*/
+    float: right;
+}
+#position4{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(45, 255, 115);
+    position: sticky; /*stays inside the page until we move scroll and thing follows, almost like fixed*/
+    bottom: 0px;
+}
+#extrasquare{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    position: static;
+    bottom: 0px;
+}
+#caixote{
+    border: 1px solid;
+}
+#caixote p{
+    background-color: yellow;
+}
+#caixote > p{
+    font-style: italic;
+}
+#caixote ~ p{
+    font-weight: bolder;
+}
+#caixote + p{
+    background-color: #ff0000;
+}
+
+
+
+a:link{ /*normal link properties*/
+    color: #094633;
+    display: inline-block;
+}
+a:hover{ /*when hovering*/
+    color: #ff0000;
+    display: inline-block;
+}
+a:active{ /*when clicking*/
+    color: blue;
+}
+a:visited{ /*when already clicked on*/
+    color: rgb(78, 8, 8);
+}
+
+
+
+
+.listsecond li:hover{
+    background-color: yellowgreen;
+}
+.listsecond:not(hover){
+    background-color: gray;
+}
+.listsecond li:nth-child(3){ /*3n or 2n for every 2nd or third item to be selected, like stripes, or 3n+1 to be every third but start on 1*/
+    background-color: #244e42;
+}
+
+
+
+#greeting{
+    background-color: #ff0000;
+}
+#messagehi{
+    background-color: rgb(101, 101, 255);
+    padding: 10px;
+    display: none;
+}
+#greeting:hover div#messagehi{
+    display: block;
+}
+
+/*pseudo-elements*/
+
+#h1part::first-letter{
+    font-size: 2em; /*means 200%*/
+}
+#ppart::first-line{
+    background-color: rgb(255, 255, 106);
+}
+#ppart::selection{ /*selection with mouse turns this color in this part*/
+    color: white;
+    background-color: black;
+}
+#listfruit li::before{
+    content:"🎂"; /*windows + . for picking emoji*/
+}
+#orangelist::after{
+    content: "🍊";
+}
+#listfruit li::marker{ /*changes dot of the list to something else*/
+    content: "✔";
+    color: #00b41e;
+    font-size: 1.2em;
+}
+
+                            /*pages*/
+.pagesclass{
+    text-align: center;
+}
+.pagesclass a{
+    color: rgb(0, 0, 0);
+    font-size: 1.3em;
+    text-decoration: none; /*refers to removing the auto underline below numbers*/
+    padding: 8px 8px;
+    display:inline-block; /*after setting this, can adjust the below properties*/
+    float: center;
+    margin-right: auto;
+    height: 2em;
+    width: 1.5em;
+}
+.pagesclass a.active{
+    background-color: #ffe46c;
+    font-weight: bold;
+
+}
+.pagesclass a:hover:not(.active){
+    background-color: rgb(160, 160, 160);
+}
+
+
+                                            /*dropdown menu*/
+.dropdownmenu{ /*makes it not ocuppy the whole line*/
+    display: inline-block;
+}
+.dropdownmenu button{
+    background-color: #ffe46c;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer; /*changes cursor to hand*/
+}
+.dropdownmenu a{
+    display: block; /*separates to different lines*/
+    text-decoration: none;
+    padding: 10px 10px;
+}
+.dropdownmenu .contentdrop{
+    display: none; /*hidden*/
+    background-color: aquamarine;
+    position: absolute; /*important to sobrepor as outras coisas*/
+    min-width: 200px;
+    box-shadow: 3px 3px 2px rgba(7, 7, 54, 0.61);
+}
+.dropdownmenu:hover .contentdrop{ /*shows up when hovering on button*/
+    display: block; 
+}
+.dropdownmenu:hover button{ /*changes color of button when hovering*/
+    background-color: #d4c065;
+
+}
+.dropdownmenu a:hover{
+    background-color: rgb(14, 71, 52);
+    color: azure;
+}
+
+                                /*navigation bar with dropdown*/
+.navibar ul{
+    list-style-type: none;
+    background-color: rgb(120, 174, 255);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden; /*this fixed the color not showing at the bar apparently, but anyway, overflow hidden auto scroll and visible can be used only with block element and it's for when things doesn't fit and stuff*/
+}
+.navibar a{
+    color: rgb(4, 4, 71);
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+.navibar a:hover{
+    background-color: rgb(3, 3, 39);
+    color: white;
+}
+.navibar li{
+    float: left; /*transforms the bar into a horizontal bar instead of vertical*/
+}
+
+                                            /*some new shit about new elements*/
+                                            header{
+                                                background-color: #abfdb9;
+                                                text-align: center;
+                                                padding: 25px;
+                                            }
+                                            
+                                            aside{
+                                                width: 20%;
+                                                float: left;
+                                                padding: 20px;
+                                            }
+                                            section{
+                                                width: 40%;
+                                                float: left;
+                                                padding: 20px;
+                                            }
+                                            article{
+                                                width: 40%;
+                                                float: left;
+                                                padding: 20px;
+                                            }
+                                            
+                                            footer{
+                                                clear: both; /*for not making the whole main green and messed*/
+                                                background-color: #abfdb9;
+                                                text-align: center;
+                                                padding: 25px;
+                                                display: block;
+                                            }
+                                            
+                                            @media screen and (max-width:600px){ /*if screen is below 600px (for phones), below applies*/
+                                                aside, section, article{
+                                                    width: 100%; /*every element takes 100% of the screen now when the screen is thin on the phone*/
+                                                }
+                                            }
+/*raccoon gallery*/
+#raccoontitle{
+    text-align: center;
+}
+.galleryraccoon{
+    display: inline-block;
+    border: 2px solid #17185f;
+    margin: 10px;
+    width: 200px;
+}
+.galleryraccoon .description{
+    padding: 10px;
+    text-align: center;
+}
+.galleryraccoon:hover{
+    border: 2px solid rgb(89, 91, 247);
+}
+.galleryraccoon img{
+    width: 100%;
+    height: auto;
+}
+
+                                            /*icons*/
+
+.iconsclass{
+    text-align: center;
+}
+.fa.fa-duotone.fa-house.fa-3x{ /*we can't include spaces so you replace with dot*/
+    color: hsl(251, 78%, 18%);
+}
+.fa.fa-duotone.fa-house.fa-3x:hover{
+    color: hsl(251, 78%, 48%); /*incresead the percentage of third value to appear lighter when hovering*/
+}
+.iconsclass a{              /*removes black line on the bottom of the icon*/
+    text-decoration: none;
+    /*margin-right:20px; for example to separate icons*/
+}
+
+                        /*flex thing*/
+.contani{
+    border: 10px solid black;
+    display: flex; /*apparently changes orientation like becoming horizontal*/
+    flex-direction: ; /*changes order of elements and orientation, flex, flex-reverse, column, column-reverse*/
+    justify-content: ; /*can set to flex-start, flex-end, space-between for spacing out evenly, space-around, space-evenly*/
+    height: 50vh; /*50%height of viewport*/
+    align-items: center; /*x axys, with baseline the text will be aligned*/ 
+    flex-wrap: wrap; /*if you had a bunch of*/
+    align-content: ; /*flex-start for example to wrap things ignoring space between*/
+    column-gap: ; /*space between columns*/
+    row-gap: ; /*space between rows*/
+}
+.abox{
+    width: 150px;
+    height: 150px;
+    font-size: 7em;
+    text-align: center;
+    border-radius: 20px; /*round corners*/
+}
+#abox1{
+    background-color: #ff6c6c;
+    align-self: self-end; /*independely changes in y*/
+}
+#abox2{
+    background-color: #aeff6d;
+    align-self: start;
+}
+#abox3{
+    background-color: #f4ff56;
+    order: 1; /*changes order*/
+}
+#abox4{
+    background-color: #957dff;
+}
+
+                                    /*transform*/
+#transhi{
+    width: 200px;
+    height: 150px;
+    border: 5px solid brown;
+    text-align: center;
+    font-size: 8em;
+    background-color: #aeff6d;
+
+    transform: translateX(200px)/*if you put 100% right it will put 100% of the width of the element to the side*/
+    /*can use only translate and put (x, y) in front*/ rotate(180deg) translateY(-20px);
+    /*transform: rotate X Y OR Z (180deg); there's also SCALE 1.5etc, SKEW 45deg*/
+}
+
+                                    /*animation*/
+#animabox{
+    width: 200px;
+    height: 150px;
+    border: 5px solid rgb(7, 179, 170);
+    text-align: center;
+    font-size: 4em;
+    background-color: #8bf138;
+
+    transform: translateY(50px);
+    
+    animation-name: slideLeft;
+    animation-duration: 5s;
+}
+@keyframes slideLeft/*slide= up,down,right... rotate and transform:rotateZ(360deg)... growORshrink 100%{transform: scale(2, 2).. fade 50%{opacity: 0}... colorChange*/ 
+
+    {
+    /*to, from, %*/ from{transform: translateX(100px);}
+}
+/*can also #box:hover to glow while hover animation, animation-iteration-count to make the animation repeat over and over, theres also animation direction to set the direction to oposite side or alternate between them, animation-play-state pause or running, animation-timing-function can change ease in or linear etc to change style of frames like steps for stopmotion effect and can also make custom animation when you inspect the page > style > elements I think > move bar and copy code*/
+
+
+                                /*page 4 learning*/
+
+
+
+.buttonpage4{
+    border-style: none;
+    background-color: #67ff80;
+    border-radius: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+
+}
+.buttonpage4:hover {
+    opacity: 0.5;
+    background-color: rgba(255, 128, 249, 0.61) ; /*value number 4 of rgba could be 0.4 for opacity*/
+}
+
+
+.button2{
+    background-color: #17bd8b;
+    border-style:solid;
+    border-color: #000000;
+    border-width: 1px;
+    padding: 10px;
+    border-radius: 10px;
+    vertical-align: top; /*just a demonstration to align things not according to text*/
+}
+
+.texttest{
+    width: 600px;
+    line-height: 40px;
+    margin-right: 0; /*reminding you that margin changes position*/
+    margin-top: /*set to zero to remove default margin*/;
+}
+.moretexttest{
+    margin-left: auto;
+    text-decoration: underline;
+}
+#imgtestwild{
+    width: 500px;
+    height: 200px;
+    object-fit: cover; /*to fit img inside weird borders cutting it out instead of stretching*/
+}
+
+/*selectors that are more specific have higher priority at the browser reading them, so if you set p to margin-bottom: 0px but set .morespecificclassthatisp to margin-bottom: 20px the browser will apply the more specific doesn't matter the order of your css*/
