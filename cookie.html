@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Cookie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #333;
+        }
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .cookie-img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        #showbutton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #fortune {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #buycredbutton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #purchaseMsg, #warnMsg {
+            margin-left: 20px;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <button id="buycredbutton" onclick="buyCookie()">Buy One Cookie</button>
+        <span id="purchaseMsg"></span>
+    </div>
+    <div class="centered">
+        <img src="realcookie.png" alt="Fortune Cookie" style="width:200px;">
+        <button id="showbutton" onclick="showFortune()">Crack Cookie</button>
+         <span id="warnMsg"></span>
+        <p id="fortune"></p>
+    </div>
+    <script>
+// Buying
+    let hasCookie = false;
+function buyCookie() {
+    hasCookie = true;
+    document.getElementById("buycredbutton").disabled = true;
+    document.getElementById("purchaseMsg").innerText = "Cookie purchased!";
+    document.getElementById("warnMsg").innerText = "";
+}
+
+function showFortune() {
+    if (hasCookie) {
+        document.getElementById("fortune").innerText = generateFortune();
+        document.getElementById("purchaseMsg").innerText = "";
+        document.getElementById("warnMsg").innerText = "";
+        hasCookie = false;
+    } else {
+        document.getElementById("warnMsg").innerText = "You didn't buy a cookie!";
+    }
+}
+// Fortune Generation
+    const templates = [
+      "A {adj} {animal} will {action} {object}.",
+      "Beware: the {animal} of {place} seeks your {object}.",
+      "Tonight, a {adj} shadow will {action} {object}.",
+      "A {animal} whispers: '{prophecy}'.",
+      "In {place}, your {object} shall be {action}ed by a {adj} {animal}.",
+      "The {adj} {animal} hides a secret about your {object}."
+    ];
+    const adjectives = [
+      "mysterious", "spooky", "sparkly", "forgotten", "ancient",
+      "gentle", "chaotic", "eternal", "sleepy", "restless"
+    ];
+    const animals = [
+      "bat", "crow", "cat", "bunny", "serpent",
+      "ghost", "owl", "wolf", "butterfly", "dragon"
+    ];
+    const actions = [
+      "bless", "steal", "haunt", "guard", "whisper to",
+      "follow", "curse", "reveal", "embrace", "watch over"
+    ];
+    const objects = [
+      "your dreams", "your secrets", "your heart", "your tea",
+      "your shadow", "your path", "your future", "your playlist",
+      "your blanket", "your reflection"
+    ];
+    const places = [
+      "the forest", "the old castle", "the graveyard",
+      "the hidden cave", "the midnight sky", "the river of time",
+      "the library of echoes"
+    ];
+    const prophecies = [
+      "The veil is thin tonight...",
+      "What you seek also seeks you.",
+      "A strange gift approaches.",
+      "Your reflection hides a truth.",
+      "Beware of glitter in the dark.",
+      "An old friend returns in silence.",
+      "Your shadow walks ahead of you."
+    ];
+    function getRandomElement(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];  
+    }
+    function generateFortune() {
+      let template = getRandomElement(templates);
+      return template
+      .replace("{adj}", getRandomElement(adjectives))
+      .replace("{animal}", getRandomElement(animals))
+      .replace("{action}", getRandomElement(actions))
+      .replace("{object}", getRandomElement(objects))
+      .replace("{place}", getRandomElement(places))
+      .replace("{prophecy}", getRandomElement(prophecies));
+    }
+    </script>
+</body>
+</html>
