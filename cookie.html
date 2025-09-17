@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #333;
+            position: relative;
         }
         .centered {
             display: flex;
@@ -22,7 +23,18 @@
         #showbutton {
             padding: 10px 20px;
             font-size: 16px;
+            font-family: inherit;
+            color: #fff;
+            background: linear-gradient(90deg, #4285f4 0%, #34a853 100%);
+            border: none;
+            border-radius: 24px;
+            box-shadow: 0 2px 4px rgba(60,64,67,0.15);
             cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            outline: none;
+            margin: 8px 0;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         #fortune {
             margin-top: 20px;
@@ -40,10 +52,40 @@
         #buycredbutton {
             padding: 10px 20px;
             font-size: 16px;
+            font-family: inherit;
+            color: #fff;
+            background: linear-gradient(90deg, #4285f4 0%, #34a853 100%);
+            border: none;
+            border-radius: 24px;
+            box-shadow: 0 2px 4px rgba(60,64,67,0.15);
             cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            outline: none;
+            margin: 8px 0;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
-        #purchaseMsg, #warnMsg {
-            margin-left: 20px;
+        #buycredbutton:disabled { /*disable button styling*/
+            background: #bdbdbd;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+}
+        .buy-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #purchaseMsg {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-top: 4px;
+            min-height: 20px;
+            text-align: center;
+            position: static;
+        }
+        #warnMsg {
             color: #ffcc00;
             font-weight: bold;
         }
@@ -51,30 +93,33 @@
 </head>
 <body>
     <div class="topbar">
-        <button id="buycredbutton" onclick="buyCookie()">Buy One Cookie</button>
-        <span id="purchaseMsg"></span>
+        <div class="buy-wrapper">
+            <button id="buycredbutton" onclick="buyCookie()">Buy One Cookie</button>
+            <span id="purchaseMsg"></span>
+        </div>
     </div>
     <div class="centered">
-        <img src="realcookie.png" alt="Fortune Cookie" style="width:200px;">
+        <img id = "cookieimage" src="realcookie.png" alt="Fortune Cookie" style="width:200px;">
         <button id="showbutton" onclick="showFortune()">Crack Cookie</button>
-         <span id="warnMsg"></span>
         <p id="fortune"></p>
+        <span id="warnMsg"></span>
     </div>
     <script>
 // Buying
     let hasCookie = false;
 function buyCookie() {
     hasCookie = true;
-    document.getElementById("buycredbutton").disabled = true;
+    document.getElementById("buycredbutton").disabled = true; //disables button after purchase
     document.getElementById("purchaseMsg").innerText = "Cookie purchased!";
     document.getElementById("warnMsg").innerText = "";
 }
 
-function showFortune() {
+function showFortune() { //and changes cookie picture
     if (hasCookie) {
         document.getElementById("fortune").innerText = generateFortune();
         document.getElementById("purchaseMsg").innerText = "";
         document.getElementById("warnMsg").innerText = "";
+        document.getElementById("cookieimage").src = "openedcookie.jpg";
         hasCookie = false;
     } else {
         document.getElementById("warnMsg").innerText = "You didn't buy a cookie!";
