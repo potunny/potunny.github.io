@@ -9,7 +9,8 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #333;
+            background-image: url('universebg.jpg');
+            background-size: cover;
             position: relative;
         }
         .centered {
@@ -125,7 +126,6 @@
             0 0 30px 15px #cc42d1; /* A magical purple outer halo */
         
         /* Add a filter for a subtle color boost and extra blur */
-        filter: brightness(1.2) blur(0.8px);
         transform: scale(1.04); /* Slightly enlarge the image */
         transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
         margin-bottom: 60px;
@@ -182,57 +182,89 @@ function showFortune() { //and changes cookie picture
 }
 // Fortune Generation
     const templates = [
-      "A {adj} {animal} will {action} {object}.",
-      "Beware: the {animal} of {place} seeks your {object}.",
-      "Tonight, a {adj} shadow will {action} {object}.",
-      "A {animal} whispers: '{prophecy}'.",
-      "In {place}, your {object} shall be {action}ed by a {adj} {animal}.",
-      "The {adj} {animal} hides a secret about your {object}."
-    ];
-    const adjectives = [
-      "mysterious", "spooky", "sparkly", "forgotten", "ancient",
-      "gentle", "chaotic", "eternal", "sleepy", "restless"
-    ];
-    const animals = [
-      "bat", "crow", "cat", "bunny", "serpent",
-      "ghost", "owl", "wolf", "butterfly", "dragon"
-    ];
-    const actions = [
-      "bless", "steal", "haunt", "guard", "whisper to",
-      "follow", "curse", "reveal", "embrace", "watch over"
-    ];
-    const objects = [
-      "your dreams", "your secrets", "your heart", "your tea",
-      "your shadow", "your path", "your future", "your playlist",
-      "your blanket", "your reflection"
-    ];
-    const places = [
-      "the forest", "the old castle", "the graveyard",
-      "the hidden cave", "the midnight sky", "the river of time",
-      "the library of echoes"
-    ];
-    const prophecies = [
-      "The veil is thin tonight...",
-      "What you seek also seeks you.",
-      "A strange gift approaches.",
-      "Your reflection hides a truth.",
-      "Beware of glitter in the dark.",
-      "An old friend returns in silence.",
-      "Your shadow walks ahead of you."
-    ];
-    function getRandomElement(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];  
-    }
-    function generateFortune() {
-      let template = getRandomElement(templates);
-      return template
-      .replace("{adj}", getRandomElement(adjectives))
-      .replace("{animal}", getRandomElement(animals))
-      .replace("{action}", getRandomElement(actions))
-      .replace("{object}", getRandomElement(objects))
-      .replace("{place}", getRandomElement(places))
-      .replace("{prophecy}", getRandomElement(prophecies));
-    }
+  "A {adj_animal} {animal} will {action_object}.",
+  "Beware: the {animal_place} of {place} seeks your {object_prophecy}.",
+  "Tonight, a {adj_shadow} shadow will {action_creature}.",
+  "A {animal} whispers: {prophecy}.",
+  "In {place}, your {object_place} shall be {action_passive} by a {adj_animal}.",
+  "The {adj_animal} {animal} hides a secret about your {object_secret}."
+];
+
+// Context-specific word arrays
+const adj_animal = ["mysterious", "spooky", "forgotten", "ancient", "gentle", "restless"];
+const adj_shadow = ["spooky", "chaotic", "restless", "eternal"];
+const animal_place = ["crow", "serpent", "wolf", "ghost", "dragon"];
+
+const animals = ["bat", "crow", "cat", "serpent", "owl", "wolf", "dragon", "ghost"];
+const places = ["the forest", "the old castle", "the graveyard", "the hidden cave", "the midnight sky"];
+const prophecies = [
+  `"The veil is thin tonight"`,
+  `"What you seek also seeks you"`,
+  `"An old friend returns in silence"`,
+  `"Your dreams will guide you"`,
+  `"Magic is closer than you think"`,
+  `"Your reflection hides a truth"`,
+  `"Beware of glitter in the dark"`,
+  `"An old friend returns in silence"`
+];
+
+// Arrays combining logically related words
+const action_object = [
+  { action: "bless", object: "your dreams" },
+  { action: "steal", object: "your secrets" },
+  { action: "haunt", object: "your nightmares" },
+  { action: "guard", object: "your path" },
+  { action: "reveal", object: "a forgotten memory" },
+  { action: "watch over", object: "your journey" }
+];
+const action_creature = [
+  { action: "whisper to", object: "the wind" },
+  { action: "follow", object: "your footsteps" },
+  { action: "embrace", object: "the silence" },
+  { action: "curse", object: "the old tree" }
+];
+const object_prophecy = ["heart", "future", "shadow", "destiny"];
+const object_secret = ["dreams", "past", "family", "reflection"];
+const object_place = ["treasure", "heart", "future", "legacy"];
+const action_passive = ["blessed", "guarded", "haunted", "found"];
+
+
+function getRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateFortune() {
+    let template = getRandomElement(templates);
+
+    // Get random elements from context-specific arrays
+    const chosen_adj_animal = getRandomElement(adj_animal);
+    const chosen_animal_place = getRandomElement(animal_place);
+    const chosen_adj_shadow = getRandomElement(adj_shadow);
+    const chosen_animal = getRandomElement(animals);
+    const chosen_place = getRandomElement(places);
+    const chosen_prophecy = getRandomElement(prophecies);
+
+    // Get a random action-object pair and split it
+    const actionObjectPair = getRandomElement(action_object);
+    const actionCreaturePair = getRandomElement(action_creature);
+    const objectPassivePair = getRandomElement(object_place);
+    const actionPassivePair = getRandomElement(action_passive);
+
+    // Replace the placeholders with the selected words
+    return template
+        .replace("{adj_animal}", chosen_adj_animal)
+        .replace("{animal_place}", chosen_animal_place)
+        .replace("{adj_shadow}", chosen_adj_shadow)
+        .replace("{animal}", chosen_animal)
+        .replace("{place}", chosen_place)
+        .replace("{prophecy}", chosen_prophecy)
+        .replace("{action_object}", `${actionObjectPair.action} ${actionObjectPair.object}`)
+        .replace("{action_creature}", `${actionCreaturePair.action} ${actionCreaturePair.object}`)
+        .replace("{object_prophecy}", getRandomElement(object_prophecy))
+        .replace("{object_secret}", getRandomElement(object_secret))
+        .replace("{object_place}", objectPassivePair)
+        .replace("{action_passive}", actionPassivePair);
+}
     </script>
 </body>
 </html>
