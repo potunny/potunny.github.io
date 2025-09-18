@@ -9,9 +9,24 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+        }
+        /* DEFAULT (applies to small screens): solid purple, NO image at all */
+            .bgimagediv {
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                background-color: rgb(49, 37, 48);   /* default for small screens */
+        }
+        /* Show image only on large screens */
+        @media (min-width: 600px) {
+        .bgimagediv {
             background-image: url('universebg.jpg');
             background-size: cover;
-            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: transparent;
+        }
         }
         .centered {
             display: flex;
@@ -133,6 +148,7 @@
     </style>
 </head>
 <body>
+    <div class="bgimagediv" aria-hidden="true"></div>
     <div class="topbar">
         <div class="buy-wrapper">
             <button id="buycredbutton" onclick="buyCookie()">Buy One Cookie</button>
