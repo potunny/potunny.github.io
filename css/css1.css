@@ -229,6 +229,9 @@ p{
     height: 32px;
     margin-left: 12px;
     cursor: pointer;
+    outline: none;
+    background: transparent;
+    box-shadow: none;
     border: none;
     border-radius: 10000px;
 }
@@ -236,12 +239,18 @@ p{
 .fa-solid{
   color: #272D2D;
   background-color: #F6F8FF;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .dark-mode .fa-solid{
-  color: #272D2D;
-  height: 10px;
-  background-color: #f6fff8;
+  color: white;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .leftbar{
