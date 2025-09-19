@@ -145,13 +145,38 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
         margin-bottom: 60px;
         }
+
+        #addmoneybutton {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-family: 'Comic Neue', 'Poppins', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #33022f, #cc42d1, #f1b43a);
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            position: relative;
+            overflow: hidden;
+        }
+        #creditcount, #cookiesBought {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #ffffff;
+            margin: 8px 0 0 0;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
     <div class="bgimagediv" aria-hidden="true"></div>
     <div class="topbar">
         <div class="buy-wrapper">
-            <button id="buycredbutton" onclick="buyCookie()">Buy One Cookie</button>
+            <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button>
+            <button id="addmoneybutton" onclick="addMoney()">Add One Money</button>
+            <p id="creditcount">Money: 0</p>
+            <p id="cookiesBought">Cookies: 0</p>
             <span id="purchaseMsg"></span>
         </div>
     </div>
@@ -163,38 +188,65 @@
     </div>
     <script>
 // Buying
-    let hasCookie = false;
+    let money = 0; //initial money
+    document.getElementById("creditcount").innerText = `Money: ${money}`
     let cookiesBought = 0; //to know when to show you have no money message
+
 function buyCookie() {
-    cookiesBought++; //add one cookie
-    hasCookie = true;
-    document.getElementById("buycredbutton").disabled = true; //disables button after purchase
+    if (money < 1) {
+        document.getElementById("warnMsg").innerText = "You don't have enough money!";
+        return;
+    }
+    cookiesBought++; // add one cookie
+    money--; // subtract one money
+    document.getElementById("creditcount").innerText = `Money: ${money}`;
+    document.getElementById("cookiesBought").innerText = `Cookies: ${cookiesBought}`;
     document.getElementById("purchaseMsg").innerText = "Cookie purchased!";
     document.getElementById("warnMsg").innerText = "";
+
+    // If money is now zero, disable buy button
+    if (money === 0) {
+        document.getElementById("buycredbutton").disabled = true;
+    }
+}
+
+function addMoney() { //adds money when button clicked
+    money++;
+    document.getElementById("creditcount").innerText = `Money: ${money}`;
+    if (money > 0) {
+        document.getElementById("buycredbutton").disabled = false; //reenables buy button
+        document.getElementById("warnMsg").innerText = "";
+    }
+    else {
+        if (money <= 0) {
+            document.getElementById("warnMsg").innerText = "You don't have enough money!";
+            return;
+        }
+    }
 }
 
 function showFortune() { //and changes cookie picture
-    if (hasCookie) {
+    if (cookiesBought > 0){
         const fortune = generateFortune();
         const fortuneEl = document.getElementById("fortune");
         fortuneEl.innerText = fortune;
         fortuneEl.style.display = "inline-block"; // reveal with styling
-        document.getElementById("fortune").innerText = generateFortune();
         document.getElementById("purchaseMsg").innerText = "";
+
         document.getElementById("warnMsg").innerText = "";
 
         // Change cookie image to cracked version
         const cookieImage = document.getElementById("cookieimage");
         cookieImage.src = "openedcookie.jpg";
         cookieImage.classList.add("cracked"); 
-
-        hasCookie = false;
     } else {
-        if (cookiesBought > 0) {
-            document.getElementById("warnMsg").innerText = "Sorry, you only had enough money for one cookie.";
-        } else
-        document.getElementById("warnMsg").innerText = "You didn't buy a cookie!";
+        if (cookiesBought <= 0) {
+            document.getElementById("warnMsg").innerText = "You don't have any cookies! Buy one first.";
+            return;
+        }
     }
+    cookiesBought--; //subtract one cookie
+    document.getElementById("cookiesBought").innerText = `Cookies: ${cookiesBought}`;
 }
 // Fortune Generation
     const templates = [
