@@ -5,8 +5,8 @@
     <link rel="icon" type="image/png" href="cookieicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fortune Cookie</title>
-    <style>
-        body {
+    <style> /*Did not clean and review CSS*/
+        body { 
             font-family: Arial, sans-serif;
             text-align: center;
         }
@@ -38,7 +38,7 @@
             margin-bottom: 20px;
         }
         #showbutton {
-            padding: 10px 20px;
+            padding: 5px 10px;
             font-size: 18px;
             font-family: 'Comic Neue', 'Poppins', sans-serif;
             color: #ffffff;
@@ -70,6 +70,10 @@
             box-shadow: 0 4px 24px rgba(66,133,244,0.12);
             transition: background 0.3s, color 0.3s;
             display: none; /*hidden until cookie is cracked*/
+            box-shadow: 
+            0 0 10px 5px #ff90bc, /* A soft pink inner glow */
+            0 0 20px 10px #ffe066, /* A brighter yellow glow */
+            0 0 30px 15px #cc42d1; /* A magical purple outer halo */
         }
 
         #fortune.active { /*when active, shows magical css above for phrase*/
@@ -84,7 +88,7 @@
             box-sizing: border-box;
         }
         #buycredbutton {
-            padding: 10px 20px;
+            padding: 5px 10px;
             font-size: 18px;
             font-family: 'Comic Neue', 'Poppins', sans-serif;
             color: #fff;
@@ -113,7 +117,7 @@
             align-items: center;
         }
         #purchaseMsg {
-            color: #ff3b47;
+            color: #39ff1f;
             font-weight: 300;
             font-family: 'Roboto', Arial, sans-serif;
             margin-top: 4px;
@@ -129,7 +133,7 @@
             margin-top: 10px;
         }
         #cookieimage {
-            width: 300px;
+            width: 200px;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
@@ -147,7 +151,7 @@
         }
 
         #addmoneybutton {
-            padding: 10px 20px;
+            padding: 5px 10px;
             font-size: 18px;
             font-family: 'Comic Neue', 'Poppins', sans-serif;
             color: #ffffff;
@@ -161,7 +165,7 @@
             position: relative;
             overflow: hidden;
         }
-        #creditcount, #cookiesBought {
+        #creditcount, #cookieamount {
             font-family: 'Roboto', Arial, sans-serif;
             color: #ffffff;
             margin: 8px 0 0 0;
@@ -170,101 +174,97 @@
     </style>
 </head>
 <body>
-    <div class="bgimagediv" aria-hidden="true"></div>
+    <!--confused myself with divs, need to study more css-->
+    <div class="bgimagediv" aria-hidden="true"></div> <!--aria is for accessibility hide or screen reader hiding-->
     <div class="topbar">
         <div class="buy-wrapper">
-            <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button>
+            <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button> <!--starts disabled-->
             <button id="addmoneybutton" onclick="addMoney()">Add One Money</button>
             <p id="creditcount">Money: 0</p>
-            <p id="cookiesBought">Cookies: 0</p>
+            <p id="cookieamount">Cookies: 0</p>
             <span id="purchaseMsg"></span>
         </div>
     </div>
     <div class="centered">
-        <img id = "cookieimage" src="realcookie.png" alt="Fortune Cookie"">
+        <img id="cookieimage" src="realcookie.png" alt="Fortune Cookie"">
         <button id="showbutton" onclick="showFortune()">Crack Cookie</button>
         <p id="fortune"></p>
         <span id="warnMsg"></span>
     </div>
     <script>
-// Buying
+
+    // Buying
     let money = 0; //initial money
-    document.getElementById("creditcount").innerText = `Money: ${money}`
     let cookiesBought = 0; //to know when to show you have no money message
 
-function buyCookie() {
-    if (money < 1) {
-        document.getElementById("warnMsg").innerText = "You don't have enough money!";
-        return;
-    }
+    function buyCookie() {
     cookiesBought++; // add one cookie
     money--; // subtract one money
     document.getElementById("creditcount").innerText = `Money: ${money}`;
-    document.getElementById("cookiesBought").innerText = `Cookies: ${cookiesBought}`;
+    document.getElementById("cookieamount").innerText = `Cookies: ${cookiesBought}`;
     document.getElementById("purchaseMsg").innerText = "Cookie purchased!";
-    document.getElementById("warnMsg").innerText = "";
 
     // If money is now zero, disable buy button
-    if (money === 0) {
+    if (money < 1) {
         document.getElementById("buycredbutton").disabled = true;
     }
 }
 
 function addMoney() { //adds money when button clicked
     money++;
-    document.getElementById("creditcount").innerText = `Money: ${money}`;
+    document.getElementById("creditcount").innerText = `Money: ${money}`; //updates money display
     if (money > 0) {
         document.getElementById("buycredbutton").disabled = false; //reenables buy button
-        document.getElementById("warnMsg").innerText = "";
-    }
-    else {
-        if (money <= 0) {
-            document.getElementById("warnMsg").innerText = "You don't have enough money!";
-            return;
-        }
+        document.getElementById("warnMsg").innerText = ""; //clear fortune warning message
     }
 }
 
 function showFortune() { //and changes cookie picture
     if (cookiesBought > 0){
-        const fortune = generateFortune();
-        const fortuneEl = document.getElementById("fortune");
-        fortuneEl.innerText = fortune;
+        const fortune = generateFortune(); //generate fortune calling below function and store in variable
+        const fortuneEl = document.getElementById("fortune");  //set variable for fortune element
+        fortuneEl.innerText = fortune; //set fortune text (fortune variable above)
         fortuneEl.style.display = "inline-block"; // reveal with styling
-        document.getElementById("purchaseMsg").innerText = "";
+        document.getElementById("purchaseMsg").innerText = ""; //clear purchase message
+        document.getElementById("warnMsg").innerText = ""; //clear fortune warning message
 
-        document.getElementById("warnMsg").innerText = "";
+        const cookieImage = document.getElementById("cookieimage"); //set variable for image (cookieimage html's id)
+        cookieImage.src = "openedcookie.jpg"; //change image to cracked cookie
+        cookieImage.classList.add("cracked");
 
-        // Change cookie image to cracked version
-        const cookieImage = document.getElementById("cookieimage");
-        cookieImage.src = "openedcookie.jpg";
-        cookieImage.classList.add("cracked"); 
+        // after 3 seconds, reset to original image
+        setTimeout(() => {
+            cookieImage.src = "realcookie.png";   // back to normal cookie
+            cookieImage.classList.remove("cracked"); // remove cracked class
+        }, 2000); // 2000 milliseconds = 2 seconds
+
     } else {
-        if (cookiesBought <= 0) {
+        if (cookiesBought < 1) { //if no cookies, show warning message
             document.getElementById("warnMsg").innerText = "You don't have any cookies! Buy one first.";
-            return;
+            return; //exit function early, if you don't have this, cookiesBought starts to go negative, we could delete this line if we put the two lines below in the if statement above
         }
     }
     cookiesBought--; //subtract one cookie
-    document.getElementById("cookiesBought").innerText = `Cookies: ${cookiesBought}`;
+    document.getElementById("cookieamount").innerText = `Cookies: ${cookiesBought}`;
 }
-// Fortune Generation
-    const templates = [
-  "A {adj_animal} {animal} will {action_object}.",
+
+// Fortune Generation (the hardest part to understand for me is all below)
+    const templates = [ //template phrases with placeholders
+  "A {newarray1} {animal} will {action_object}.",
   "Beware: the {animal_place} of {place} seeks your {object_prophecy}.",
   "Tonight, a {adj_shadow} shadow will {action_creature}.",
   "A {animal} whispers: {prophecy}.",
-  "In {place}, your {object_place} shall be {action_passive} by a {adj_animal}.",
-  "The {adj_animal} {animal} hides a secret about your {object_secret}."
+  "In {place}, your {object_place} shall be {action_passive} by a {newarray1}.",
+  "The {newarray1} {animal} hides a secret about your {object_secret}."
 ];
 
 // Context-specific word arrays
-const adj_animal = ["mysterious", "spooky", "forgotten", "ancient", "gentle", "restless"];
-const adj_shadow = ["spooky", "chaotic", "restless", "eternal"];
-const animal_place = ["crow", "serpent", "wolf", "ghost", "dragon"];
+const newarray1 = ["spirit", "entity", "princess", "queen", "king", "oracle", "wanderer", "sorcerer", "witch", "wizard", "nymp", "elf",];
+const adj_shadow = ["spooky", "chaotic", "restless", "eternal", "mystic", "ancient", "enchanted", "celestial", "luminous", "ethereal"];
+const animal_place = ["crow", "serpent", "wolf", "tiger", "raven", "shadow", "snake", "bird"];
 
 const animals = ["bat", "crow", "cat", "serpent", "owl", "wolf", "dragon", "ghost"];
-const places = ["the forest", "the old castle", "the graveyard", "the hidden cave", "the midnight sky"];
+const places = ["the forest", "the old castle", "the graveyard", "the hidden cave", "the midnight sky", "the ancient ruins", "the enchanted lake", "the mystic mountains", "the forgotten temple"];
 const prophecies = [
   `"The veil is thin tonight"`,
   `"What you seek also seeks you"`,
@@ -273,7 +273,18 @@ const prophecies = [
   `"Magic is closer than you think"`,
   `"Your reflection hides a truth"`,
   `"Beware of glitter in the dark"`,
-  `"An old friend returns in silence"`
+  `"An old friend returns in silence"`,
+  `"The stars align for those who dare"`,
+  `"A secret will soon be revealed"`,
+    `"The night holds many answers"`,
+    `"A journey begins with a single step"`,
+    `"The past is never truly gone"`,
+    `"Your heart knows the way"`,
+    `"Courage will light your path"`,
+    `"The unexpected will bring joy"`,
+    `"Change is the only constant"`,
+    `"A hidden talent will surface soon"`,
+    `"The smallest act can change everything"`
 ];
 
 // Arrays combining logically related words
@@ -289,7 +300,7 @@ const action_creature = [
   { action: "whisper to", object: "the wind" },
   { action: "follow", object: "your footsteps" },
   { action: "embrace", object: "the silence" },
-  { action: "curse", object: "the old tree" }
+  { action: "curse", object: "the sacred" }
 ];
 const object_prophecy = ["heart", "future", "shadow", "destiny"];
 const object_secret = ["dreams", "past", "family", "reflection"];
@@ -302,10 +313,10 @@ function getRandomElement(arr) {
 }
 
 function generateFortune() {
-    let template = getRandomElement(templates);
+    let template = getRandomElement(templates); // Select a random template
 
     // Get random elements from context-specific arrays
-    const chosen_adj_animal = getRandomElement(adj_animal);
+    const chosen_newarray1 = getRandomElement(newarray1);
     const chosen_animal_place = getRandomElement(animal_place);
     const chosen_adj_shadow = getRandomElement(adj_shadow);
     const chosen_animal = getRandomElement(animals);
@@ -319,8 +330,8 @@ function generateFortune() {
     const actionPassivePair = getRandomElement(action_passive);
 
     // Replace the placeholders with the selected words
-    return template
-        .replace("{adj_animal}", chosen_adj_animal)
+    return template //gives the final phrase (template variable above)
+        .replace("{newarray1}", chosen_newarray1)
         .replace("{animal_place}", chosen_animal_place)
         .replace("{adj_shadow}", chosen_adj_shadow)
         .replace("{animal}", chosen_animal)
