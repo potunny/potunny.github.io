@@ -9,6 +9,7 @@
         body { 
             font-family: Arial, sans-serif;
             text-align: center;
+            padding-top: 140px;
         }
         /* DEFAULT (applies to small screens): solid purple, NO image at all */
             .bgimagediv {
@@ -80,12 +81,17 @@
             display: inline-block;
         }  
         .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            width: 100%;
-            padding: 0px;
+            padding: 12px 24px;
             box-sizing: border-box;
+            z-index: 1000;
+            background: transparent;
         }
         #buycredbutton {
             padding: 5px 10px;
@@ -171,12 +177,32 @@
             margin: 8px 0 0 0;
             font-weight: 500;
         }
+        #homebutton {
+            padding: 5px 10px;
+            font-size: 18px;
+            font-family: 'Comic Neue', 'Poppins', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #33022f, #cc42d1, #f1b43a);
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            position: fixed;
+            top: 12px;
+            left: 12px; 
+            z-index: 1100;
+        }
     </style>
 </head>
 <body>
     <!--confused myself with divs, need to study more css-->
     <div class="bgimagediv" aria-hidden="true"></div> <!--aria is for accessibility hide or screen reader hiding-->
     <div class="topbar">
+        <div id="homebuttondiv">
+            <button id="homebutton" onclick="location.href='index.html'">Home</button>
+        </div>
         <div class="buy-wrapper">
             <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button> <!--starts disabled-->
             <button id="addmoneybutton" onclick="addMoney()">Add One Money</button>

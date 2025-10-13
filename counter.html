@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <input type="text" id="textfield" value="0" readonly>
+    <button onclick = increaseCount(); id="increase">Count</button>
+    <script>
+        let textUp = document.getElementById("textfield");
+
+        function increaseCount() {
+            textUp.value = parseInt(textUp.value) + 1;
+        }
+    </script>
+</body>
+</html>

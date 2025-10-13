@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+    #gaugeSpace {
+      width: 100%;
+      height: 20px;
+      background-color: #eee;
+      margin-bottom: 10px;
+    }
+    #gaugeFill {
+      width: 0%;
+      height: 100%;
+      background-color: #4CAF50;
+    }
+    </style>
+    <!--Concurrency in computer science is the ability to handle multiple tasks at once, 
+    not necessarily completing them simultaneously, but by rapidly switching between them or executing 
+    them in a way that creates the illusion of simultaneous progress.
+    Timer deals with concurrency in the sense that a timer process that updates the elapsed time 
+    runs concurrently to the user’s interactions with the GUI application.-->
+</head>
+<body>
+    <!--gauge - elapsed time bar
+    label - numerical value of elapsed time
+    slider - bar adjust when timer is running
+    resetButton
+    -->
+    <div id="gaugeSpace" style="width: 100%; height: 20px; background-color: #eee;">
+    <div id="gaugeFill" style="width: 0%; height: 100%; background-color: #4CAF50;"></div>
+    </div>
+
+    <div id="label"></div>
+
+    <div class="slider">
+    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+    <p>Value: <span id="sliderValue">50</span></p>
+
+    <button id="resetButton">Reset</button>
+   <!--
+    - adjusting slider must immediatly affect duration, not only when slider is released-
+    - also affects gauge immediatly when slider
+    - when label is equal or bigger than duration then timer stops (gauge will be full)
+    - if thereafter duration is increased such that duration is bigger than label, it restarts until previous sentence is fulfilled
+    - clicking resetButton do the obvious-->
+    <script>
+      // duration of timer
+      const duration
+
+    </script>
+</body>
+</html>

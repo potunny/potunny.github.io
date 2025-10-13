@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Number guessing game</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .form input[type="number"] {
+        width: 200px;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Number guessing game</h1>
+
+    <p>
+      We have selected a random number between 1 and 100. See if you can guess
+      it in 10 turns or fewer. We'll tell you if your guess was too high or too
+      low.
+    </p>
+
+    <div class="form">
+      <label for="guessField">Enter a guess: </label>
+      <input
+        type="number"
+        min="1"
+        max="100"
+        required
+        id="guessField"
+        class="guessField" />
+      <input type="submit" value="Submit guess" class="guessSubmit" />
+    </div>
+
+    <div class="resultParas">
+      <p class="guesses">10 guesses left</p>
+      <p class="lastResult"></p>
+      <p class="lowhigh"></p>
+      <p class="donep"></p>
+    </div>
+
+    <script>
+      // I know it has many bugs, but it was the first time I tried to write all by myself and think of the code with
+      // my own made up logic, just a little help from gpt sometimes to find a error or remember how something is written
+
+      /*I want you to create a simple "guess the number" type game. It should choose a random number between
+      1 and 100, then challenge the player to guess the number in 10 turns. After each turn, the player should
+      be told if they are right or wrong, and if they are wrong, whether the guess was too low or too high.
+      It should also tell the player what numbers they previously guessed. The game will end once the player
+      guesses correctly, or once they run out of turns. When the game ends, the player should be given an option
+      to start playing again.*/
+
+      //Generate a random number between 1 and 100.
+      //Math.random generates number between 0 and 1 and * 100 makes it between 0 and 99 (+1 to make it to 100)
+      //Math.floor rounds to the nearest whole number
+      let randomNumber = Math.floor(Math.random() * 100) + 1;
+      console.log(randomNumber);
+
+      //Record the turn number the player is on. Start it on 1.
+      let turn = 1;
+      
+      //Provide the player with a way to guess what the number is.
+      //consts
+      const guessSubmit = document.querySelector(".guessSubmit");
+      const guessField = document.querySelector(".guessField")
+      const doneParagraph = document.querySelector(".donep");
+      const lowhighParagraph = document.querySelector(".lowhigh");
+      let guessed = document.querySelector(".guesses")
+
+      guessSubmit.addEventListener("click", function() {
+        // let userGuess = guessField.value;  // get what user typed (was wrong)
+        let remaining = 10 - turn;
+        guessed.textContent = remaining + " guesses left";
+        let userGuess = Number(guessField.value); // convert to string to number
+        console.log("Turn " + turn + ": You guessed " + userGuess);
+        if (userGuess === randomNumber){
+        doneParagraph.textContent = "🎉 Correct! The number was " + randomNumber;
+        createRestartButton();
+        }
+        else if (turn === 10){
+          doneParagraph.textContent = "❌ Game over! The number was " + randomNumber;
+          guessSubmit.disabled = true;
+          guessField.disabled = true;
+          createRestartButton();
+        }
+        else if (userGuess < randomNumber){
+          lowhighParagraph.textContent = "too low";
+        }
+        else if (userGuess > randomNumber){
+          lowhighParagraph.textContent = "too high";
+        }
+        turn++
+      });
+
+      // function to create restart button
+function createRestartButton() {
+let restartButton = document.createElement("button");
+restartButton.textContent = "Play again";
+restartButton.addEventListener("click", function() {
+  location.reload(); // reloads page to restart
+  });
+  document.body.appendChild(restartButton);
+}
+
+
+
+    </script>
+  </body>
+</html>
