@@ -18,19 +18,6 @@
                 <input type="button" id="buttoni" name="answer" onclick="showleftbar(); squeezeleft()";/><!--divshow-->
                 <img id="catimage" class="lettering" src="icons/lettering.png" alt="">
         </div>
-        <!-- searchthinggg
-        <div class="section2head">
-                <input class="searchbox" type="text" placeholder="Search">
-                <button class="searchbutton">
-                        <img class="magni" src="icons/searchicon.png" alt="search button">
-                        <div class="searchhover">Search</div>
-                </button>
-                <button class="micbutton">
-                        <img class="mic" src="icons header/mic.svg" alt="">
-                        <div class="michover">Search with your voice</div>
-                </button>
-        </div>
-        -->
         <div class="section3head">
                 <button id="moon" onclick="darkmode2()"><i class="fa-solid fa-moon fa-2x"></i></button><!--darkmode and icon import size change-->
         </div>
@@ -44,11 +31,37 @@
     <a href="cv.html"><button class="hambuttons">CV</button></a>
 </div>
 
-<div class="presentationhome container">
-
-
-
+<main class="presentationhomecontainer">
+<!-- ArtStation Button -->
+<div style="margin: 20px 0;">
+    <a href="https://www.artstation.com/beatrizcintra" target="_blank" class="artstation-button">
+        <i class="fa-brands fa-artstation"></i> My ArtStation
+    </a>
 </div>
+<h2>Projects Timeline<button id="sortButton">Sort: Newest → Oldest</button></h2>
+<div class="timeline" id="timeline">
+        <div class="timeline-item" data-date="2025-10-21">
+        <span class="timeline-date">21/10/2025</span>
+        <a href="7guis.html" class="timeline-link">7 GUIs</a>
+        <p class="timeline-desc">A collection of GUI challenges built to explore interface logic.</p>
+        </div>
+        <div class="timeline-item" data-date="2025-10-13">
+        <span class="timeline-date">13/10/2025</span>
+        <a href="guessing.html" class="timeline-link">Guessing Number</a>
+        <p class="timeline-desc">A small number guessing game using HTML, CSS, and JS.</p>
+        </div>
+        <div class="timeline-item" data-date="2025-09-27">
+        <span class="timeline-date">27/09/2025</span>
+        <a href="cookie.html" class="timeline-link">Cookie 🥠</a>
+        <p class="timeline-desc">My first experiment with web interactivity.</p>
+        </div>
+        <div class="timeline-item" data-date="2024-12-28">
+        <span class="timeline-date">28/12/2024</span>
+        <a href="finalproject/index.html" class="timeline-link">CS50's Final Project</a>
+        <p class="timeline-desc">My final project for Harvard’s CS50 course.</p>
+        </div>
+</div>
+</main>
 
 <script src="javascript.js"></script>
 </body>

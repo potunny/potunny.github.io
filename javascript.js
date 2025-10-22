@@ -61,3 +61,29 @@ function showleftbar(){
     }
 }
 //show left bar div
+
+//order from recent to old
+const sortButton = document.getElementById('sortButton');
+const timeline = document.getElementById('timeline');
+let newestFirst = true;
+
+sortButton.addEventListener('click', () => {
+  const items = Array.from(timeline.querySelectorAll('.timeline-item'));
+  
+  // Sort items by their data-date attribute
+  items.sort((a, b) => {
+    const dateA = new Date(a.dataset.date);
+    const dateB = new Date(b.dataset.date);
+    return newestFirst ? dateA - dateB : dateB - dateA;
+  });
+
+  // Clear and re-append in new order
+  timeline.innerHTML = '';
+  items.forEach(item => timeline.appendChild(item));
+
+  // Toggle sorting order and update button label
+  newestFirst = !newestFirst;
+  sortButton.textContent = newestFirst
+    ? 'Sort: Newest → Oldest'
+    : 'Sort: Oldest → Newest';
+});
