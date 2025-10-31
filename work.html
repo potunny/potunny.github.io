@@ -11,12 +11,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&family=Rubik:wght@500&display=swap" rel="stylesheet">
 
+<link rel="shortcut icon" href="icons/icontab.ico" type="image/x-icon">
+<link rel="icon" href="icons/icontab.ico" type="image/x-icon">
 </head>
 <body>
     <div class="headerbar">
         <div class="section1head">
                 <input type="button" id="buttoni" name="answer" onclick="showleftbar(); squeezeleft()";/><!--divshow-->
-                <img id="catimage" class="lettering" src="icons/lettering.png" alt="">
         </div>
         <div class="section3head">
                 <button id="moon" onclick="darkmode2()"><i class="fa-solid fa-moon fa-2x"></i></button><!--darkmode and icon import size change-->
@@ -32,32 +33,26 @@
 </div>
 
 <main class="presentationhomecontainer">
-<!-- ArtStation Button -->
-<div style="margin: 20px 0;">
-    <a href="https://www.artstation.com/beatrizcintra" target="_blank" class="artstation-button">
-        <i class="fa-brands fa-artstation"></i> My ArtStation
-    </a>
-</div>
-<h2>Projects Timeline<button id="sortButton">Sort: Newest → Oldest</button></h2>
+<h2 id="titleproject">Projects Timeline<button id="sortButton">Newest → Oldest</button></h2>
 <div class="timeline" id="timeline">
         <div class="timeline-item" data-date="2025-10-21">
         <span class="timeline-date">21/10/2025</span>
-        <a href="7guis.html" class="timeline-link">7 GUIs</a>
+        <a href="7guis.html" class="timeline-link" target="_blank">7 GUIs</a>
         <p class="timeline-desc">A collection of GUI challenges built to explore interface logic.</p>
         </div>
         <div class="timeline-item" data-date="2025-10-13">
         <span class="timeline-date">13/10/2025</span>
-        <a href="guessing.html" class="timeline-link">Guessing Number</a>
+        <a href="guessing.html" class="timeline-link" target="_blank">Guessing Number</a>
         <p class="timeline-desc">A small number guessing game.</p>
         </div>
         <div class="timeline-item" data-date="2025-09-27">
         <span class="timeline-date">27/09/2025</span>
-        <a href="cookie.html" class="timeline-link">Cookie 🥠</a>
+        <a href="cookie.html" class="timeline-link" target="_blank">Cookie 🥠</a>
         <p class="timeline-desc">Early experiment exploring basic interactive elements.</p>
         </div>
         <div class="timeline-item" data-date="2024-12-28">
         <span class="timeline-date">28/12/2024</span>
-        <a href="https://potunny.github.io/finalproject/" class="timeline-link">CS50's Final Project</a>
+        <a href="https://potunny.github.io/finalproject/" class="timeline-link" target="_blank">CS50's Final Project</a>
         <p class="timeline-desc">My final project for Harvard’s CS50 course.</p>
         </div>
 </div>
