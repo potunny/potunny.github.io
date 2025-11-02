@@ -34,6 +34,119 @@
 
 </div>
 
-<script src="javascript.js"></script>
+<form 
+  action="https://formsubmit.co/YOUR_EMAIL_HERE" 
+  method="POST"
+  onsubmit="showMessage(event)"
+  style="
+    max-width: 500px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  "
+>
+  <!-- Honeypot field to prevent spam -->
+  <input type="text" name="_honey" style="display:none">
+
+  <!-- FormSubmit hidden fields -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New message from your portfolio!">
+  <input type="hidden" name="_template" value="table">
+
+  <!-- Name field -->
+  <label for="name" style="font-weight:bold;">Your Name</label>
+  <input 
+    type="text" 
+    name="name" 
+    id="name" 
+    required
+    style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    "
+  >
+
+  <!-- Email field -->
+  <label for="email" style="font-weight:bold;">Your Email</label>
+  <input 
+    type="email" 
+    name="email" 
+    id="email" 
+    required
+    style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    "
+  >
+
+  <!-- Message field -->
+  <label for="message" style="font-weight:bold;">Message</label>
+  <textarea 
+    name="message" 
+    id="message" 
+    rows="5" 
+    required
+    style="
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      resize: vertical;
+    "
+  ></textarea>
+
+  <!-- Submit button -->
+  <button 
+    type="submit"
+    style="
+      padding: 12px 20px;
+      background-color: #f4c2c2;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    "
+    onmouseover="this.style.backgroundColor='#e2a9a9'"
+    onmouseout="this.style.backgroundColor='#f4c2c2'"
+  >
+    Send
+  </button>
+</form>
+
+<!-- Response message -->
+<p id="response" style="text-align:center; color:#4CAF50; font-weight:bold; margin-top: 15px;"></p>
+
+<!-- JavaScript to handle submission without leaving page -->
+<script>
+function showMessage(event) {
+  event.preventDefault();
+  const form = event.target;
+
+  // Check if honeypot field is filled (simple extra check)
+  if (form._honey.value) return; // likely a bot, ignore submission
+
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+  })
+  .then(() => {
+    form.reset();
+    document.getElementById("response").textContent = "Message received! Thank you 💌";
+  })
+  .catch(() => {
+    document.getElementById("response").textContent = "Something went wrong. Please try again.";
+  });
+}
+</script>
 </body>
 </html>
