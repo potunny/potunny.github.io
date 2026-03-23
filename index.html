@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Beatriz Cintra - Web Developer</title>
+  <link rel="icon" type="image/x-icon" href="icons/icontab3.ico"> <!--pageicon-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+      <div class="navbar-main">
+      <a href="#" class="nav-home">Home</a>
+      <div class="nav-links">
+        <a href="getintouch.html" target="_blank">Work</a>
+        <a href="getintouch.html" target="_blank">Get in Touch</a>
+        <a href="cookie.html" target="_blank">Cookie</a>
+        <a href="notready.html" target="_blank">Extra</a>
+      </div>
+      <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="navbar-mobile" id="mobileMenu">
+      <a href="getintouch.html" target="_blank">Work</a>
+      <a href="getintouch.html" target="_blank">Get in Touch</a>
+      <a href="#" target="_blank">Cookie</a>
+      <a href="#" target="_blank">Extra</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="site-header">
+    <video autoplay muted loop id="hero-video">
+      <source src="videos/hero-background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h1>Beatriz Cintra</h1>
+    <p>Front-End Developer</p>
+    <a href="#featured-work" class="hero-button">View My Work</a>
+  </header>
+
+  <!-- First Section -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-text">
+        <h1>About Me</h1>
+        <h5>Passionate about crafting beautiful, functional web experiences through HTML, CSS, and JavaScript.</h5>
+        <p>I'm a self-taught web developer with a deep love for front-end development. I thrive on turning designs into interactive, responsive websites that delight users. With expertise in HTML, CSS, and JavaScript, I focus on creating clean, efficient code that prioritizes user experience. I'm continuously exploring the backend to broaden my skill set and understand full-stack development better.</p>
+      </div>
+      <div class="section-icon">
+        <i class="fa-solid fa-cat"></i>
+      </div>
+    </div>    
+  </section>
+
+  <!-- Second Section -->
+  <section class="section section-grey">
+    <div class="section-inner">
+      <div class="section-icon">
+        <i class="fa-solid fa-code"></i>
+      </div>
+      <div class="section-text">
+        <h1>My Skills</h1>
+        <h5>Constantly growing and learning new technologies to stay at the forefront of web development.</h5>
+        <p><strong>Front-End:</strong> HTML5, CSS3, JavaScript (ES6+), Responsive Design, DOM Manipulation<br><strong>Tools & Technologies:</strong> Git, VS Code, Chrome DevTools<br><strong>Exploring:</strong> Backend technologies, APIs, and server-side development to become a well-rounded developer. I'm curious about how data flows and systems communicate behind the scenes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work Section -->
+  <section class="section" id="featured-work">
+    <div class="section-inner" style="flex-direction: column; gap: 48px;">
+      <div class="section-text" style="flex: none; width: 100%; text-align: center;">
+        <h1>Featured Work</h1>
+        <h5>A showcase of recent projects built with HTML, CSS, and JavaScript</h5>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image"></div>
+          <div class="project-content">
+            <h3>Project One</h3>
+            <p>Interactive web experience built with vanilla JavaScript and responsive CSS design.</p>
+            <span class="project-tech">HTML • CSS • JavaScript</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image"></div>
+          <div class="project-content">
+            <h3>Project Two</h3>
+            <p>Interactive web experience built with vanilla JavaScript and responsive CSS design.</p>
+            <span class="project-tech">HTML • CSS • JavaScript</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image"></div>
+          <div class="project-content">
+            <h3>Project Three</h3>
+            <p>Interactive web experience built with vanilla JavaScript and responsive CSS design.</p>
+            <span class="project-tech">HTML • CSS • JavaScript</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-button-container">
+        <a href="notready.html" class="portfolio-button" target="_blank">View Full Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Band -->
+  <div class="quote-band">
+    <h1>// Building the web, one pixel at a time</h1>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-icons">
+          <a href="https://github.com/potunny" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>
+          <a href="notready.html" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/potunny/ " title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="http://t.me/potunny" title="Telegram" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+          <a href="mailto:oibeacodes@gmail.com" title="Email" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Beatriz Cintra. Creating art through code.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("open");
+    }
+  </script>
+
+</body>
+</html>

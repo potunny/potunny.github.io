@@ -1,0 +1,482 @@
+*, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      color: #fff;
+      background: #000;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #777;
+    }
+
+    /* Firefox scrollbar */
+    * {
+      scrollbar-color: #555 #000;
+      scrollbar-width: thin;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: #000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .navbar-main {
+      display: flex;
+      align-items: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+    }
+
+    .navbar-main a {
+      display: inline-block;
+      padding: 16px 20px;
+      color: #ff0040;
+      text-shadow: 0 0 5px #ff0040;
+      transition: background 0.2s;
+    }
+
+    .navbar-main a:hover {
+      background-color: rgba(255, 0, 64, 0.1);
+    }
+
+    .navbar-main .nav-home {
+      background-color: #ff0040;
+      color: #000;
+    }
+
+    .navbar-main .nav-home:hover {
+      background-color: #ff3366;
+    }
+
+
+    /* hamburger button — visible only on small screens */
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      color: #ff0040;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* links hidden on small screens */
+    .nav-links {
+      display: flex;
+    }
+
+    /* mobile menu for small screens */
+    .navbar-mobile {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
+      border: 1px solid rgba(255, 0, 64, 0.3);
+      max-height: 60vh;
+      overflow-y: auto;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .navbar-mobile a {
+      display: block;
+      padding: 16px 20px;
+      color: #ff0040;
+      text-shadow: 0 0 5px #ff0040;
+      font-size: 1.1rem;
+      border-top: 1px solid rgba(255, 0, 64, 0.2);
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .navbar-mobile a:hover {
+      background-color: rgba(255, 0, 64, 0.1);
+    }
+
+    .navbar-mobile.open {
+      display: flex;
+    }
+
+    /*CANVAS*/
+    canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+    /* ── HEADER ── */
+    .site-header {
+      margin-top: 54px; /* offset for fixed navbar */
+      color: white;
+      text-align: center;
+      padding: 128px 16px;
+      position: relative;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #c {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .site-header h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .site-header p {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      margin-bottom: 24px;
+    }
+
+    .site-header button,
+    .site-header .hero-button {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 12px 32px;
+      cursor: pointer;
+      border: none;
+      background: #ff0040;
+      color: #000;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: all 0.22s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .site-header button:hover,
+    .site-header .hero-button:hover {
+      background: #ff3366;
+      transform: translateY(-2px);
+    }
+
+    /* ── CONTENT SECTIONS ── */
+    .section {
+      padding: 64px 16px;
+    }
+
+    .section-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .section-text {
+      flex: 2;
+    }
+
+    .section-text h1 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .section-text h5 {
+      font-size: 1rem;
+      font-weight: normal;
+      margin-bottom: 24px;
+      line-height: 1.6;
+      color: rgba(255, 0, 64, 0.75);
+      text-shadow: 0 0 3px rgba(255, 0, 64, 0.5);
+    }
+
+    .section-text p {
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    .section-icon {
+      flex: 1;
+      text-align: center;
+    }
+
+    .section-icon i {
+      font-size: 850%;
+      color: #ff0040;
+      padding: 64px 0;
+    }
+
+    .section-grey {
+      background-color: #111;
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background-color: #0a0a0a;
+      border: 1px solid rgba(255, 0, 64, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(255, 0, 64, 0.6);
+      box-shadow: 0 0 15px rgba(255, 0, 64, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(255, 0, 64, 0.1), rgba(255, 0, 64, 0.05));
+      border-bottom: 1px solid rgba(255, 0, 64, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 0, 64, 0.3);
+      font-size: 2rem;
+      cursor: pointer;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .project-image::after {
+      content: "Coming Soon";
+      color: rgba(255, 0, 64, 0.9);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-shadow: 0 0 6px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,0,64,0.6);
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #ff0040;
+      text-shadow: 0 0 5px #ff0040;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      color: #aaa;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .project-tech {
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: rgba(255, 0, 64, 0.7);
+      text-shadow: 0 0 3px rgba(255, 0, 64, 0.3);
+      background-color: rgba(255, 0, 64, 0.05);
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 0, 64, 0.2);
+    }
+
+    /* ── QUOTE BAND ── */
+    .quote-band {
+      background-color: #111;
+      color: #ff0040;
+      text-shadow: 0 0 5px #ff0040;
+      text-align: center;
+      padding: 64px 16px;
+      border-top: 1px solid rgba(255, 0, 64, 0.3);
+      border-bottom: 1px solid rgba(255, 0, 64, 0.3);
+    }
+
+    .quote-band h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: #000;
+      padding: 64px 16px 32px;
+      border-top: 1px solid rgba(255, 0, 64, 0.2);
+    }
+
+    .footer-content {
+      max-width: 980px;
+      margin: 0 auto 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 0, 64, 0.1);
+    }
+
+    .footer-section {
+      text-align: center;
+    }
+
+    .footer-section h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      color: #ff0040;
+      text-shadow: 0 0 5px #ff0040;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .footer-icons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 0, 64, 0.3);
+      border-radius: 4px;
+      color: #ff0040;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .footer-icons a:hover {
+      background-color: rgba(255, 0, 64, 0.1);
+      border-color: #ff0040;
+      box-shadow: 0 0 10px rgba(255, 0, 64, 0.3);
+      text-shadow: 0 0 5px #ff0040;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Portfolio button */
+    .portfolio-button-container {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .portfolio-button {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      cursor: pointer;
+      border: 2px solid #ff0040;
+      background: transparent;
+      color: #ff0040;
+      text-shadow: 0 0 5px #ff0040;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .portfolio-button:hover {
+      background: #ff0040;
+      color: #000;
+      box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .section-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .site-header h1 {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-button {
+        font-size: 14px;
+        padding: 12px 24px;
+      }
+    }

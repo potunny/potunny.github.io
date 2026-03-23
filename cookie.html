@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="cookieimages/cookieicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Cookie</title>
+    <style> /*Did not clean and review CSS*/
+        body { 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 140px;
+        }
+        /* DEFAULT (applies to small screens): solid purple, NO image at all */
+            .bgimagediv {
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                background-color: rgb(49, 37, 48);   /* default for small screens */
+        }
+        /* Show image only on large screens */
+        @media (min-width: 600px) {
+        .bgimagediv {
+            background-image: url('cookieimages/universebg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgb(71, 71, 71); /* fallback color */
+        }
+        }
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .cookie-img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        #showbutton {
+            padding: 5px 10px;
+            font-size: 18px;
+            font-family: 'Comic Neue', 'Poppins', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #33022f, #cc42d1, #f1b43a);
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            position: relative;
+            overflow: hidden;
+        }
+        #showbutton:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 8px rgba(255, 144, 188, 0.3);
+        }
+        #fortune {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #ffe47a;
+            font-family: 'Cinzel', 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 8px #22222280, 0 0px 24px #e566ff80;
+            background: linear-gradient(90deg, rgba(255, 243, 139, 0.26) 0%, rgba(43, 79, 146, 0.418) 100%);
+            border-radius: 16px;
+            padding: 18px 32px;
+            box-shadow: 0 4px 24px rgba(66,133,244,0.12);
+            transition: background 0.3s, color 0.3s;
+            display: none; /*hidden until cookie is cracked*/
+            box-shadow: 
+            0 0 10px 5px #ff90bc, /* A soft pink inner glow */
+            0 0 20px 10px #ffe066, /* A brighter yellow glow */
+            0 0 30px 15px #cc42d1; /* A magical purple outer halo */
+        }
+
+        #fortune.active { /*when active, shows magical css above for phrase*/
+            display: inline-block;
+        }  
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            box-sizing: border-box;
+            z-index: 1000;
+            background: transparent;
+        }
+        #buycredbutton {
+            padding: 5px 10px;
+            font-size: 18px;
+            font-family: 'Comic Neue', 'Poppins', sans-serif;
+            color: #fff;
+            background: linear-gradient(135deg, #33022f, #cc42d1, #f1b43a);
+            border: none;
+            border-radius: 32px;
+            box-shadow: 0 6px 12px rgba(255, 144, 188, 0.4),
+                        0 0 12px rgba(255, 192, 217, 0.6);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #buycredbutton:disabled { /*disable button styling*/
+            background: #e0e0e0;
+            color: #aaa;
+            cursor: auto;
+            box-shadow: none;
+}
+        .buy-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #purchaseMsg {
+            color: #39ff1f;
+            font-weight: 300;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin-top: 4px;
+            min-height: 20px;
+            text-align: center;
+            position: static;
+            padding: 2px;
+        }
+        #warnMsg {
+            color: #ff3b47;
+            font-weight: 300;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin-top: 10px;
+        }
+        #cookieimage {
+            width: 200px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        #cookieimage.cracked {
+    /* Create a deep glow using a multi-layer box-shadow */
+        box-shadow: 
+            0 0 10px 5px #ff90bc, /* A soft pink inner glow */
+            0 0 20px 10px #ffe066, /* A brighter yellow glow */
+            0 0 30px 15px #cc42d1; /* A magical purple outer halo */
+        
+        /* Add a filter for a subtle color boost and extra blur */
+        transform: scale(1.04); /* Slightly enlarge the image */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        margin-bottom: 60px;
+        }
+
+        #addmoneybutton {
+            padding: 5px 10px;
+            font-size: 18px;
+            font-family: 'Comic Neue', 'Poppins', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #33022f, #cc42d1, #f1b43a);
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            position: relative;
+            overflow: hidden;
+        }
+        #creditcount, #cookieamount {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #ffffff;
+            margin: 8px 0 0 0;
+            font-weight: 500;
+        }
+        #homebutton {
+            padding: 5px 10px;
+            font-size: 18px;
+            font-family: 'Comic Neue', 'Poppins', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #33022f, #cc42d1, #f1b43a);
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            position: fixed;
+            top: 12px;
+            left: 12px; 
+            z-index: 1100;
+        }
+
+        .project-note {
+            position: fixed;
+            left: 12px;
+            bottom: 12px;
+            z-index: 1100;
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 0.85rem;
+            padding: 8px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+    </style>
+</head>
+<body>
+    <!--confused myself with divs, need to study more css-->
+    <div class="bgimagediv" aria-hidden="true"></div> <!--aria is for accessibility hide or screen reader hiding-->
+    <div class="topbar">
+        <div id="homebuttondiv">
+            <button id="homebutton" onclick="location.href='index.html'">Home</button>
+        </div>
+        <div class="buy-wrapper">
+            <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button> <!--starts disabled-->
+            <button id="addmoneybutton" onclick="addMoney()">Add One Money</button>
+            <p id="creditcount">Money: 0</p>
+            <p id="cookieamount">Cookies: 0</p>
+            <span id="purchaseMsg"></span>
+        </div>
+    </div>
+    <div class="centered">
+        <img id="cookieimage" src="cookieimages/realcookie.png" alt="Fortune Cookie">
+        <button id="showbutton" onclick="showFortune()">Crack Cookie</button>
+        <p id="fortune"></p>
+        <span id="warnMsg"></span>
+    </div>
+    <script>
+
+    // Buying
+    let money = 0; //initial money
+    let cookiesBought = 0; //to know when to show you have no money message
+
+    function buyCookie() {
+    cookiesBought++; // add one cookie
+    money--; // subtract one money
+    document.getElementById("creditcount").innerText = `Money: ${money}`;
+    document.getElementById("cookieamount").innerText = `Cookies: ${cookiesBought}`;
+    document.getElementById("purchaseMsg").innerText = "Cookie purchased!";
+
+    // If money is now zero, disable buy button
+    if (money < 1) {
+        document.getElementById("buycredbutton").disabled = true;
+    }
+}
+
+function addMoney() { //adds money when button clicked
+    money++;
+    document.getElementById("creditcount").innerText = `Money: ${money}`; //updates money display
+    if (money > 0) {
+        document.getElementById("buycredbutton").disabled = false; //reenables buy button
+        document.getElementById("warnMsg").innerText = ""; //clear fortune warning message
+    }
+}
+
+function showFortune() { //and changes cookie picture
+    if (cookiesBought > 0){
+        const fortune = generateFortune(); //generate fortune calling below function and store in variable
+        const fortuneEl = document.getElementById("fortune");  //set variable for fortune element
+        fortuneEl.innerText = fortune; //set fortune text (fortune variable above)
+        fortuneEl.style.display = "inline-block"; // reveal with styling
+        document.getElementById("purchaseMsg").innerText = ""; //clear purchase message
+        document.getElementById("warnMsg").innerText = ""; //clear fortune warning message
+
+        const cookieImage = document.getElementById("cookieimage"); //set variable for image (cookieimage html's id)
+        cookieImage.src = "cookieimages/openedcookie.jpg"; //change image to cracked cookie
+        cookieImage.classList.add("cracked");
+
+        // after 3 seconds, reset to original image
+        setTimeout(() => {
+            cookieImage.src = "realcookie.png";   // back to normal cookie
+            cookieImage.classList.remove("cracked"); // remove cracked class
+        }, 2000); // 2000 milliseconds = 2 seconds
+
+    } else {
+        if (cookiesBought < 1) { //if no cookies, show warning message
+            document.getElementById("warnMsg").innerText = "You don't have any cookies! Buy one first.";
+            return; //exit function early, if you don't have this, cookiesBought starts to go negative, we could delete this line if we put the two lines below in the if statement above
+        }
+    }
+    cookiesBought--; //subtract one cookie
+    document.getElementById("cookieamount").innerText = `Cookies: ${cookiesBought}`;
+}
+
+// Fortune Generation (the hardest part to understand for me is all below)
+    const templates = [ //template phrases with placeholders
+  "A {newarray1} {animal} will {action_object}.",
+  "Beware: the {animal_place} of {place} seeks your {object_prophecy}.",
+  "Tonight, a {adj_shadow} shadow will {action_creature}.",
+  "A {animal} whispers: {prophecy}.",
+  "In {place}, your {object_place} shall be {action_passive} by a {newarray1}.",
+  "The {newarray1} {animal} hides a secret about your {object_secret}."
+];
+
+// Context-specific word arrays
+const newarray1 = ["spirit", "entity", "princess", "queen", "king", "oracle", "wanderer", "sorcerer", "witch", "wizard", "nymp", "elf",];
+const adj_shadow = ["spooky", "chaotic", "restless", "eternal", "mystic", "ancient", "enchanted", "celestial", "luminous", "ethereal"];
+const animal_place = ["crow", "serpent", "wolf", "tiger", "raven", "shadow", "snake", "bird"];
+
+const animals = ["bat", "crow", "cat", "serpent", "owl", "wolf", "dragon", "ghost"];
+const places = ["the forest", "the old castle", "the graveyard", "the hidden cave", "the midnight sky", "the ancient ruins", "the enchanted lake", "the mystic mountains", "the forgotten temple"];
+const prophecies = [
+  `"The veil is thin tonight"`,
+  `"What you seek also seeks you"`,
+  `"An old friend returns in silence"`,
+  `"Your dreams will guide you"`,
+  `"Magic is closer than you think"`,
+  `"Your reflection hides a truth"`,
+  `"Beware of glitter in the dark"`,
+  `"An old friend returns in silence"`,
+  `"The stars align for those who dare"`,
+  `"A secret will soon be revealed"`,
+    `"The night holds many answers"`,
+    `"A journey begins with a single step"`,
+    `"The past is never truly gone"`,
+    `"Your heart knows the way"`,
+    `"Courage will light your path"`,
+    `"The unexpected will bring joy"`,
+    `"Change is the only constant"`,
+    `"A hidden talent will surface soon"`,
+    `"The smallest act can change everything"`
+];
+
+// Arrays combining logically related words
+const action_object = [
+  { action: "bless", object: "your dreams" },
+  { action: "steal", object: "your secrets" },
+  { action: "haunt", object: "your nightmares" },
+  { action: "guard", object: "your path" },
+  { action: "reveal", object: "a forgotten memory" },
+  { action: "watch over", object: "your journey" }
+];
+const action_creature = [
+  { action: "whisper to", object: "the wind" },
+  { action: "follow", object: "your footsteps" },
+  { action: "embrace", object: "the silence" },
+  { action: "curse", object: "the sacred" }
+];
+const object_prophecy = ["heart", "future", "shadow", "destiny"];
+const object_secret = ["dreams", "past", "family", "reflection"];
+const object_place = ["treasure", "heart", "future", "legacy"];
+const action_passive = ["blessed", "guarded", "haunted", "found"];
+
+
+function getRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateFortune() {
+    let template = getRandomElement(templates); // Select a random template
+
+    // Get random elements from context-specific arrays
+    const chosen_newarray1 = getRandomElement(newarray1);
+    const chosen_animal_place = getRandomElement(animal_place);
+    const chosen_adj_shadow = getRandomElement(adj_shadow);
+    const chosen_animal = getRandomElement(animals);
+    const chosen_place = getRandomElement(places);
+    const chosen_prophecy = getRandomElement(prophecies);
+
+    // Get a random action-object pair and split it
+    const actionObjectPair = getRandomElement(action_object);
+    const actionCreaturePair = getRandomElement(action_creature);
+    const objectPassivePair = getRandomElement(object_place);
+    const actionPassivePair = getRandomElement(action_passive);
+
+    // Replace the placeholders with the selected words
+    return template //gives the final phrase (template variable above)
+        .replace("{newarray1}", chosen_newarray1)
+        .replace("{animal_place}", chosen_animal_place)
+        .replace("{adj_shadow}", chosen_adj_shadow)
+        .replace("{animal}", chosen_animal)
+        .replace("{place}", chosen_place)
+        .replace("{prophecy}", chosen_prophecy)
+        .replace("{action_object}", `${actionObjectPair.action} ${actionObjectPair.object}`)
+        .replace("{action_creature}", `${actionCreaturePair.action} ${actionCreaturePair.object}`)
+        .replace("{object_prophecy}", getRandomElement(object_prophecy))
+        .replace("{object_secret}", getRandomElement(object_secret))
+        .replace("{object_place}", objectPassivePair)
+        .replace("{action_passive}", actionPassivePair);
+}
+    </script>
+</body>
+</html>
