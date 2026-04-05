@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: "Karla", serif, Arial, Helvetica, sans-serif;
+    font-weight: 380;
+    background-color: #f8f8f8;
+    color: #555;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/*last*/
+/* Header Styling */
+header {
+    background-color: #ffb6c1;
+    padding: 5px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*position: relative;  Ensuring relative positioning for badge */
+}
+
+/* Cart Container */
+.cart-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Cart Button Styling */
+.cart-button {
+    font-size: 1.2em;
+    background-color: #ff6cb4;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+#iconcart {
+    padding-top: 5px;
+    padding-right: 1px;
+}
+
+/* Cart Badge Styling */
+.badge {
+    position: absolute;
+    top: -10px; /* Adjust based on your design */
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    display: none; /* Hidden by default */
+}
+
+.badge.visible {
+    display: block;
+}
+
+/* Navigation Styling */
+header .oldnav {
+    margin-left: 20px; /* Add some space from the logo */
+    display: flex;
+    align-content: flex-end;
+}
+
+header .oldnav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Reduced space between nav items */
+    margin: 0; /* Remove default margin */
+}
+
+header .oldnav a {
+    text-decoration: none;
+    color: #ff69b4;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+header .oldnav a:hover {
+    color: #ff1493;
+}
+
+/*last*/
+
+header {
+    background-color: #ffb6c1;
+    padding-left: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 14px;
+    display: flex;
+    justify-content: space-between;
+    position: relative; /*dia 25 linha*/
+    align-items: center;
+}
+
+.logo img{
+    width: 230px;
+    height: 48px;
+    margin-left: 8px;
+    padding-top: 8px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+/* Carousel */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 500px; /* Fixed width */
+    height: 500px; /* Fixed height */
+    border-radius: 10px; /* Maintain rounded corners */
+    flex-shrink: 0;
+}
+
+.carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel .prev {
+    left: 10px;
+    background-color: #ffb6c1;
+    font-weight: bold;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 6px;
+    font-family: "Rubik", serif;
+    font-optical-sizing: auto;
+    color: white;
+}
+
+.carousel .next {
+    right: 8px;
+    background-color: #ffb6c1;
+    font-weight: bold;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 6px;
+    font-family: "Rubik", serif;
+    font-optical-sizing: auto;
+    color: white;
+}
+
+/*side*/
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Hidden by default */
+    width: 300px;
+    height: 100vh; /* Set height to 100% of the viewport height */
+    background-color: #f8f8f8;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.sidebar.open {
+    right: 0; /* Slide-in effect */
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff1493;
+}
+
+.cart-total {
+    position: sticky; /* Keep the total section and button fixed at the bottom */
+    bottom: 20px; /* Leave some margin from the bottom */
+}
+
+.cart-total button {
+    background-color: #ff6cb4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-total button:hover {
+    background-color: #ff1493;
+}
+
+#cart-items {
+    margin-top: 20px;
+}
+/*jj*/
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cart-item button {
+    background-color: #ff6cb4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.cart-item button:hover {
+    background-color: #ff1493;
+}
+/*jj*/
+
+/* Hero Section */
+#hero {
+    background-color: #ffe4e1;
+    padding: 50px;
+}
+
+#hero h1 {
+    font-size: 2.5em;
+    color: #ff69b4;
+}
+
+#hero p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Gallery Section */
+#gallery {
+    padding: 50px 10%;
+    background-color: #fff0f5;
+}
+
+#gallery h2 {
+    font-size: 2em;
+    color: #ff1493;
+    margin-bottom: 20px;
+}
+
+#FancyTitle{
+    font-family: "Dancing Script", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 70px;
+    justify-items: center;
+}
+
+.gallery-item img {
+    width: 310px; /* Scale to the container width */
+    max-width: 310px; /* Limit the width */
+    height: 280px; /* Maintain aspect ratio */
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #ff1493;
+}
+
+div img {
+    height: 200px;
+    width: 300px;
+}
+
+/* About Section */
+#about {
+    background-color: #ffb6c1;
+    padding: 50px 10%;
+}
+
+#about h2 {
+    font-size: 2em;
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+#about p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Contact Section */
+.external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15em;
+}
+
+#contact {
+    background-color: #ffe4e1;
+    padding: 50px 10%;
+}
+
+#contact h2 {
+    font-size: 2em;
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+#contact p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+#contact a {
+    color: #ff1493;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #ff69b4;
+    padding: 20px;
+    color: white;
+    font-size: 1em;
+}
+/*dia 25*/
+#products {
+    text-align: center;
+    padding: 20px;
+}
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.product-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.product-item h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+.product-item .price {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.product-item .add-to-cart {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.product-item .add-to-cart:hover {
+    background-color: #0056b3;
+}
+/*dia 25*/
+
+/*river raccoon*/
+#rivercoon {
+    width: 70%;
+}
+
+/*formm*/
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: #fff0f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto; /* Center the form */
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: #ff69b4;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff69b4;
+    outline: none; /* Remove default outline */
+}
+
+.contact-form button {
+    background-color: #ff6cb4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.contact-form button:hover {
+    background-color: #ff1493;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        font-size: 14px; /* Reduce base font size */
+    }
+
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+
+    #gallery, #about, #contact {
+        padding: 20px 5%;
+    }
+
+    #hero h1 {
+        font-size: 1.8em;
+    }
+
+    .gallery-item img {
+        width: 300px;
+        max-width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 445px) {
+    body {
+        font-size: 14px; /* Reduce base font size */
+    }
+
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Single column */
+        gap: 20px;
+    }
+
+    #gallery, #about, #contact {
+        padding: 20px 5%;
+    }
+
+    #hero h1 {
+        font-size: 1.8em;
+    }
+
+    .gallery-item img {
+        width: 300px;
+        max-width: 300px;
+        height: 300px;
+    }
+}
+
+
+/*scroll bar*/
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    padding-left: 3px;
+    margin-right: 3px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(99, 99, 99);
+    border-radius: 10px;
+    width: 10px;
+  }

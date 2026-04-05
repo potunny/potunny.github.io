@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Raccoon Store</title>
+        <link rel="stylesheet" href="css1.css">
+        <link rel="icon" href="tabicon.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+        <script src="script.js" defer></script> <!-- Defer added to load after HTML -->
+    </head>
+    <body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Kawaii Raccoon Gallery">
+            </a>
+        </div>
+        <div class="ghost"></div>
+        <div class="ghost"></div>
+        <div class="ghost"></div>
+        <div class="ghost"></div>
+        <div class="oldnav">
+          <ul>
+              <li><a href="index.html">Gallery</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contactform.html">Contact</a></li>
+              <li><a href="buy.html">Buy</a></li>
+          </ul>
+        </div>
+        <div class="cart-container">
+            <button class="cart-button" id="cart-button"><ion-icon name="cart" id="iconcart"></ion-icon></button>
+            <div id="cart-badge" class="badge"></div>
+
+            <!-- Sidebar Structure -->
+            <div id="cart-sidebar" class="sidebar">
+                <button class="close-cart" id="close-cart">x</button>
+                <h2>Your Cart</h2>
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    <p>Total: $<span id="cart-total-price">0.00</span></p>
+                    <button class="checkout-button">Go to Payment</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="products">
+      <h2>Raccoon Store</h2>
+      <div class="products-grid">
+          <div class="product-item">
+              <div class="carousel">
+                  <button class="prev">&lt;</button>
+                  <div class="carousel-images">
+                      <img src="shirt/shirt3.png" alt="Shirt 1">
+                      <img src="shirt/shirt4.png" alt="Shirt 2">
+                      <img src="shirt/shirt1.png" alt="Shirt 3">
+                      <img src="shirt/shirt2.png" alt="Shirt 4">
+                  </div>
+                  <button class="next">&gt;</button>
+              </div>
+              <h3>Men's Basic Ringer T-Shirt</h3>
+              <p class="price">$14.99</p>
+              <button class="add-to-cart" data-id="1" data-image="shirt/shirt3.png" data-name="Men's Basic Ringer T-Shirt" data-price="14.99">Add to Cart</button>
+          </div>
+          <div class="product-item">
+              <div class="carousel">
+                  <button class="prev">&lt;</button>
+                  <div class="carousel-images">
+                      <img src="shirt/shirtwomen3.png" alt="Shirt 1">
+                      <img src="shirt/shirtwomen4.png" alt="Shirt 2">
+                      <img src="shirt/shirtwomen1.png" alt="Shirt 3">
+                      <img src="shirt/shirtwomen2.png" alt="Shirt 4">
+                  </div>
+                  <button class="next">&gt;</button>
+              </div>
+              <h3>Women's Basic T-Shirt</h3>
+              <p class="price">$12.99</p>
+              <button class="add-to-cart" data-id="2" data-image="shirt/shirtwomen3.png" data-name="Women's Basic T-Shirt" data-price="12.99">Add to Cart</button>
+          </div>
+          <div class="product-item">
+              <div class="carousel">
+                  <button class="prev">&lt;</button>
+                  <div class="carousel-images">
+                      <img src="shirt/longshirt1.png" alt="Shirt 1">
+                      <img src="shirt/longshirt2.png" alt="Shirt 2">
+                  </div>
+                  <button class="next">&gt;</button>
+              </div>
+              <h3>Women's Long Sleeve T-shirt</h3>
+              <p class="price">$29.99</p>
+              <button class="add-to-cart" data-id="3" data-image="shirt/longshirt1.png" data-name="Women's Long Sleeve T-shirt" data-price="29.99">Add to Cart</button>
+          </div>
+      </div>
+    </section>
+
+    <footer>
+        <p>2024 Kawaii Raccoon Gallery | Images are saved from the internet, I don't have credits</p>
+    </footer>
+    
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+</body>
+</html>

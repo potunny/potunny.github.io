@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawaii Raccoon Gallery</title>
+    <link rel="stylesheet" href="css1.css">
+    <link rel="icon" href="tabicon.png" type="image/x-icon">
+    <script src="script.js" defer></script> <!-- Defer added to load after HTML -->
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Kawaii Raccoon Gallery">
+            </a>
+        </div>
+        <div class="ghost">
+        </div>
+        <div class="ghost">
+        </div>
+        <div class="ghost">
+        </div>
+        <div class="ghost">
+        </div>
+        <div class="oldnav">
+          <ul>
+              <li><a href="index.html">Gallery</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="contactform.html">Contact</a></li>
+              <li><a href="buy.html">Buy</a></li>
+          </ul>
+        </div>
+        <div class="cart-container">
+            <button class="cart-button" id="cart-button"><ion-icon name="cart" id="iconcart"></ion-icon></button>
+            <div id="cart-badge" class="badge"></div>
+
+            <!-- Sidebar Structure -->
+            <div id="cart-sidebar" class="sidebar">
+                <button class="close-cart" id="close-cart">x</button>
+                <h2>Your Cart</h2>
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    <p>Total: $<span id="cart-total-price">0.00</span></p>
+                    <button class="checkout-button">Go to Payment</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <h1 id="FancyTitle">Welcome to the Kawaii Raccoon Gallery!</h1>
+        <p>Enjoy the cutest raccoons you've ever seen!</p>
+    </section>
+    
+    <section id="gallery">
+        <h2>Raccoon Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi1.png" alt="Baby Raccoon">
+                <p>Bob</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi2.png" alt="Cute raccoon 2">
+                <p>Jeff</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi3.png" alt="Cute raccoon 3">
+                <p>Chad</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi4.png" alt="Baby Raccoon">
+                <p>Karen</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi5.png" alt="Cute raccoon 2">
+                <p>Steve</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi6.png" alt="Cute raccoon 3">
+                <p>Mittens</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi7.png" alt="Baby Raccoon">
+                <p>Turbo</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi8.png" alt="Cute raccoon 2">
+                <p>Sprinkles</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi9.png" alt="Cute raccoon 3">
+                <p>Bandit</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi10.png" alt="Baby Raccoon">
+                <p>Snickers</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi11.png" alt="Cute raccoon 2">
+                <p>Captain Trashbeard</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi12.png" alt="Cute raccoon 3">
+                <p>Socks</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi13.png" alt="Baby Raccoon">
+                <p>Mocha</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi14.png" alt="Cute raccoon 2">
+                <p>Bubbles</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi15.png" alt="Cute raccoon 3">
+                <p>Rascal</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi16.png" alt="Cute raccoon 2">
+                <p>Patches</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi17.png" alt="Cute raccoon 3">
+                <p>Nugget</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagem-guaxi/guaxi18.png" alt="Cute raccoon 3">
+                <p>Pickles</p>
+            </div>         
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>Welcome to our raccoon gallery, Get ready to dive into a delightful collection of raccoons caught in their silliest and cutest poses. These little bandits are here to steal your heart (and maybe a snack or two)! Plus, if you can’t get enough of their charming antics, don’t forget to check out our shop for shirts that let you wear your love for these furry mischief-makers. Come on in and let the cuteness overload begin!</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Have questions? Reach out to us <a href="contactform.html" class="external-link" target="_blank">here <ion-icon name="open"></ion-icon></a></p>
+    </section>
+
+    <footer>
+        <p>2024 Kawaii Raccoon Gallery | Images are saved from the internet, I don't have credits</p>
+    </footer>
+    <!--ionicons-->
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+</body>
+</html>
