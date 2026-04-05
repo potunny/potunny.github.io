@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="abtn" onclick="print()">9a</button>
+  <span>prints the element into the console</span>
+  <br>
+  <button id="bbtn" onclick="textchange()">9b</button>
+  <span>changes the text content</span>
+
+  <br>
+  <button id="headsbtn" onclick="choice('heads')">heads</button>
+  <button id="tailsbtn" onclick="choice('tails')">tails</button>
+  <span>displays your choice in <code>&lt;p&gt;</code></span></span>
+  <p id="choicep"></p>
+
+  <input type="text" id="inputname" placeholder="Your name" onkeydown="enterkey(event)"></input>
+  <button id="greetbtn" onclick="greet()">Submit</button>
+  <span>greets you using your name in <code>&lt;p&gt;</code> (and enter works)</span>
+  <p id="greetp"></p>
+
+  <p>previous shipping calculator for using 7.99 and not giving a long number <span><a href="jstask19.html">link</a></span></p>
+
+  <input type="text" id="keyupinput" onkeyup="keyupfunc()"></input>
+  <span>onkeyup event listener</span>
+  <p id="keyupp"></p>
+
+  <p>improved cart quantity with localstorage and displaying quantity on the page <a href="jstask20.html">link</a></p>
+
+  <p>improved calculator and displaying calculation on the page <a href="jstask21.html">link</a></p>
+  <script>
+    function print(){
+      console.log(document.getElementById('abtn'));
+    }
+
+    function textchange(){
+      const textbtn = document.getElementById('bbtn');
+
+      textbtn.textContent = 'done!';
+    }
+
+    function choice(argument){
+      document.getElementById('choicep').textContent = 'Your choice is: ' + argument;
+    }
+
+    function greet(){
+      const nameinput = document.getElementById('inputname');
+      const greetp = document.getElementById('greetp');
+
+      greetp.textContent = 'Hello, ' + nameinput.value + '!';
+    }
+
+    function enterkey(event){
+      if (event.key === "Enter"){
+        greet();
+      }
+    }
+
+    function keyupfunc(){
+      const keyupinput = document.getElementById('keyupinput');
+      const keyupp = document.getElementById('keyupp');
+
+      keyupp.textContent = keyupinput.value;
+    }
+  </script>
+</body>
+</html>

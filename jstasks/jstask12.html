@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const basketball = {
+      price: 2090
+    }
+
+    //increase the price by 500 using . and display
+    basketball.price = basketball.price + 500;
+    console.log(basketball);
+
+    //using bracket notation, add property delivery time to the object with value of 3 days
+    basketball['deliveryTime'] = '3 days';
+    console.log(basketball);
+
+    //create a function compareprice that takes two product objects as parameters with name and price properties and logs which product is more expensive
+
+    product1 = {
+      name: 'basketball',
+      price: 1590
+    }
+
+    product2 = {
+      name: 'football',
+      price: 1990
+    }
+
+    function compareprice(product1, product2){
+      if (product1.price > product2.price) {
+        console.log(`${product1.name} is more expensive`);
+      } else if (product1.price < product2.price) {
+        console.log(`${product2.name} is more expensive`);
+      } else {
+        console.log("Both products have the same price");
+      }
+    }
+
+    compareprice(product1, product2);
+  </script>
+</body>
+</html>

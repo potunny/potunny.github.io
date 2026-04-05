@@ -1,0 +1,57 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>DOM Projects</h2>
+    <h4>YouTube Subscribe Button:</h4>
+    <button id="ytbtn" onclick="subscribeYT()">Subscribe</button>
+    <h4>Rock, Paper, Scissors Version 3:</h4>
+    <a href="jstask17.html">Click here</a>
+    <br><br>
+    <h4>Shipping Calculator:</h4>
+    <p>tip: pressing enter to calculate works here!</p>
+    <p>Orders <strong>under $40 = +$10</strong> shipping</p>
+    <p><strong>$40 and over = free</strong> shipping</p>
+    <input type="number" id="orderinput" placeholder="Enter order price" onkeydown="enterkey(event)"></input> <!--this doesn't mean js receives a number, it receives a string-->
+    <button id="shipbtn" onclick="calculateshipping()">Calculate Shipping</button>
+    <p id="shipresultp"></p>
+
+    <script>
+      const ytbtnEl = document.querySelector('#ytbtn');
+      const shipEl = document.querySelector('#shipresultp');
+      const inputEl = document.querySelector('#orderinput');
+
+      function subscribeYT() {
+        if (ytbtnEl.innerHTML === "Subscribed") {
+          ytbtnEl.innerHTML = "Subscribe";
+          return;
+        }
+        ytbtnEl.innerHTML = "Subscribed"; //could have use innerText
+      }
+
+      function calculateshipping(){
+        const orderCents = Math.round(Number(inputEl.value) * 100); //real world example uses cents to avoid float point issues
+        //converts string to number first
+        //multiplies by 100 and rounds with Math.round
+
+        if (orderCents < 4000){
+          shipEl.innerHTML = `<strong>Total: $</strong>${(orderCents + 1000) / 100}`; //adds 1000 cents ($10) and divides by 100 to get dollars
+        }
+        else{
+          shipEl.innerHTML = 'Free shipping!';
+        }
+      }
+
+      function enterkey(event){ //event to detect key press and talk to html input
+        if (event.key === "Enter"){
+          calculateshipping();
+        }
+      }
+
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function convertf(param){
+      return (param * 9 / 5) + 32;
+    }
+
+    function convertc(param){
+      return (param - 32) * 5 / 9;
+    } //training to use these two blocks in below function
+
+    function converttemp(unit){
+      if (unit === 'C'){
+        let resultnumber = (convertc(86)); //change celcius here
+        let resultstring = "Your result from C to F is: " + resultnumber.toString() + "F!";
+        return resultstring;
+      }
+      else if (unit === 'F'){
+        let resultnumber = (convertf(25)); //change fahrenheit here
+        let resultstring = "Your result from F to C is: " + resultnumber.toString() + "C!";
+        return resultstring;
+      }
+    }
+    console.log(converttemp('C')) //choose if you wanna spit out fahren or celcius conversion
+  </script>
+</body>
+</html>

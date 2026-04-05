@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/css1.css">
+  <title>Document</title>
+</head>
+<body>
+  <h2>HTML, CSS and JS Together - Exercises</h2>
+  <h3>Amazon Button Styling:</h3>
+  <button id="addcartbtn">Add to Cart</button>
+  <br><br>
+  <h3>Uber Buttons Styling:</h3>
+  <button id="uberbtn1">Request now</button>
+  <button id="uberbtn2">Schedule for later</button>
+  <br><br>
+  <h3>Console.log classList.contains:</h3>
+  <button class="js-button" onclick="testfunc();">Test</button>
+  <br><br>
+  <h3>classList.contains('is-active') toggling class removal:</h3>
+  <button class="togglebtn btn">Toggle Class</button>
+  <br><br>
+  <h3>Make 3 buttons using the .btn class:</h3>
+  <button class="togglebtn btn">Gaming</button>
+  <button class="togglebtn btn">Music</button>
+  <button class="togglebtn btn">Tech</button>
+  <br><br>
+  <h3>Only one button can be selected:</h3>
+  <div id="togglebtn2div">
+  <button class="togglebtn2 btn">Gaming</button>
+  <button class="togglebtn2 btn">Music</button>
+  <button class="togglebtn2 btn">Tech</button>
+  </div>
+  <br><br>
+  <h3>Shipping Calculator with error when using negative numbers:</h3>
+  <h5>Made a switch for alternating between error messages and doing animation</h5>
+  <h6>press <span id="enterspan">Enter</span> to calculate available</h6>
+  <p>Orders <strong>under $40 = +$10</strong> shipping</p>
+  <p><strong>$40 and over = free</strong> shipping</p>
+  <input type="number" id="orderinput" placeholder="Enter order price" onkeydown="enterkey(event)"></input> <!--this doesn't mean js receives a number, it receives a string-->
+  <button id="shipbtn" onclick="calculateshipping(); toggleerror()">Calculate</button>
+  <p id="shipresultp"></p>
+  <p id="errorship"></p>
+  <br><br>
+  <h3>Finished Calculator Version:</h3>
+  <a href="jstask25.html" target="_blank">Click here</a>
+
+
+  <script src="scripts/js1.js"></script>
+  <script src="scripts/js2.js"></script>
+</body>
+</html>

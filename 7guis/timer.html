@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer - Modern Minimalist</title>
+    <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+      color: #424242;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .timer-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1976d2;
+      margin-bottom: 30px;
+      font-weight: 300;
+      font-size: 2.2rem;
+    }
+
+    #gauge {
+      width: 100%;
+      height: 24px;
+      border-radius: 12px;
+      border: none;
+      background: #e8f5e8;
+      margin-bottom: 20px;
+    }
+
+    #gauge::-webkit-progress-bar {
+      background: #e8f5e8;
+      border-radius: 12px;
+    }
+
+    #gauge::-webkit-progress-value {
+      background: linear-gradient(90deg, #4fc3f7 0%, #29b6f6 100%);
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(79, 195, 247, 0.3);
+    }
+
+    #gauge::-moz-progress-bar {
+      background: linear-gradient(90deg, #4fc3f7 0%, #29b6f6 100%);
+      border-radius: 12px;
+    }
+
+    #label {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 200;
+      color: #1976d2;
+      margin-bottom: 30px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .slider {
+      margin-bottom: 20px;
+    }
+
+    #slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e3f2fd;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    #slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #29b6f6;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(41, 182, 246, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    #slider::-webkit-slider-thumb:hover {
+      background: #0277bd;
+      transform: scale(1.1);
+    }
+
+    #slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #29b6f6;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 6px rgba(41, 182, 246, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    #slider::-moz-range-thumb:hover {
+      background: #0277bd;
+      transform: scale(1.1);
+    }
+
+    p {
+      text-align: center;
+      margin: 15px 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    #sliderValue {
+      font-weight: 600;
+      color: #1976d2;
+    }
+
+    #resetButton {
+      display: block;
+      width: 100%;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+    }
+
+    #resetButton:hover {
+      background: linear-gradient(135deg, #29b6f6 0%, #0277bd 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+    }
+
+    #resetButton:active {
+      transform: translateY(0);
+    }
+    </style>
+    <!--Concurrency in computer science is the ability to handle multiple tasks at once, 
+    not necessarily completing them simultaneously, but by rapidly switching between them or executing 
+    them in a way that creates the illusion of simultaneous progress.
+    Timer deals with concurrency in the sense that a timer process that updates the elapsed time 
+    runs concurrently to the user’s interactions with the GUI application.-->
+</head>
+<body>
+    <div class="timer-container">
+        <h1>Timer</h1>
+        <!--gauge - elapsed time bar
+        label - numerical value of elapsed time
+        slider - slide duration adjust while timer is running (immediatly affects label and gauge, not only on click release)
+        resetButton
+
+        when elapsed time equals or bigger duration, timer stops (gauge full)
+        If, thereafter, d is increased such that d > e will be true then the timer restarts to tick until e ≥ d is true again.
+        -->
+        <progress id="gauge" value="0" max="1"></progress>
+        <div id="label"></div>
+
+        <div class="slider">
+        <input type="range" min="1" max="100" value="50" class="slider" id="slider">
+        </div>
+        <p>Duration: <span id="sliderValue">50</span> seconds</p>
+
+        <button id="resetButton">Reset Timer</button>
+    </div>
+    
+    <script>
+    const gauge = document.getElementById('gauge');
+    const label = document.getElementById('label');
+    const slider = document.getElementById('slider');
+    const sliderValue = document.getElementById('sliderValue');
+    const resetButton = document.getElementById('resetButton');
+    let elapsedTime = 0; //elapsed time in seconds
+    let duration = parseInt(slider.value); //transform slider value to integer
+
+    function updateLabel() {
+        label.textContent = elapsedTime + "s"; //updates label to show elapsed time in seconds
+    }
+
+    function updateGauge() {
+        gauge.value = elapsedTime / duration; //updates gauge to show the proportion of elapsed time to duration
+    }
+
+    function updateSliderValue() {
+        sliderValue.textContent = slider.value; //gets the current slider value and displays it
+    }
+
+    function resetTimer() {
+        elapsedTime = 0;
+        updateLabel(); //shows 0s on label
+        updateGauge(); //resets gauge to 0%
+    }
+
+    resetButton.addEventListener('click', resetTimer); //reset button event listener
+
+    slider.addEventListener('input', function() { //slider event listener, updates duration immediately on input
+        duration = parseInt(slider.value);
+        updateSliderValue();
+        updateLabel();
+        updateGauge();
+        if (elapsedTime >= duration) { //if the user decreases the slider value below elapsed time, timer is reset and starts again
+            resetTimer();
+        }
+    });
+
+    setInterval(() => {
+        if (elapsedTime < duration) {
+            elapsedTime++; //if elapsed time is less than duration, increment elapsed time by 1 second
+            updateLabel(); //update label and gauge
+            updateGauge();
+        }
+    }, 1000); //1000 ms = 1 second, timer updates every second
+
+    </script>
+</body>
+</html>

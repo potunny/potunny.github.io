@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Input never uppercase:
+  <form>
+  <input type="text" id="input"></input>
+  </form>
+  <p>
+  Function that compares two products for same values<br>
+  Repeat string n times using .repeat()<br>
+  (inside console)
+  </p>
+  <script>
+  const inputEl = document.querySelector("input");
+
+  inputEl.addEventListener("input", () => {
+    inputEl.value = inputEl.value.toLowerCase();
+  });
+
+    //create this function that returns true if the two products have the same values inside (name and price)
+    //if not, return false
+    product1 = {
+      name: 'basketball',
+      price: 1590
+    }
+    product2 = {
+      name: 'basketball',
+      price: 1590
+    }
+
+    function sameproduct(product1, product2){
+      if (product1.name === product2.name && product1.price === product2.price){
+        return true;
+      } else {
+        return false;
+      }
+    }
+    console.log(sameproduct(product1, product2));
+
+    //repeat a string n times using .repeat
+    const text = "ha";
+      const result = text.repeat(3);
+      console.log(result); // "hahaha"
+  </script>
+</body>
+</html>

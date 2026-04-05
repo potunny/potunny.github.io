@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="icons/icontab3.ico"> <!--pageicon-->
-  <title>Under Construction - Beatriz Cintra</title>
+  <title>Coming Soon - Beatriz Cintra</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Navbar (same as index) -->
   <nav class="navbar">
     <div class="navbar-main">
       <a href="index.html" class="nav-home">Home</a>
@@ -19,7 +19,7 @@
         <a href="work.html">Work</a>
         <a href="contact.html">Contact</a>
         <a href="cookie.html">Cookie</a>
-        <a href="shop.html">Shop</a>
+        <a href="shop.html" class="active">Shop</a>
       </div>
       <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
         <i class="fa-solid fa-bars"></i>
@@ -31,15 +31,13 @@
       <a href="work.html">Work</a>
       <a href="contact.html">Contact</a>
       <a href="cookie.html">Cookie</a>
-      <a href="shop.html">Shop</a>
+      <a href="shop.html" class="active">Shop</a>
     </div>
   </nav>
 
-  <!-- Under Construction Content -->
+  <!-- Shop Redirect -->
   <div class="coming-soon-container">
-    <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); color: #ff0040; text-shadow: 0 0 10px #ff0040; margin: 0; font-weight: 700;">Under Construction</h1>
-    <p style="font-size: clamp(1rem, 3vw, 1.3rem); color: #ccc; margin: 20px 0; max-width: 600px;">This page is currently being built. Check back soon!</p>
-    <a href="index.html" class="shop-button">← Back Home</a>
+    <a href="notready.html" target="_blank" class="shop-button">Visit The Store <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
   </div>
 
   <script>
@@ -56,6 +54,7 @@
         menu.classList.remove("open");
       }
     });
+
   </script>
 
 </body>

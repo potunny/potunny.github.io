@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booker</title>
+    <style>
+        /* Simple styling for the message area */
+        #message-area {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 20px; /* Ensures it's visible even when empty */
+            background-color: #e6ffe6;
+            color: #008000;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <label for="booktool">Book Flight:</label>
+        <select id="booktool" name="selectbook">
+            <option value="one-way">one-way flight</option>
+            <option value="returning">return flight</option>
+        </select>
+
+<br>
+    <input type="text" id="date1" name="event" placeholder="MM/DD/YYYY">
+<br>
+    <input type="text" id="date2" name="event" placeholder="MM/DD/YYYY">
+<br>
+
+    <button id="bookbutton">Book</button>
+    <div id="message-area"></div>
+
+    <script>
+        const selectionType = document.getElementById("booktool");
+        const date1Input = document.getElementById("date1");
+        const date2Input = document.getElementById("date2");
+        const bookButton = document.getElementById("bookbutton");
+        const messageArea = document.getElementById("message-area");
+
+        function disableReturning(){
+            const selectedValue = selectionType.value; //creates variable to hold global above SelectionType and get value
+
+            if (selectedValue === "one-way") {
+                date2Input.disabled = true;
+            }
+            else if (selectedValue === "returning") {
+                date2Input.disabled = false;
+            }
+            buttonCheck(); //if you change the selection to one way, return becomes white even if it's ill formatted
+        }
+
+        // event listener, when the user changes the dropdown, the browser calls disableReturning to update date2 disabled state.
+        selectionType.addEventListener("change", disableReturning);
+
+        // call the function once when the page loads to set the initial state, the default selected option is one-way.
+        disableReturning();
+
+        // event Listener for the Book Button Click
+        bookButton.addEventListener("click", function() {
+            let message = "";
+            const date1 = date1Input.value; // value from global
+            const date2 = date2Input.value; // gets value from global
+            const flightType = selectionType.value; //uses value from the global at beggining (selectionType)
+
+            if (flightType === "one-way") {
+                message = `You have booked a one-way flight departing on ${date1}.`;
+            } else if (flightType === "returning") {
+                message = `You have booked a return flight departing on ${date1} and returning on ${date2}.`;
+            }
+
+            // Display the final confirmation message in the div
+            messageArea.textContent = message;
+        });
+
+        // checks both format and logical date order and then enables/disables the Book button and colors inputs
+        function buttonCheck() {
+            let allValid = true; //assumes all is valid for starters
+            const isReturningFlight = selectionType.value === "returning"; //boolean true when user selected returning flight
+            const dateInputs = [date1Input, date2Input]; //make array of two dates so can loop over
+
+//If you want strict validation for MM/DD/YYYY only, you can’t rely on Date.parse() alone. You need a regex check before parsing. For example:W
+// Require exactly MM/DD/YYYY const datePattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/\d{4}$/;
+
+            // Colors textfield red and disables button B
+            dateInputs.forEach(input => { // goes through each input one by one
+                if (!input.disabled) { //if return flight is disabled, is ignored
+                    const dateValue = input.value.trim(); // Get what the user typed ("12/12/2025"). and trim removes extra spaces
+                    // Date.parse returns NaN for ill-formatted/invalid dates, or a number (timestamp)
+                    const dateTimestamp = Date.parse(dateValue); // try turning string into a real date, if works we we get a number (milliseconds since 1970), if fails gets NaN
+
+
+                    if (dateValue === "") {
+                        // keep white if user hasn't typed yet
+                        input.style.backgroundColor = 'white';
+                        allValid = false; // still block the button
+                    }
+                    else if (!isNaN(dateTimestamp)) {
+                        // T is valid
+                        input.style.backgroundColor = 'white';
+                    } else {
+                        // T is ill-formatted
+                        input.style.backgroundColor = 'red'; // turns red
+                        allValid = false; //allvalid is false
+                    }
+                } else {
+                    // T is disabled (one-way flight): ensure no coloring
+                    input.style.backgroundColor = 'white';
+                }
+            });
+
+                // 2. Date Comparison Check (Only for return flights)
+            if (allValid && isReturningFlight) {
+                // Since format is validated, we can safely parse the dates
+                const date1Timestamp = Date.parse(date1Input.value);
+                const date2Timestamp = Date.parse(date2Input.value);
+
+                // Check if T2's date is strictly before T1's (date2 < date1)
+                if (date2Timestamp < date1Timestamp) {
+                    allValid = false;
+                    
+                    // Optional: Visually highlight the conflict
+                    date1Input.style.backgroundColor = 'orange'; 
+                    date2Input.style.backgroundColor = 'orange';
+                }
+            }
+            // Final state: Button is disabled if allValid is false (due to format or comparison)
+            bookButton.disabled = !allValid;
+        }
+
+        // --- Event Listeners ---
+        date1Input.addEventListener("input", buttonCheck); //attach listener whenever user type to run buttoncheck and validate live
+        date2Input.addEventListener("input", buttonCheck);
+        
+        // Validate whenever the flight type is changed
+        selectionType.addEventListener("change", disableReturning);
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+</head>
+<body>
+    <input type="text" id="textcelsius" value="">
+    <span>°C = </span>
+    <input type="text" id="textfahrenheit" value="">
+    <span>°F</span>
+
+    <script>
+        let celso = document.getElementById("textcelsius");
+        let fahr = document.getElementById("textfahrenheit");
+
+        celso.addEventListener("input", function() {
+            let celsius = parseFloat(celso.value); // Convert input to a float
+            if (isNaN(celsius)) return; // Handle non-numeric input
+            let fahrenheit = (celsius * 9/5) + 32; // Convert Celsius to Fahrenheit
+            fahr.value = fahrenheit.toFixed(2); // Update Fahrenheit field with 2 decimal places
+        });
+
+        fahr.addEventListener("input", function() {
+            let fahrenheit = parseFloat(fahr.value);
+            if (isNaN(fahrenheit)) return; // { celso.value = ""; return; } for clearing when non-numeric input
+            let celsius = (fahrenheit - 32) * 5/9;
+            celso.value = celsius.toFixed(2);
+        });
+    </script>
+</body>
+</html>

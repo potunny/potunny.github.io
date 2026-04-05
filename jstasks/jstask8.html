@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function converter(length, from, to){
+      if (from === 'miles'){
+        result = length * 1.60934;
+        return result;
+      }
+      else if (from === 'km'){
+        result = length / 1.60934;
+        return result;
+      }
+      //else if (from === 'ft' && to === 'km'){}
+      //you see where this is going now huh?
+      //now i was going to create a new logic that makes a bunch of:
+      //else if from && to -> this becomes unmanagable fast
+      /* UNIVERSAL SOLUTION:
+            function converter(length, from, to) {
+        // conversion rates to meters
+        const toMeters = {
+          km: 1000,
+          miles: 1609.34,
+          ft: 0.3048,
+        };
+
+        // conversion rates from meters
+        const fromMeters = {
+          km: 1 / 1000,
+          miles: 1 / 1609.34,
+          ft: 1 / 0.3048,
+        };
+
+        // step 1: convert the input to meters
+        const meters = length * toMeters[from];
+
+        // step 2: convert meters to the target unit
+        return meters * fromMeters[to];
+      }
+
+      console.log(converter(80, 'km', 'ft'));
+      */
+    }
+    console.log(converter(80, 'km', 'ft'));
+  </script>
+</body>
+</html>

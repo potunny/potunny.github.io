@@ -5,11 +5,13 @@
     <link rel="icon" type="image/png" href="cookieimages/cookieicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fortune Cookie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style> /*Did not clean and review CSS*/
         body { 
             font-family: Arial, sans-serif;
             text-align: center;
-            padding-top: 140px;
+            padding-top: 54px;
         }
         /* DEFAULT (applies to small screens): solid purple, NO image at all */
             .bgimagediv {
@@ -79,19 +81,6 @@
 
         #fortune.active { /*when active, shows magical css above for phrase*/
             display: inline-block;
-        }  
-        .topbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 24px;
-            box-sizing: border-box;
-            z-index: 1000;
-            background: transparent;
         }
         #buycredbutton {
             padding: 5px 10px;
@@ -209,22 +198,143 @@
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
         }
+
+        /* ── NAVBAR ── */
+        .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 100;
+          background-color: #000;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .navbar-main {
+          display: flex;
+          align-items: center;
+          font-family: 'Rajdhani', sans-serif;
+          font-size: 1.1rem;
+        }
+
+        .navbar-main a {
+          display: inline-block;
+          padding: 16px 20px;
+          color: #ff0040;
+          text-shadow: 0 0 5px #ff0040;
+          text-decoration: none;
+          transition: background 0.2s;
+        }
+
+        .navbar-main a:hover {
+          background-color: rgba(255, 0, 64, 0.1);
+        }
+
+        .navbar-main .nav-home {
+          background-color: #ff0040;
+          color: #000;
+          text-decoration: none;
+        }
+
+        .navbar-main .nav-home:hover {
+          background-color: #ff3366;
+        }
+
+        /* hamburger button — visible only on small screens */
+        .nav-toggle {
+          display: none;
+          margin-left: auto;
+          padding: 16px 20px;
+          background: none;
+          border: none;
+          color: #ff0040;
+          font-size: 1.1rem;
+          cursor: pointer;
+        }
+
+        /* links hidden on small screens */
+        .nav-links {
+          display: flex;
+        }
+
+        /* mobile menu for small screens */
+        .navbar-mobile {
+          display: none;
+          flex-direction: column;
+          background-color: #111;
+          border: 1px solid rgba(255, 0, 64, 0.3);
+          max-height: 60vh;
+          overflow-y: auto;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+        }
+
+        .navbar-mobile a {
+          display: block;
+          padding: 16px 20px;
+          color: #ff0040;
+          text-shadow: 0 0 5px #ff0040;
+          font-size: 1.1rem;
+          border-top: 1px solid rgba(255, 0, 64, 0.2);
+          font-family: 'Rajdhani', sans-serif;
+          text-decoration: none;
+        }
+
+        .navbar-mobile a:hover {
+          background-color: rgba(255, 0, 64, 0.1);
+        }
+
+        .navbar-mobile.open {
+          display: flex;
+        }
+
+        @media (max-width: 600px) {
+          .nav-links {
+            display: none;
+          }
+
+          .nav-toggle {
+            display: block;
+          }
+        }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-main">
+        <a href="index.html" class="nav-home">Home</a>
+        <div class="nav-links">
+          <a href="work.html">Work</a>
+          <a href="contact.html">Contact</a>
+          <a href="cookie.html" class="active">Cookie</a>
+          <a href="shop.html">Shop</a>
+        </div>
+        <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="navbar-mobile" id="mobileMenu">
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="cookie.html" class="active">Cookie</a>
+        <a href="shop.html">Shop</a>
+      </div>
+    </nav>
+
     <!--confused myself with divs, need to study more css-->
     <div class="bgimagediv" aria-hidden="true"></div> <!--aria is for accessibility hide or screen reader hiding-->
-    <div class="topbar">
-        <div id="homebuttondiv">
-            <button id="homebutton" onclick="location.href='index.html'">Home</button>
-        </div>
-        <div class="buy-wrapper">
-            <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button> <!--starts disabled-->
-            <button id="addmoneybutton" onclick="addMoney()">Add One Money</button>
-            <p id="creditcount">Money: 0</p>
-            <p id="cookieamount">Cookies: 0</p>
-            <span id="purchaseMsg"></span>
-        </div>
+    <div class="buy-wrapper">
+        <button id="buycredbutton" onclick="buyCookie()" disabled>Buy One Cookie</button> <!--starts disabled-->
+        <button id="addmoneybutton" onclick="addMoney()">Add One Money</button>
+        <p id="creditcount">Money: 0</p>
+        <p id="cookieamount">Cookies: 0</p>
+        <span id="purchaseMsg"></span>
     </div>
     <div class="centered">
         <img id="cookieimage" src="cookieimages/realcookie.png" alt="Fortune Cookie">
@@ -233,6 +343,12 @@
         <span id="warnMsg"></span>
     </div>
     <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+
 
     // Buying
     let money = 0; //initial money
@@ -275,7 +391,7 @@ function showFortune() { //and changes cookie picture
 
         // after 3 seconds, reset to original image
         setTimeout(() => {
-            cookieImage.src = "realcookie.png";   // back to normal cookie
+            cookieImage.src = "cookieimages/realcookie.png";   // back to normal cookie
             cookieImage.classList.remove("cracked"); // remove cracked class
         }, 2000); // 2000 milliseconds = 2 seconds
 
@@ -385,6 +501,14 @@ function generateFortune() {
         .replace("{object_place}", objectPassivePair)
         .replace("{action_passive}", actionPassivePair);
 }
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("mobileMenu");
+      const toggleButton = document.querySelector(".nav-toggle");
+      if (!toggleButton.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.remove("open");
+      }
+    });
     </script>
     <div class="project-note">
         My first JavaScript project

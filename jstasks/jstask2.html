@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    button {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      background-color: rgb(145, 255, 154);
+    }
+    </style>
+</head>
+<body>
+  <main id="buttonmain">
+  <button onclick="addtostring('1')">1</button>
+  <button onclick="addtostring('2')">2</button>
+  <button onclick="addtostring('3')">3</button>
+  <button onclick="addtostring(' + ')">+</button>
+  <br>
+  <button onclick="addtostring('4')">4</button>
+  <button onclick="addtostring('5')">5</button>
+  <button onclick="addtostring('6')">6</button>
+  <button onclick="addtostring(' - ')">-</button>
+  <br>
+  <button onclick="addtostring('7')">7</button>
+  <button onclick="addtostring('8')">8</button>
+  <button onclick="addtostring('9')">9</button>
+  <button onclick="addtostring(' * ')">*</button>
+  <br>
+  <button onclick="addtostring('0')">0</button>
+  <button onclick="addtostring(' . ')">.</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="addtostring(' / ')">/</button>
+  <br>
+  <button onclick="clearstring()">C</button>
+</main>
+
+  <script>
+    let stringo = "";
+
+    function addtostring(returno){
+      stringo += returno;
+      console.log(stringo);
+      // console.log(typeof stringo);
+    }
+
+    function calculate(){
+      let calculation = eval(stringo); //eval makes the string become a number
+      console.log(calculation);
+      // console.log(typeof calculation);
+    }
+
+    function clearstring(){
+      stringo = "";
+      console.log("Clear");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Exercise 1</title>
+</head>
+<body>
+  <!--exercise of improving exersice jstask1-->
+  <button id="showbtn" onclick="startcart()">Show quantity</button>
+  <button id="addbtn" onclick="addone()">Add to cart</button>
+  <button id="btn2">+2 disabled</button>
+  <button id="btn3">+3 disabled</button>
+  <button id="resetbtn" onclick="reset()">Reset Cart</button>
+  <button id="minusbtn" onclick="minus()">-1</button>
+
+  <script>
+    let showbtn = document.getElementById("showbtn");
+    let addbtn = document.getElementById("addbtn");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+    let resetbtn = document.getElementById("resetbtn");
+    
+    let cart = 0;
+
+    function startcart(){
+      showbtn = cart;
+      console.log("You have " + showbtn + " items in your cart.");
+    }
+
+    function addone(){
+      if (cart < 10){
+        cart = cart + 1;
+      console.log(cart);
+      }
+      if (cart === 10){
+        console.log("cart is full (10 items)");
+      }
+    }
+
+    function reset(){
+      cart = 0;
+      console.log(cart);
+    }
+
+    function minus(){
+      if (cart > 0){
+        cart--;
+        console.log(cart);
+      }
+      else{
+        console.log("cart is already empty")
+      }
+    }
+  </script>
+</body>
+</html>

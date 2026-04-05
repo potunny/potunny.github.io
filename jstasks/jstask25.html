@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles/css2.css">
+</head>
+
+<body>
+  <div id="calcdiv">
+  <p id="display"><span id="calculation"></span></p>
+  </div>
+  <div id="buttonsdiv">
+  <main id="buttonmain"></main>
+  </div>
+  <div id="containersult">
+  <p>Previous result:</p><span id="result"></span>
+  </div>
+
+  <script>
+    //load saved calculation or default to empty string
+    let stringo = localStorage.getItem("calculation") || "";
+    console.log("Loaded:", stringo);
+    //load saved result or default to empty string
+    const resultDisplay = document.getElementById("result");
+    let savedResult = localStorage.getItem("result") || "";
+    resultDisplay.textContent = savedResult;
+
+    const buttons = [
+      "1", "2", "3", " + ",
+      "4", "5", "6", " - ",
+      "7", "8", "9", " * ",
+      "0", ".", "=", " / ",
+      "C"                    //you just need to change here to add more buttons now
+    ];
+
+    const container = document.getElementById("buttonmain"); //gets that container
+    const calculationDisplay = document.getElementById("calculation");
+
+
+    calculationDisplay.textContent = stringo; //display saved calculation
+
+    buttons.forEach(value => { //value could be called banana here, it goes through each text in buttons
+      const btn = document.createElement("button"); //and creates a button
+      btn.textContent = value; //makes the button text the value in buttons
+
+      if (value === "=") {
+        btn.onclick = calculate;
+      } 
+      else if (value === "C") {
+        btn.onclick = clearstring; 
+      } 
+      else {
+        btn.onclick = () => addtostring(value); //just adds to the string calculation
+      }
+
+      container.appendChild(btn);//inserts the button into html(?)
+
+      if ([" + ", " - ", " * ", " / "].includes(value)) { //if it's one of those symbols it adds a line break
+        btn.classList.add('operator'); //add class for styling orange buttons
+        container.appendChild(document.createElement("br"));
+
+      }
+    }); //ends foreach loop
+
+    function addtostring(v) {
+      stringo += v;
+      //save updated calculation:
+      localStorage.setItem("calculation", stringo);
+      console.log(stringo);
+      //display calc
+      calculationDisplay.textContent = stringo;
+    }
+
+    function calculate() {
+      try {
+        const result = eval(stringo); //eval makes the string become a js calculation, could cause errors but try is trying their best to handle 2++2 example
+
+        resultDisplay.textContent = result; 
+        localStorage.setItem("result", result);
+
+      } catch {
+        resultDisplay.textContent = "Error";
+      }
+    }
+
+    function clearstring() {
+      stringo = "";
+      //clear saved calculation:
+      localStorage.setItem("calculation", "");
+      console.log("Clear");
+      calculationDisplay.textContent = stringo;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #csstitle{
+        background-color: rgb(2, 2, 2);
+        border: 2px solid rgb(184, 255, 17);
+        color: royalblue;
+        padding: 5px;
+        border-radius: 10px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+
+      .ytbtn{
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 10000px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      .subscribedbtn{
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+
+      #orderinput{
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      #shipbtn{
+        font-size: 15px;
+        padding: 12px 16px; /*reminder shortcut left-right second and first is top/bottom*/
+        background-color: green;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>DOM Projects <span id="csstitle">CSS</span></h2>
+    <h4>YouTube Subscribe Button:</h4>
+    <button class="ytbtn" onclick="subscribeYT()">Subscribe</button>
+    <h4>Rock, Paper, Scissors Version 4:</h4>
+    <a href="jstask23.html">Click here</a>
+    <br><br>
+    <h4>Shipping Calculator:</h4>
+    <p>tip: pressing <mark>Enter</mark> to calculate works here!</p>
+    <p>Orders <strong>under $40 = +$10</strong> shipping</p>
+    <p><strong>$40 and over = free</strong> shipping</p>
+    <input type="number" id="orderinput" placeholder="Enter order price" onkeydown="enterkey(event)"></input> <!--this doesn't mean js receives a number, it receives a string-->
+    <button id="shipbtn" onclick="calculateshipping()">Calculate</button>
+    <p id="shipresultp"></p>
+
+    <script>
+      const ytbtnEl = document.querySelector('.ytbtn');
+      const shipEl = document.querySelector('#shipresultp');
+      const inputEl = document.querySelector('#orderinput');
+
+      function subscribeYT() {
+        if (ytbtnEl.innerHTML === "Subscribed") {
+          ytbtnEl.innerHTML = "Subscribe";
+          ytbtnEl.classList.remove('subscribedbtn');
+          return;
+        }
+        ytbtnEl.innerHTML = "Subscribed"; //could have use innerText
+        ytbtnEl.classList.add('subscribedbtn');
+      }
+
+      function calculateshipping(){
+        const makenumber = Number(inputEl.value); //converts string to number first
+
+        if (makenumber < 40){
+          shipEl.innerHTML = `<strong>Total: $</strong>${makenumber + 10}`;
+        }
+        else{
+          shipEl.innerHTML = 'Free shipping!';
+        }
+      }
+
+      function enterkey(event){ //event to detect key press and talk to html input
+        if (event.key === "Enter"){
+          calculateshipping();
+        }
+      }
+
+    </script>
+  </body>
+  </html>

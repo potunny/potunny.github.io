@@ -16,10 +16,10 @@
       <div class="navbar-main">
       <a href="#" class="nav-home">Home</a>
       <div class="nav-links">
-        <a href="getintouch.html" target="_blank">Work</a>
-        <a href="getintouch.html" target="_blank">Get in Touch</a>
-        <a href="cookie.html" target="_blank">Cookie</a>
-        <a href="notready.html" target="_blank">Extra</a>
+        <a href="work.html">Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="cookie.html">Cookie</a>
+        <a href="shop.html">Shop</a>
       </div>
       <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
         <i class="fa-solid fa-bars"></i>
@@ -28,10 +28,10 @@
 
     <!-- Mobile menu -->
     <div class="navbar-mobile" id="mobileMenu">
-      <a href="getintouch.html" target="_blank">Work</a>
-      <a href="getintouch.html" target="_blank">Get in Touch</a>
-      <a href="#" target="_blank">Cookie</a>
-      <a href="#" target="_blank">Extra</a>
+      <a href="work.html">Work</a>
+      <a href="contact.html">Contact</a>
+      <a href="cookie.html">Cookie</a>
+      <a href="shop.html">Shop</a>
     </div>
   </nav>
 
@@ -83,32 +83,49 @@
       </div>
       <div class="projects-grid">
         <div class="project-card">
-          <div class="project-image"></div>
-          <div class="project-content">
-            <h3>Project One</h3>
-            <p>Interactive web experience built with vanilla JavaScript and responsive CSS design.</p>
-            <span class="project-tech">HTML • CSS • JavaScript</span>
-          </div>
+          <a href="jstasks/jstasks.html" class="project-link" target="_blank" title="Open Project Three">
+            <div class="project-image"><img src="thumb/jstasks.png" alt="Project Three Thumbnail"></div>
+            <div class="project-content">
+              <h3>JavaScript Tasks</h3>
+              <p>Started in 2026 as part of supersimple.dev's JavaScript course, this ever-growing project compiles every hands-on task and exercise completed along the way — a living record of learning JS from the ground up.</p>
+              <span class="project-tech">HTML</span>
+              <span class="project-tech">CSS</span>
+              <span class="project-tech">JavaScript</span>
+              <span class="project-tech">2026</span>
+              <span class="project-tech">In Progress</span>
+            </div>
+          </a>
         </div>
         <div class="project-card">
-          <div class="project-image"></div>
-          <div class="project-content">
-            <h3>Project Two</h3>
-            <p>Interactive web experience built with vanilla JavaScript and responsive CSS design.</p>
-            <span class="project-tech">HTML • CSS • JavaScript</span>
-          </div>
+          <a href="7guis/7guis.html" class="project-link" target="_blank" title="Open Project Three">
+            <div class="project-image"><img src="thumb/7guis.png" alt="Project Three Thumbnail"></div>
+            <div class="project-content">
+              <h3>7GUIs Challenge</h3>
+              <p>A benchmark of seven progressively complex GUI tasks covering bidirectional data flow, constraint modelling, concurrency, and change propagation — implemented in vanilla JavaScript. Started in 2025, ongoing.</p>
+              <span class="project-tech">HTML</span>
+              <span class="project-tech">CSS</span>
+              <span class="project-tech">JavaScript</span>
+              <span class="project-tech">2025</span>
+              <span class="project-tech">In Progress</span>
+            </div>
+          </a>
         </div>
         <div class="project-card">
-          <div class="project-image"></div>
-          <div class="project-content">
-            <h3>Project Three</h3>
-            <p>Interactive web experience built with vanilla JavaScript and responsive CSS design.</p>
-            <span class="project-tech">HTML • CSS • JavaScript</span>
-          </div>
+          <a href="guaxinim/index.html" class="project-link" target="_blank" title="Open Project Three">
+            <div class="project-image"><img src="thumb/guaxi.png" alt="Project Three Thumbnail"></div>
+            <div class="project-content">
+              <h3>First Website</h3>
+              <p>Final project for CS50: Introduction to Computer Science by Harvard University (2024) — a raccoon-themed fan page featuring a functional shopping cart, built while learning JavaScript for the first time. Where it all started.</p>
+              <span class="project-tech">HTML</span>
+              <span class="project-tech">CSS</span>
+              <span class="project-tech">JavaScript</span>
+              <span class="project-tech">2024</span>
+            </div>
+          </a>
         </div>
       </div>
       <div class="portfolio-button-container">
-        <a href="notready.html" class="portfolio-button" target="_blank">View Full Portfolio</a>
+        <a href="work.html" class="portfolio-button">View Full Portfolio</a>
       </div>
     </div>
   </section>
@@ -141,6 +158,15 @@
       const menu = document.getElementById("mobileMenu");
       menu.classList.toggle("open");
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", function(event) {
+      const menu = document.getElementById("mobileMenu");
+      const toggleButton = document.querySelector(".nav-toggle");
+      if (!toggleButton.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.remove("open");
+      }
+    });
   </script>
 
 </body>

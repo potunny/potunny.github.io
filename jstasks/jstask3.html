@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+  <button id="rockbtn" onclick="generaterock();">Rock</button>
+  <button id="paperbtn">Paper</button>
+  <button id="scissorsbtn">Scissors</button>
+
+  <script>
+    const rockbtn = document.getElementById("rockbtn");
+    const paperbtn = document.getElementById("paperbtn");
+    const scissorsbtn = document.getElementById("scissorsbtn");
+    //1 is rock, 2 is paper and 3 is scissors
+
+    function generaterock(){
+      const randomi = Math.floor(Math.random() * 3) + 1;
+      console.log(randomi);
+      if (randomi === 1){
+        console.log("computer chose rock, tie!")
+      }
+      else if (randomi === 2){
+        console.log("computer chose paper, you lose!")
+      }
+      else if (randomi === 3){
+        console.log("computer chose scissors, you win!")
+      }
+    }
+    // you get the idea for the rest of the code
+
+    // teacher's solution was to do a inline script in body as:
+    /* button onclick const randomnum and let computermove '';
+    and then he created a if statement below each onclick button with 3 conditions,
+    computermove rock if randomnum is bigger than zero && randomnum < than 1/3
+    computermove paper if >= than 1/3 and < 2/3 (and so on)
+    console.log(computermove)
+    then he creates a let result ""
+    creates another if and if else for each rock paper with console log tie or win etc
+    at the end a consolelog with you picked rock. computer picked $computermove and $result
+    he just needs to copy paste for the next button and change the part where says:
+    tie, win, lose and the alert part
+    */
+  </script>
+</body>
+</html>

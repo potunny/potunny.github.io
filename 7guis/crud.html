@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        #externalbox{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #namesurnamediv{
+            width: 150px;
+            height: 200px;
+            background-color: green;
+        }
+        #inputdiv{
+            display: flex;
+            justify-content: flex-start;
+            width: 300px;
+            height: 18px;
+        }
+        #inputbox{
+            width: 80px;
+        }
+        #namediv{
+            width: 150px;
+            height: 200px;
+        }
+        #superexternalbox{
+            width: 300px;
+            border: 2px solid black;
+            flex-direction: column;
+            align-items: center;
+            background-color: yellow;
+        }
+        #namediv{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+        .namesurdiv{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 150px;
+            height: 50px;
+        }
+        #listbox{
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-self: center;
+            justify-content: flex-start;
+            align-items: center;
+            width: 150px;
+            height: 100px;
+            overflow-y: auto;
+            background-color: blue;
+        }
+        #boxesrow{
+            display: flex;
+            flex: 1;
+            background-color: purple;
+            gap: 2px;
+        }
+        .listitem.selected{
+            background-color: orange;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- CRUD - Create, Read, Update, Delete 
+     Doing a ToDo list is interesting to learn because Insta, Twitter, Linkedin, all these
+     apps, use some sort of todo list logic to make posts
+     exemplo básico, mínimo: const minitwitter: usuarios é uma lista array, posts é outra
+     create - function cria post, dá push em um array, id minitwitter.posts.length +1 (pra saber qual post é qual)
+     read - function pegapost(){ return minitwitter.posts} console.log(pegapost())-->
+    <div id="superexternalbox">CRUD
+     <div id="externalbox">
+        <div id="inputdiv">
+        <span>Filter prefix:</span><input type="text" id="inputbox">
+        </div>
+        <div id="boxesrow">
+            <div id="listbox">
+                <div class="listitem">Emil, Hans</div>
+                <div class="listitem">Munstermann, Max</div>
+                <div class="listitem">Tisch, Roman</div>
+            </div>
+            <div id="namediv">
+                <div class="namesurdiv">Name: <input type="text" id="nameInput"></div>
+                <div class="namesurdiv">Surname: <input type="text" id="surnameInput"></div>
+            </div>
+        </div>
+     </div>
+     <button id="Create">Create</button>
+     <button id="Update">Update</button>
+     <button id="Delete">Delete</button>
+     </div>
+     <script>
+        const listItems = document.querySelectorAll('.listitem');
+        const createbutton = document.getElementById('Create');
+        const nameInput = document.getElementById('nameInput');
+        const surnameInput = document.getElementById('surnameInput');
+
+        listItems.forEach(item => {
+            item.addEventListener('click', () => {
+                listItems.forEach(i => i.classList.remove('selected'));  // Remove selected from ALL
+                item.classList.add('selected');  // Add selected css class ONLY to clicked item
+
+                //Show clicked name in inputs
+                const fullText = item.textContent;  // Gets "Emil, Hans"
+                const parts = fullText.split(', ');  // Splits into ["Emil", "Hans"]
+                
+                const surname = parts[0];  // "Emil"
+                const name = parts[1];     // "Hans"
+                
+                nameInput.value = name;
+                surnameInput.value = surname;
+            });
+        });
+
+        //create
+
+        function clickListener(item){
+            listItemsSelected = document.querySelector('listitem.selected');
+        }
+
+        createbutton.addEventListener('click', function() {
+            listItems.selected = document.querySelector('.listitem.selected');
+            if(nameInput.value && surnameInput.value) {
+                const newItem = document.createElement('div');
+                newItem.classList.add('listitem');
+                newItem.textContent = `${surnameInput.value}, ${nameInput.value}`;
+                document.getElementById('listbox').appendChild(newItem);
+            } else {
+                alert('Please fill in both name and surname to create a new entry.');
+            }
+        });
+
+        //read
+        //update
+        //delete
+     </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="headsbtn" onclick="fliphead()">Heads</button>
+  <button id="tailsbtn" onclick="fliptail()">Tails</button>
+  <p id="scorep">Score: </p>
+  <script>
+    const heads = document.getElementById("headsbtn");
+    const tails = document.getElementById("tailsbtn");
+    let wins = 0;
+    let losses = 0;
+
+    //I got auto help for the next 3 lines
+    //The tip in the real exercise said I would need to use JSON.stringify 
+    wins = parseInt(localStorage.getItem("wins")) || 0;
+    losses = parseInt(localStorage.getItem("losses")) || 0;
+    updateScore();
+  
+    function fliphead(){
+      const result = Math.random() < 0.5 ? "Heads" : "Tails";
+      alert(result);
+      if (result === "Heads"){
+        wins = wins + 1;
+        updateScore();
+      }
+      else if (result === "Tails"){
+        losses = losses + 1;
+        updateScore();
+      }
+    }
+
+    function fliptail(){
+      const result = Math.random() < 0.5 ? "Heads" : "Tails";
+      alert(result);
+      if (result === "Tails"){
+        wins = wins + 1;
+        updateScore();
+      }
+      else if (result === "Heads"){
+        losses = losses + 1;
+        updateScore();
+      }
+    }
+
+    function updateScore() {
+      document.getElementById("scorep").textContent = `Wins: ${wins} | Losses: ${losses}`;
+      localStorage.setItem("wins", wins);
+      localStorage.setItem("losses", losses);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function greet(name){
+      for (let i = 0; i < 4; i++){
+        if (name[i]){
+        console.log("Hello " + name[i] + "!");
+        }
+        else{
+          console.log("Hello there.");
+        }
+      }
+    }
+    greet(["Beatriz", "Alex", "Ana"]);
+    /*this exercise gives a perfect example of truthy/falsy and a loop
+    because in if name[i] means that if that name parameter is true, run it 4 times
+    else (falsy because I only put 3 names so the fourth name is _undefined_
+    also I used a for loop (never used much before) and put a if else inside it
+    */
+  </script>
+</body>
+</html>

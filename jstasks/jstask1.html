@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Exercise 1</title>
+</head>
+<body>
+  <!--comments are for homework correction-->
+  <button id="showbtn" onclick="startcart()">Show quantity</button>
+  <!--could be done line above as onclick="console.log(`Cart quantity: ${cart}`);"-->
+  <button id="addbtn" onclick="addone()">Add to cart</button>
+  <!--line above could have written the js here for cart = cart + 1 and do console log too, same for below buttons-->
+  <button id="btn2">+2</button>
+  <button id="btn3">+3</button>
+  <button id="resetbtn" onclick="reset()">Reset Cart</button>
+
+  <script>
+    let showbtn = document.getElementById("showbtn");
+    let addbtn = document.getElementById("addbtn");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+    let resetbtn = document.getElementById("resetbtn");
+    
+    let cart = 0;
+
+    function startcart(){
+      showbtn = cart;
+      console.log("You have " + showbtn + " items in your cart.");
+    }
+
+    function addone(){
+      cart = cart + 1;
+      // or cart += 1; or cart++; which is the same as cart = cart + 1 because it adds one and reassigns the value to cart
+      // += works for any number, so cart += 2 is the same as cart = cart + 2, cart++ is only +1
+      console.log(cart);
+      console.log(typeof cart); //shows the type of variable, in this case number
+    }
+
+    function reset(){
+      cart = 0;
+      console.log(cart);
+    }
+  </script>
+</body>
+</html>

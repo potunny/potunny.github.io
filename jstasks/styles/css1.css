@@ -1,0 +1,98 @@
+body{
+    font-family: sans-serif, Arial, Helvetica;
+    background-color: white;
+    margin: 20px;
+}
+
+#addcartbtn{
+    background-color: rgb(255, 216, 20);
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 8px 50px;
+    border: none;
+    border-radius: 10000px;
+    cursor: pointer;
+}
+
+#uberbtn1{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#uberbtn2{
+    background-color: rgb(230, 230, 230);
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: lightgray;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.is-active{
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+#orderinput{
+    padding: 10px;
+    font-size: 15px;
+    }
+
+#shipbtn{
+    font-size: 15px;
+    padding: 12px 16px; /*reminder shortcut left-right second and first is top/bottom*/
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+#errorship{
+    color: red;
+    font-weight: bold;
+}
+
+#enterspan{
+    background-color: black;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#errorship.fade-in {
+    animation: fadeIn 1s ease;
+}
+
+#errorship.slide-in {
+    animation: slideIn 1s ease;
+}

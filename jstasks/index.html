@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    </head>
+  <body>
+    Notes
+    <!--1. Math and numbers
+    Order of operations */first, if we have them both it will do from left to right, then + no matter order.
+    use () to ignore it and do what is inside () no matter
+    % has to be done manually. 1% is 1/100 (1) 10% is 10/100 (0.1), so if you wanna know how much is 10% of 30,
+    you gotta do 30 * 0.1 (:
+    Computer is a bit dummy when calculating money because of small inacuracies with floats (1.20 money example)
+    So this is how you work with money: you calculate cents only, wanna do 20,23 + 7,23? then do:
+    (2023 + 723) / 100  you divide by 100 to turn back to a float
+    example to round number shown in 10% tax amount:
+    Math.round((2095 + 799) * 0.1) / 100   ----2.89 instead of 2.894
+
+    Strings
+    Also follow the order of operations, so if you encounter the problem of wanting to combine a string and want
+    also to calculate something, put "$" + (1 + 2), so it will first calculate making it 3 and do "$3", converting
+    back to a string after doing the calculation. Escape characters: \n and \ But I think it's better to 
+    insert a value into a string as: `value is: ${1 + 1}`. Recommended to use '' for most and `` 
+    for multi-line strings and concatenation (using ${})
+    
+    Variables
+    They are like boxes that store a value
+    vari1 = 5
+    vari1 = vari1 + 1
+    console log will be 6 because it means it increased the value of that box by one
+    
+    Booleans
+    == converts typeof so 5 will be true compared to '5.00', better to use ===
+    same case to != and !==
+
+    If Statements
+    the logical && operator works if the both sides are true, if one of the sides
+    are false, it will return false. 
+    Truthy and falsy -> if (0) {console.log(example);} <- 0 behaves like falsy
+    false values: 0, null, "", undefined, nan... else is true
+    why use it? let's say you wanna display console.log cart has items, instead of
+    having to write if cartquantity > 0 display console, write if (cartquantity)
+    because cartquantity will return true because it's not 0 (false) 
+    detail: it also works with !, so !0 will return true
+    NaN -> pops when you try doing invalid math like 5 / "pie"
+    curiosity: if you do if nan === nan, it will return false because nan is not
+    comparable to itself
+    undefined -> let variable1, consolelog variable1 (you did not give it a value)
+    detail: this only works with let, if we really need to undefine a const we need to
+    do const variable1 = underfined; first
+    // all below are shortcuts for if statments, we don't have to use them but good to know
+    Ternary: shorter for if else true ? 'truthy' : falsy (:false is the else part)
+    advantage of ternary is that we can save it in a variable
+    if we write const bob = true ? 'truthy' : falsy and consolelog bob, it returns
+    truthy value
+    && as guard operator -> can work as a short-circuit, for example line false && console.log('hi'); 
+    it stops in the falsy and ignores the rest returning falsy, can also be saved in a variable
+    like a shortcut for if (condition) {console.log('hi');}, it blocks code from being executed
+    || -> const currency = undefined || 'USD'; it will ignore first part and jump to usd because 
+    undefined is falsy
+    detail: if ((age >= 18 && hasPermission) || isVIP) -> using both signs like && and || is a thing
+
+    Functions
+    Make code reusable and easy to update in one place only
+    return -> get a value out after executing function, can return a variable, a calc 1+1 or anything
+    that gives a value back like for example return math.random();
+    if you use just the word return, it will return undefined! also, if you use return in a function,
+    the code will stop immediately, so if you write console.log cheese after that, it won't cheese
+    important -> besides making a variable out of your scope so it can be accessed, you can access it
+    by returning it's value in the end. It's best practice to return instead of making global variables
+    parameter -> is the oposite of a return, instead of getting something out of a function, it puts
+    something _in_.
+    function calculatetax(cost){console.log cost * 0.1} calculatetax(1000); you can use two parameters
+    for example cost * tax and use different values everytime and make one function
+    you can set a default value for a parameter also like functionx(bob, bob = 1)
+    for the rock and scissors game, he finished the code with putting button onclick 'paper' or whatever
+    parameter, and made a single function down there to handle if it was === paper or === rock, and he
+    put a if inside a if too. 
+    He also is using a function inside a function like this:
+    He has a main function where the first line is setting a var like const computermove = functionoutside();
+    so that function outside the main function down there is called to figure out the move and it returns
+    a string like paper, so computer move is set and the main function is run to spit out the message
+          Objects:
+    const product = {
+    name: 'socks',
+    price: 1090
+    };
+    console.log(product.name);
+    //reasigning:
+    product.name = 'cotton socks';
+    console.log(product);
+    //adding a new property later
+    product.newprop = true;
+    //(displays newprop: true at end of object at console.log)
+    //deleting property:
+    delete product.newprop;
+    //typeof product is an object
+    //you can access product.name-thing not only with . but with []
+    product['name-thing']
+    //you can put an object inside an object
+    name: socks
+      rating:{
+      stars: 4.5,
+      people: 98
+      }
+    //and to access the object inside object you can do
+    product.socks.rating
+    //functions are values and you can save them inside objects too
+    fun: function function1(){
+    example
+    }
+    //to call it:
+    product.fun();
+    //interesting: console.log will return a that is a function and console is a object
+    //math is also an object and random is a function inside it
+    //so we call math.random a method as well
+    //we are learning json and localstorage
+    //json is a syntax similar to a js object but it has less features
+    //why use json instead of a js object? because js object can be understood in js, and json can be by many languages
+    //we use json when sending data between computers and when storing data, json does not support functions
+    console.log(JSON.stringify(product2)); this will make a js object be turn into json language
+    json.parse to turn back the json string to a js object (he made a variable for the json string to become clear)
+    //localstorage to save something like a game score when reloading page, only supports strings
+    //at the end of the game you do:
+    localstorage.setitem('score', JSON.stringify(scorething)); //has to convert to json string first and first 'score' is the name
+    this above saves the scorething but doesn't show anything
+    to show it (beginning of the code):
+    let scorethingy = JSON.parse(localStorage.getItem('score')); //gets the score saved before and converts back to js object
+    //to sum up: at the end we store the score converting to json string, at the start of the code we get it and parse it back to js object
+    for the reset score button, we just do localStorage.removeItem('score'); to delete it from storage
+    //the above line will give an error if there is no score saved yet, so we do an if statement:
+    if (score === null){ (or !score which will result true if score is null)
+      score = {wins: 0, losses: 0, ties: 0}; (else score is false and we set it to zeroes)
+    }
+    details:
+    //null vs undefined -> use null when you want the value to be null, undefined can be changed to another value
+    console.log('hello'.lenght); - why does the .lenght work even though hello is a string?
+    js has something called auto-boxing, which makes a string a sort of a object inside a box
+    auto-boxing does not work with null or undefined, works with numbers, true etc
+    //last important detail: objects are references
+    when we create a object like:
+    const object1 = {
+    message: 'hi'
+    };
+      the object1 does not contain hi inside, it contains a reference to the location of hi in the computer's memory
+      the reason of that is to make the code mode efficient, so when we do:
+      object2 = object1, it will point to that place instead of copying the entire object over and over again
+
+      even when we are using const above, we can still reach the message inside and change it with object1.message = "h";
+
+      if we create a object 3 = 'hi' and compare object 3 to 1 it will be false even if the message is the same because the reference is different
+      but object2 will be true for the same as 1
+    shortcuts for objects:
+    const object1 = {message: 'hi'};
+    //if we want to store message in a variable:
+    const message = object1.message;
+    //shortcut:
+    const {message} = object1; //because the variable name is the same as the property name we can do this
+    now we can do a console.log(message); and it will return hi
+    //this works too for multiple variables:
+    const object1 = {message: 'hi', name: 'bob', age: 25};
+    const {message, name, age} = object1;
+    console.log(age); //returns 25
+    //if you stored that age variable before in object1, you can do:
+    const object8 = {age}; //it will create a property age with the value of the variable age
+    shorthand method:
+    const object8 = {age,
+      greet: function(){
+        console.log('hello');
+      }
+    };
+    or even shorter:
+    const object8 = {age,
+      greet(){
+        console.log('hello');
+      }
+    };
+
+      DOM (Document Object Model):
+      if you write document.title = "a" inside script, it will change the current title of tab to this
+      document.body.innerHTML = "b" will replace everything inside page with "b" 
+      (can also replace with something like <button>buttoni</button>)
+        if you console.log the type of document.title inside the script code, it will say it's a object, because it's inside the script
+        document.queryselector to pick an element from the body to the script, (typeof also an object there)
+      all of the queryselectors you can select can also have a inside property of inner html, example:
+      document.querySelector('button').innerHTML = 'changed'; 
+      this line above will change the text content of that button that was previously hi, to changed
+      I suppose it's useful to console.log what you're trying to select to be sure?
+      save the thing you selected to a variable:
+      const button-js = document.querySelector('button').innerHTML;
+      tips: event listeners examples:
+        onclick, oninput, onmouseover, onmouseout, onkeydown (like when you press a key you can do something), onkeyup
+      when you use an event listener like onkeydown, you can use event.key to know which key was pressed:
+      onkeydown="console.log(event);" this you give out the entire event object with lots of info
+      onkeydown="console.log(event.key);" this you get only the key that was pressed
+        example to use enter key to submit a form:
+      <input type="text" onkeydown="if (event.key === 'Enter'){submitform();}"></input> //runs the function if enter is pressed
+
+      HTML, CSS an JS together:
+      interesting he gave an example where the button had two classes, and one he used for js and the other for css
+      -reminder cursor pointer to get the hand thing in css
+      -you want a button to change color when clicked, inside the function that runs when clicked in js, you add:
+      buttonElement.classList.add('newclass'); //where newclass is the css class that changes color, you go to that class in css and set the color you want
+      -i got a bug that the style was not changing even if the js was correct, and that was because i was using id for the button and class for adding class to button
+      and even though the order was correct, the class was on the bottom of css and id first, so class had priority, id still had priority so i made all classes
+      basically, you're adding two classes to this one button, and because they share the same atributes, the one that is last in css will have priority and win
+      -best practice to set the font-family in body in css at the beginning of the code
+      -space inside of a element is called padding and space outside is margin
+      -we can load multiple scripts in html, the order matters because if script2 uses something from script1, script1 has to be loaded first
+      same works with css files too, order matters
+      -toggle personal rabbit hole: use id to select id in js and class to style in css and js (toggle), toggle adds the class if it's not there and removes it if it is there
+    -->
+    
+
+  </body>
+</html>
