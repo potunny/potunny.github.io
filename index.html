@@ -12,14 +12,20 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
-      <div class="navbar-main">
+<nav class="navbar">
+    <div class="navbar-main">
       <a href="#" class="nav-home">Home</a>
       <div class="nav-links">
-        <a href="work.html">Work</a>
-        <a href="contact.html">Contact</a>
+        <a href="work.html" data-i18n="nav_work">Work</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
         <a href="cookie.html">Cookie</a>
-        <a href="shop.html">Shop</a>
+        <a href="shop.html" data-i18n="nav_shop">Shop</a>
+      </div>
+      
+      <div class="lang-toggle" id="langToggle" onclick="toggleLanguage()">
+        <div class="lang-slider" id="langSlider"></div>
+        <span class="active">EN</span>
+        <span>PT</span>
       </div>
       <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
         <i class="fa-solid fa-bars"></i>
@@ -28,10 +34,10 @@
 
     <!-- Mobile menu -->
     <div class="navbar-mobile" id="mobileMenu">
-      <a href="work.html">Work</a>
-      <a href="contact.html">Contact</a>
+      <a href="work.html" data-i18n="nav_work">Work</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
       <a href="cookie.html">Cookie</a>
-      <a href="shop.html">Shop</a>
+      <a href="shop.html" data-i18n="nav_shop">Shop</a>
     </div>
   </nav>
 
@@ -42,17 +48,17 @@
       Your browser does not support the video tag.
     </video>
     <h1>Beatriz Cintra</h1>
-    <p>Front-End Developer</p>
-    <a href="#featured-work" class="hero-button">View My Work</a>
+    <p data-i18n="hero_subtitle">Front-End Developer</p> <!--translation uses the data-i18n to find this piece on the script-->
+    <a href="#featured-work" class="hero-button" data-i18n="hero_view_work">View My Work</a>
   </header>
 
   <!-- First Section -->
   <section class="section">
     <div class="section-inner">
       <div class="section-text">
-        <h1>About Me</h1>
-        <h5>Passionate about crafting beautiful, functional web experiences through HTML, CSS, and JavaScript.</h5>
-        <p>I'm a self-taught web developer with a deep love for front-end development. I thrive on turning designs into interactive, responsive websites that delight users. With expertise in HTML, CSS, and JavaScript, I focus on creating clean, efficient code that prioritizes user experience. I'm continuously exploring the backend to broaden my skill set and understand full-stack development better.</p>
+        <h1 data-i18n="about_me">About Me</h1>
+        <h5 data-i18n="about_me_subtitle">Passionate about crafting beautiful, functional web experiences through HTML, CSS, and JavaScript.</h5>
+        <p data-i18n="about_me_description">I'm a self-taught web developer with a deep love for front-end development. I thrive on turning designs into interactive, responsive websites that delight users. With expertise in HTML, CSS, and JavaScript, I focus on creating organized, efficient code that prioritizes user experience. I'm continuously exploring the backend to broaden my skill set and understand full-stack development better.</p>
       </div>
       <div class="section-icon">
         <i class="fa-solid fa-cat"></i>
@@ -67,9 +73,9 @@
         <i class="fa-solid fa-code"></i>
       </div>
       <div class="section-text">
-        <h1>My Skills</h1>
-        <h5>Constantly growing and learning new technologies to stay at the forefront of web development.</h5>
-        <p><strong>Front-End:</strong> HTML5, CSS3, JavaScript (ES6+), Responsive Design, DOM Manipulation<br><strong>Tools & Technologies:</strong> Git, VS Code, Chrome DevTools<br><strong>Exploring:</strong> Backend technologies, APIs, and server-side development to become a well-rounded developer. I'm curious about how data flows and systems communicate behind the scenes.</p>
+        <h1 data-i18n="my_skills">My Skills</h1>
+        <h5 data-i18n="my_skills_subtitle">Constantly growing and learning new technologies to stay at the forefront of web development.</h5>
+        <p data-i18n="my_skills_description"><strong>Front-End:</strong> HTML5, CSS3, JavaScript (ES6+), Responsive Design, DOM Manipulation<br><strong>Tools & Technologies:</strong> Git, VS Code, Chrome DevTools<br><strong>Exploring:</strong> Backend technologies, APIs, and server-side development to become a well-rounded developer. I'm curious about how data flows and systems communicate behind the scenes.</p>
       </div>
     </div>
   </section>
@@ -78,21 +84,21 @@
   <section class="section" id="featured-work">
     <div class="section-inner" style="flex-direction: column; gap: 48px;">
       <div class="section-text" style="flex: none; width: 100%; text-align: center;">
-        <h1>Featured Work</h1>
-        <h5>A showcase of recent projects built with HTML, CSS, and JavaScript</h5>
+        <h1 data-i18n="featured_work">Featured Work</h1>
+        <h5 data-i18n="featured_work_subtitle">A showcase of recent projects built with HTML, CSS, and JavaScript</h5>
       </div>
       <div class="projects-grid">
         <div class="project-card">
           <a href="jstasks/jstasks.html" class="project-link" target="_blank" title="Open Project Three">
             <div class="project-image"><img src="thumb/jstasks.png" alt="Project Three Thumbnail"></div>
             <div class="project-content">
-              <h3>JavaScript Tasks</h3>
-              <p>Started in 2026 as part of supersimple.dev's JavaScript course, this ever-growing project compiles every hands-on task and exercise completed along the way — a living record of learning JS from the ground up.</p>
+              <h3 data-i18n="project_jstasks">JavaScript Tasks</h3>
+              <p data-i18n="project_jstasks_description">Started in 2026 as part of supersimple.dev's JavaScript course, this ever-growing project compiles every hands-on task and exercise completed along the way — a living record of learning JS from the ground up.</p>
               <span class="project-tech">HTML</span>
               <span class="project-tech">CSS</span>
               <span class="project-tech">JavaScript</span>
               <span class="project-tech">2026</span>
-              <span class="project-tech">In Progress</span>
+              <span class="project-tech" data-i18n="in_progress">In Progress</span>
             </div>
           </a>
         </div>
@@ -100,13 +106,13 @@
           <a href="7guis/7guis.html" class="project-link" target="_blank" title="Open Project Three">
             <div class="project-image"><img src="thumb/7guis.png" alt="Project Three Thumbnail"></div>
             <div class="project-content">
-              <h3>7GUIs Challenge</h3>
-              <p>A benchmark of seven progressively complex GUI tasks covering bidirectional data flow, constraint modelling, concurrency, and change propagation — implemented in vanilla JavaScript. Started in 2025, ongoing.</p>
+              <h3 data-i18n="project_7guis">7GUIs Challenge</h3>
+              <p data-i18n="project_7guis_description">A benchmark of seven progressively complex GUI tasks covering bidirectional data flow, constraint modelling, concurrency, and change propagation — implemented in vanilla JavaScript. Started in 2025, ongoing.</p>
               <span class="project-tech">HTML</span>
               <span class="project-tech">CSS</span>
               <span class="project-tech">JavaScript</span>
               <span class="project-tech">2025</span>
-              <span class="project-tech">In Progress</span>
+              <span class="project-tech" data-i18n="in_progress">In Progress</span>
             </div>
           </a>
         </div>
@@ -114,8 +120,8 @@
           <a href="guaxinim/index.html" class="project-link" target="_blank" title="Open Project Three">
             <div class="project-image"><img src="thumb/guaxi.png" alt="Project Three Thumbnail"></div>
             <div class="project-content">
-              <h3>First Website</h3>
-              <p>Final project for CS50: Introduction to Computer Science by Harvard University (2024) — a raccoon-themed fan page featuring a functional shopping cart, built while learning JavaScript for the first time. Where it all started.</p>
+              <h3 data-i18n="project_guaxinim">First Website</h3>
+              <p data-i18n="project_guaxinim_description">Final project for CS50: Introduction to Computer Science by Harvard University (2024) — a raccoon-themed fan page featuring a functional shopping cart, built while learning JavaScript for the first time. Where it all started.</p>
               <span class="project-tech">HTML</span>
               <span class="project-tech">CSS</span>
               <span class="project-tech">JavaScript</span>
@@ -125,14 +131,14 @@
         </div>
       </div>
       <div class="portfolio-button-container">
-        <a href="work.html" class="portfolio-button">View Full Portfolio</a>
+        <a href="work.html" class="portfolio-button" data-i18n="view_full_portfolio">View Full Portfolio</a>
       </div>
     </div>
   </section>
 
   <!-- Quote Band -->
   <div class="quote-band">
-    <h1>// Building the web, one pixel at a time</h1>
+    <h1 data-i18n="quote_band">// Building the web, one pixel at a time</h1>
   </div>
 
   <!-- Footer -->
@@ -149,7 +155,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Beatriz Cintra. Creating art through code.</p>
+      <p data-i18n="footer_copyright">© 2026 Beatriz Cintra. Creating art through code.</p>
     </div>
   </footer>
 
@@ -167,7 +173,94 @@
         menu.classList.remove("open");
       }
     });
-  </script>
+
+    //translation script
+    const translations = {
+  en: {
+    nav_work: "Work",
+    nav_contact: "Contact",
+    nav_shop: "Shop",
+    hero_subtitle: "Front-End Developer",
+    hero_view_work: "View My Work",
+    about_me: "About Me",
+    about_me_subtitle: "Passionate about crafting beautiful, functional web experiences through HTML, CSS, and JavaScript.",
+    about_me_description: "I'm a self-taught web developer with a deep love for front-end development. I thrive on turning designs into interactive, responsive websites that delight users. With expertise in HTML, CSS, and JavaScript, I focus on creating organized, efficient code that prioritizes user experience. I'm continuously exploring the backend to broaden my skill set and understand full-stack development better.",
+    my_skills: "My Skills",
+    my_skills_subtitle: "Constantly growing and learning new technologies to stay at the forefront of web development.",
+    my_skills_description: "Front-End: HTML5, CSS3, JavaScript (ES6+), Responsive Design, DOM Manipulation. Tools & Technologies: Git, VS Code, Chrome DevTools. Exploring: Backend technologies, APIs, and server-side development to become a well-rounded developer. I'm curious about how data flows and systems communicate behind the scenes.",
+    featured_work: "Featured Work",
+    featured_work_subtitle: "A showcase of recent projects built with HTML, CSS, and JavaScript",
+    project_jstasks: "JavaScript Tasks",
+    project_jstasks_description: "Started in 2026 as part of supersimple.dev's JavaScript course, this ever-growing project compiles every hands-on task and exercise completed along the way — a living record of learning JS from the ground up.",
+    project_7guis: "7GUIs Challenge",
+    project_7guis_description: "A benchmark of seven progressively complex GUI tasks covering bidirectional data flow, constraint modelling, concurrency, and change propagation — implemented in vanilla JavaScript. Started in 2025, ongoing.",
+    project_guaxinim: "First Website",
+    project_guaxinim_description: "Final project for CS50: Introduction to Computer Science by Harvard University (2024) — a raccoon-themed fan page featuring a functional shopping cart, built while learning JavaScript for the first time. Where it all started.",
+    in_progress: "In Progress",
+    view_full_portfolio: "View Full Portfolio",
+    quote_band: "// Building the web, one pixel at a time",
+    footer_copyright: "© 2026 Beatriz Cintra. Creating art through code.",
+  },
+  pt: {
+    nav_work: "Trabalho",
+    nav_contact: "Contato",
+    nav_shop: "Loja",
+    hero_subtitle: "Desenvolvedora Front-End",
+    hero_view_work: "Ver Meu Trabalho",
+    about_me: "Sobre Mim",
+    about_me_subtitle: "Criando experiências web bonitas e funcionais com HTML, CSS e JavaScript.",
+    about_me_description: "Sou apaixonada por criar experiências web bonitas, funcionais e intuitivas. Como desenvolvedora autodidata, encontrei no front-end uma forma de unir criatividade e lógica, transformando ideias e designs em interfaces interativas e responsivas. Trabalho com HTML, CSS e JavaScript, sempre priorizando organização e uma ótima experiência para o usuário. Atualmente, estou expandindo meus conhecimentos em back-end para me tornar uma desenvolvedora cada vez mais completa.",
+    my_skills: "Minhas Habilidades",
+    my_skills_subtitle: "Estou sempre aprendendo e explorando novas tecnologias para evoluir constantemente como desenvolvedora.",
+    my_skills_description: "Front-End: HTML5, CSS3, JavaScript (ES6+), Design Responsivo, Manipulação do DOM. Ferramentas e Tecnologias: Git, VS Code, Chrome DevTools. Explorando: Back-end, APIs e desenvolvimento server-side.",
+    featured_work: "Projetos em Destaque",
+    featured_work_subtitle: "Uma vitrine de projetos recentes criados com HTML, CSS e JavaScript",
+    project_jstasks: "Tarefas JavaScript",
+    project_jstasks_description: "Iniciado em 2026 como parte do curso de JavaScript da supersimple.dev, este projeto em constante crescimento compila todas as tarefas e exercícios práticos realizados ao longo do caminho — um registro vivo do aprendizado de JS do zero.",
+    project_7guis: "Desafio 7GUIs",
+    project_7guis_description: "Um benchmark de sete tarefas de GUI progressivamente complexas cobrindo fluxo de dados bidirecional, modelagem de restrições, concorrência e propagação de mudanças — implementado em JavaScript puro. Iniciado em 2025, em andamento.",
+    project_guaxinim: "Primeiro Site",
+    project_guaxinim_description: "Projeto final do CS50: Introdução à Ciência da Computação pela Universidade Harvard (2024) — uma página com temática de guaxinim, carrinho de compras funcional, criada enquanto aprendia JavaScript pela primeira vez. Onde tudo começou.",
+    in_progress: "Em Andamento",
+    view_full_portfolio: "Ver Portfólio Completo",
+    quote_band: "// Construindo a web, um pixel de cada vez",
+    footer_copyright: "© 2026 Beatriz Cintra. Criando arte com código.",
+  }
+};
+
+    let currentLang = 'en';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+
+      // move the slider
+      const slider = document.getElementById('langSlider');
+      slider.style.transform = currentLang === 'pt' ? 'translateX(100%)' : 'translateX(0)';
+
+      // swap active class
+      const spans = document.querySelectorAll('.lang-toggle span');
+      spans.forEach(span => span.classList.remove('active'));
+      spans[currentLang === 'en' ? 0 : 1].classList.add('active');
+
+      // translate the page
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      const nextLang = currentLang === 'en' ? 'pt' : 'en';
+      localStorage.setItem('lang', nextLang);
+      applyLanguage(nextLang);
+    }
+
+    // on page load, apply saved language if any
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) applyLanguage(savedLang);
+</script>
 
 </body>
 </html>

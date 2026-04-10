@@ -16,10 +16,16 @@
     <div class="navbar-main">
       <a href="index.html" class="nav-home">Home</a>
       <div class="nav-links">
-        <a href="work.html">Work</a>
-        <a href="contact.html">Contact</a>
+        <a href="work.html" data-i18n="nav_work">Work</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
         <a href="cookie.html">Cookie</a>
-        <a href="shop.html" class="active">Shop</a>
+        <a href="shop.html" class="active" data-i18n="nav_shop">Shop</a>
+      </div>
+      <!-- Language Toggle -->
+      <div class="lang-toggle" id="langToggle" onclick="toggleLanguage()">
+      <div class="lang-slider" id="langSlider"></div>
+      <span class="active">EN</span>
+      <span>PT</span>
       </div>
       <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
         <i class="fa-solid fa-bars"></i>
@@ -28,16 +34,16 @@
 
     <!-- Mobile menu -->
     <div class="navbar-mobile" id="mobileMenu">
-      <a href="work.html">Work</a>
-      <a href="contact.html">Contact</a>
+      <a href="work.html" data-i18n="nav_work">Work</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
       <a href="cookie.html">Cookie</a>
-      <a href="shop.html" class="active">Shop</a>
+      <a href="shop.html" class="active" data-i18n="nav_shop">Shop</a>
     </div>
   </nav>
 
   <!-- Shop Redirect -->
   <div class="coming-soon-container">
-    <a href="notready.html" target="_blank" class="shop-button">Visit The Store <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <a href="notready.html" target="_blank" class="shop-button" data-i18n="visit_store">Visit The Store <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
   </div>
 
   <script>
@@ -55,6 +61,51 @@
       }
     });
 
+// Language toggle logic
+const translations = {
+  en: {
+    nav_work: "Work",
+    nav_contact: "Contact",
+    nav_shop: "Shop",
+    visit_store: 'Visit The Store <i class="fa-solid fa-arrow-up-right-from-square"></i>',
+  },
+  pt: {
+    nav_work: "Trabalho",
+    nav_contact: "Contato",
+    nav_shop: "Loja",
+    visit_store: 'Entre na Loja <i class="fa-solid fa-arrow-up-right-from-square"></i>',
+  }
+};
+
+    let currentLang = 'en';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const slider = document.getElementById('langSlider');
+      slider.style.transform = currentLang === 'pt' ? 'translateX(100%)' : 'translateX(0)';
+      const spans = document.querySelectorAll('.lang-toggle span');
+      spans.forEach(span => span.classList.remove('active'));
+      spans[currentLang === 'en' ? 0 : 1].classList.add('active');
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[currentLang][key]) {
+          if (key === 'visit_store') {
+            el.innerHTML = translations[currentLang][key];
+          } else {
+            el.textContent = translations[currentLang][key];
+          }
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      const nextLang = currentLang === 'en' ? 'pt' : 'en';
+      localStorage.setItem('lang', nextLang);
+      applyLanguage(nextLang);
+    }
+
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) applyLanguage(savedLang);
   </script>
 
 </body>

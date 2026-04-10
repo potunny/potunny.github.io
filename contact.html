@@ -15,26 +15,31 @@
     <div class="navbar-main">
       <a href="index.html" class="nav-home">Home</a>
       <div class="nav-links">
-        <a href="work.html">Work</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a href="work.html" data-i18n="nav_work">Work</a>
+        <a href="contact.html" class="active" data-i18n="nav_contact">Contact</a>
         <a href="cookie.html">Cookie</a>
-        <a href="shop.html">Shop</a>
+        <a href="shop.html" data-i18n="nav_shop">Shop</a>
+      </div>
+      <div class="lang-toggle" id="langToggle" onclick="toggleLanguage()">
+        <div class="lang-slider" id="langSlider"></div>
+        <span class="active">EN</span>
+        <span>PT</span>
       </div>
       <button class="nav-toggle" onclick="toggleMenu()" title="Toggle Navigation Menu">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
     <div class="navbar-mobile" id="mobileMenu">
-      <a href="work.html">Work</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="work.html" data-i18n="nav_work">Work</a>
+      <a href="contact.html" class="active" data-i18n="nav_contact">Contact</a>
       <a href="cookie.html">Cookie</a>
-      <a href="shop.html">Shop</a>
+      <a href="shop.html" data-i18n="nav_shop">Shop</a>
     </div>
   </nav>
 
   <section class="contact-form-wrap">
     <div class="contact-form-intro" style="margin-bottom: 16px; text-align: center; color: #ccc; font-family: 'Share Tech Mono', monospace; font-size: 0.95rem;">
-      <p>New idea? Bug report? Collaboration pitch? Write it out and hit send — I’ll get back to you in a flash.</p>
+      <p data-i18n="contact_intro">New idea? Bug report? Collaboration pitch? Write it out and hit send — I’ll get back to you in a flash.</p>
     </div>
     <form id="contactForm" action="https://formsubmit.co/154ed0ac7e067270d87a3cff42d65a28" method="POST" onsubmit="handleSubmit(event)">
       <input type="text" name="_honey" style="display:none" />
@@ -43,63 +48,116 @@
       <input type="hidden" name="_template" value="table" />
 
       <div class="contact-form-row">
-        <label for="name">Your Name</label>
+        <label for="name" data-i18n="contact_name">Your Name</label>
         <input type="text" id="name" name="name" required />
       </div>
 
       <div class="contact-form-row">
-        <label for="email">Your Email</label>
+        <label for="email" data-i18n="contact_email">Your Email</label>
         <input type="email" id="email" name="email" required />
       </div>
 
       <div class="contact-form-row">
-        <label for="message">Message</label>
+        <label for="message" data-i18n="contact_message">Message</label>
         <textarea id="message" name="message" rows="5" required maxlength="1500"></textarea>
         <div id="messageCount" style="font-family:'Share Tech Mono', monospace; font-size:0.85rem; color:#ccc;">0 / 1500</div>
       </div>
 
-      <button type="submit" class="contact-submit">Send Message</button>
+      <button type="submit" class="contact-submit" data-i18n="contact_submit">Send Message</button>
       <div id="feedback" class="contact-feedback"></div>
     </form>
   </section>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-    }
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
 
-    // Close mobile menu when clicking outside
-    document.addEventListener("click", function(event) {
-      const menu = document.getElementById("mobileMenu");
-      const toggleButton = document.querySelector(".nav-toggle");
-      if (!toggleButton.contains(event.target) && !menu.contains(event.target)) {
-        menu.classList.remove("open");
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", function(event) {
+    const menu = document.getElementById("mobileMenu");
+    const toggleButton = document.querySelector(".nav-toggle");
+    if (!toggleButton.contains(event.target) && !menu.contains(event.target)) {
+      menu.classList.remove("open");
+    }
+  });
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    if (form._honey.value) return;
+    fetch(form.action, { method: form.method, body: new FormData(form) })
+      .then(() => {
+        form.reset();
+        document.getElementById('messageCount').textContent = '0 / 1500';
+        document.getElementById('feedback').textContent = translations[currentLang].contact_success;
+      })
+      .catch(() => {
+        document.getElementById('feedback').textContent = translations[currentLang].contact_error;
+      });
+  }
+
+  const msgField = document.getElementById('message');
+  const countEl = document.getElementById('messageCount');
+  msgField.addEventListener('input', () => {
+    countEl.textContent = `${msgField.value.length} / 1500`;
+  });
+
+  // Language translations
+  const translations = {
+    en: {
+      nav_work: "Work",
+      nav_contact: "Contact",
+      nav_shop: "Shop",
+      contact_intro: "New idea? Bug report? Collaboration pitch? Write it out and hit send — I'll get back to you in a flash.",
+      contact_name: "Your Name",
+      contact_email: "Your Email",
+      contact_message: "Message",
+      contact_submit: "Send Message",
+      contact_success: "Message sent! I'll respond soon. 💌",
+      contact_error: "Oops, submission failed. Please try again.",
+    },
+    pt: {
+      nav_work: "Trabalho",
+      nav_contact: "Contato",
+      nav_shop: "Loja",
+      contact_intro: "Tem uma ideia nova? Encontrou algum bug? Quer propor uma colaboração? Escreva sua mensagem e envie — responderei rapidinho.",
+      contact_name: "Seu nome",
+      contact_email: "Seu e-mail",
+      contact_message: "Mensagem",
+      contact_submit: "Enviar mensagem",
+      contact_success: "Mensagem enviada! Responderei em breve. 💌",
+      contact_error: "Ops! Não foi possível enviar. Tente novamente.",
+    }
+  };
+
+  let currentLang = 'en';
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    const slider = document.getElementById('langSlider');
+    slider.style.transform = currentLang === 'pt' ? 'translateX(100%)' : 'translateX(0)';
+    const spans = document.querySelectorAll('.lang-toggle span');
+    spans.forEach(span => span.classList.remove('active'));
+    spans[currentLang === 'en' ? 0 : 1].classList.add('active');
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (translations[currentLang][key]) {
+        el.textContent = translations[currentLang][key];
       }
     });
+  }
 
-    function handleSubmit(event) {
-      event.preventDefault();
+  function toggleLanguage() {
+    const nextLang = currentLang === 'en' ? 'pt' : 'en';
+    localStorage.setItem('lang', nextLang);
+    applyLanguage(nextLang);
+  }
 
-      const form = event.target;
-      if (form._honey.value) return;
-
-      fetch(form.action, { method: form.method, body: new FormData(form) })
-        .then(() => {
-          form.reset();
-          document.getElementById('messageCount').textContent = '0 / 1500';
-          document.getElementById('feedback').textContent = 'Message sent! I’ll respond soon. 💌';
-        })
-        .catch(() => {
-          document.getElementById('feedback').textContent = 'Oops, submission failed. Please try again.';
-        });
-    }
-
-    const msgField = document.getElementById('message');
-    const countEl = document.getElementById('messageCount');
-    msgField.addEventListener('input', () => {
-      countEl.textContent = `${msgField.value.length} / 1500`;
-    });
-  </script>
+  // on page load, apply saved language if any
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang) applyLanguage(savedLang);
+</script>
 </body>
 </html>
