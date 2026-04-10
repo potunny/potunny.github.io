@@ -177,6 +177,7 @@
     //translation script
     const translations = {
   en: {
+    page_title: "Beatriz Cintra - Web Developer", //page title translation
     nav_work: "Work",
     nav_contact: "Contact",
     nav_shop: "Shop",
@@ -202,6 +203,7 @@
     footer_copyright: "© 2026 Beatriz Cintra. Creating art through code.",
   },
   pt: {
+    page_title: "Beatriz Cintra - Desenvolvedora Web", // page title translation
     nav_work: "Trabalho",
     nav_contact: "Contato",
     nav_shop: "Loja",
@@ -232,6 +234,9 @@
 
     function applyLanguage(lang) {
       currentLang = lang;
+
+      // update page title
+      document.title = translations[currentLang].page_title;
 
       // move the slider
       const slider = document.getElementById('langSlider');

@@ -67,6 +67,7 @@
 // Language translations
 const translations = {
   en: {
+    page_title: "Under Construction", // page title translation
     nav_work: "Work",
     nav_contact: "Contact",
     nav_shop: "Shop",
@@ -75,6 +76,7 @@ const translations = {
     back_home: "← Back Home",
   },
   pt: {
+    page_title: "Em Construção", // page title translation
     nav_work: "Trabalho",
     nav_contact: "Contato",
     nav_shop: "Loja",
@@ -88,6 +90,9 @@ let currentLang = 'en';
 
 function applyLanguage(lang) {
       currentLang = lang;
+      // update page title
+      document.title = translations[currentLang].page_title;
+
       const slider = document.getElementById('langSlider');
       slider.style.transform = currentLang === 'pt' ? 'translateX(100%)' : 'translateX(0)';
       const spans = document.querySelectorAll('.lang-toggle span');
